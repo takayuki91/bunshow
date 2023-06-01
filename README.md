@@ -18,19 +18,21 @@
 - 指導者のモチベーションアップが間接的に指導力アップに寄与するものと考えた
 
 ## ③ターゲットユーザー
-- 教員
+- 教員（約100万人）　参考　https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo0/toushin/attach/1337051.htm
 - ビジネスコーチ
-- スポーツコーチ
+- スポーツコーチ（約60万人）　参考　https://www.japan-sports.or.jp/coach/tabid248.html
 - 全ての指導者と言われる職業の方々
 
 ## ④主な利用シーン
-- 指導方法の共有
+##### 帰宅中の電車で手軽に
 - 指導方法の情報収集
-- 相互フィードバック（称賛）
 - 人気投稿（指導方法）のチェック
+##### 指導法研究の合間に
+- 指導方法の共有
+- 相互フィードバック（称賛）
 
 # 設計書
-サイトイメージ
+サイトイメージ(6/1時点）
 https://drive.google.com/file/d/19Wn-sqlQyhL9hAcOW1sr3SVEDt1P6l-j/view?usp=drive_link
 
 ## ①開発環境
