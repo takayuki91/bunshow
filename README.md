@@ -48,6 +48,6 @@ https://drive.google.com/file/d/19Wn-sqlQyhL9hAcOW1sr3SVEDt1P6l-j/view?usp=drive
 - ancestry
 
 ## ③使用素材
-- FontAwesome（https://fontawesome.com/）
-- ヒューマンピクトグラム2.0（https://pictogram2.com/）
+- FontAwesome（https://fontawesome.com）
+- ヒューマンピクトグラム2.0（https://pictogram2.com）
 - その他使用検討中です
