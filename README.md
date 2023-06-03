@@ -1,5 +1,5 @@
-# サイト名「BunShow！」
-### 「BunShow!」の由来
+# BunShow！
+### BunShow!の由来
 - bun「良い（ルーマニア語）」
 - show「見せる、ショー（英語）」
 
