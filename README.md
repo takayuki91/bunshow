@@ -29,7 +29,7 @@
 - 相互フィードバック（称賛）
 
 # 設計書
-[サイトイメージ(6/1時点）](https://drive.google.com/file/d/19Wn-sqlQyhL9hAcOW1sr3SVEDt1P6l-j/view?usp=drive_link)
+[サイトイメージ(6/4時点）](https://docs.google.com/presentation/d/1CYtoc4LJuiONindI2NsoawQ7FLRNeUG2KoAKsUR_P1I/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux
