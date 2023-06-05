@@ -1,0 +1,2 @@
+class Paragon < ApplicationRecord
+end
