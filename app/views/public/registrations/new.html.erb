@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="mb-2 nav">
+        <h2>Sign up</h2>
+      </div>
+
+      <%= form_with model: @user, url: registration_path(resource_name), local: true do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        
+        <table class="user_info user_form">
+          <thead>
+            <th></th>
+            <th></th>
+          </thead>
+          
+          <tbody>
+            <tr>
+              <td><%= f.label :email, "email" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            
+            <tr>
+              <td><%= f.label :name, "username" %></td>
+              <td><%= f.text_field :name, :placeholder =>"your bunshow's name" %></td>
+            </tr>
+            
+            <tr>
+              <td><%= f.label :password, "password(#{@minimum_password_length}characters or more)" %></td>
+              <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            </tr>
+            
+            <tr>
+              <td><%= f.label :password_confirmation, "password_confirmation" %></td>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            </tr>
+            
+            <tr>
+              <td></td>
+              <td align="center"><%= f.submit "SignUp", class: "btn btn-success" %></td>
+            </tr>
+          
+          </tbody>
+        </table>
+      <% end %>
+      
+      <h2 class="">既に登録済みの方</h2>
+      <p><%= link_to "こちら", new_user_session_path, class: "underline" %>からログインしてください。</p>
+
+    </div>
+  </div>
+</div>
