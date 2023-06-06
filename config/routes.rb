@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:index,:show,:edit,:update]do
+      collection do
+        get    "unsubscribe"      => "users#unsubscribe", as: "unsubscribe"
+        patch  "withdraw"         => "users#withdraw",    as: "withdraw"
+      end
       resource :relationships, only: [:create, :destroy]
       get :follow, on: :member
       get :followed, on: :member
