@@ -29,7 +29,7 @@ class User < ApplicationRecord
     passive_relationships.find_by(follow_id: user.id).present?
   end
 
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  # validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   has_one_attached :profile_image
 

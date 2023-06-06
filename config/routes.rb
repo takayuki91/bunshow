@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-
-  devise_for :admins, skip: [:passwords], controllers: {
+  
+  devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions:      "public/sessions"
   }
-
-  devise_for :users, skip: [:registrations, :passwords] ,controllers: {
+  
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     end
 
   end
-
+  
   namespace :admin do
     # 後ほど設定
   end
