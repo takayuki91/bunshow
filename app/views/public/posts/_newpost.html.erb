@@ -1,0 +1,30 @@
+<%= form_with model: @post, url: form_url do |f| %>
+
+<div class="row justify-content-center">
+  <div class="col-md-2">
+    <%= f.label :画像 %>
+  </div>
+  <div class="col-md-6">
+  <div class="form-group">
+    <%= f.file_field :post_images, accept: "image/*", multiple: true, class: "post_image" %>
+  </div>
+  </div>
+  
+   <div class="row justify-content-center">
+    <div class="col-md-2">
+      <%= f.label :説明 %>
+    </div>
+    <div class="col-md-6">
+    <div class="form-group">
+      <%= f.text_area :explanation, required: true, class: "form-control post_explanation" %>
+    </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center">
+    <%= f.submit button_label, class: "btn btn-success" %>
+  </div>
+  
+</div>
+
+<% end %>
