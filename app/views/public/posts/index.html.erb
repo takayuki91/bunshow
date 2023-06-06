@@ -2,22 +2,18 @@
 
 <h1>Post Index</h1>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-lg-10">
 
-    <h4 class="mb-5">bunshow</h4>
-
-    <%= render partial: "newpost", locals: {      form_url: posts_path,
-                                               button_label: "post!"} %>
-
-    </div>
+    <%= render partial: "newpost", locals: { form_url: posts_path, button_label: "post!" } %>
   </div>
 </div>
 
 <% @posts.each do |post| %>
 <div class="card w-50 mx-auto mt-4 shadow-lg">
-   <%= image_tag post_image.get_image, class: "card-img-top"; %>
+  <% if post.post_image.attached? %>
+   <%= image_tag post.post_image, size: "50×50", class: "card-img-top" %>
+  <% end %>
   <div class="card-body">
    <div class="row">
     <div class="col-10">

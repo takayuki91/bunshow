@@ -1,13 +1,13 @@
 class Public::PostsController < ApplicationController
-  
+
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if  @item.save
+    if  @post.save
       flash[:success] = "あなたのbunshowを共有しました!!"
       redirect_to posts_path(@post)
     else
@@ -15,20 +15,23 @@ class Public::PostsController < ApplicationController
       render :index
     end
   end
-  
+
   def index
+    @post = Post.new
     @posts = Post.all
   end
-  
+
   def show
   end
-  
+
   def edit
   end
-  
+
+  private
+
   def post_params
-    params.require(:post).permit(:post_images, :explanation)
+    params.require(:post).permit(:post_image, :explanation)
   end
-    
+
 
 end
