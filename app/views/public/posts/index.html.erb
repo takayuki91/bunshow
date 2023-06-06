@@ -1,4 +1,29 @@
+<%= render 'layouts/flash_message' %>
+
 <h1>Post Index</h1>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+
+    <%= render partial: "newpost", locals: { form_url: posts_path, button_label: "post!" } %>
+  </div>
+</div>
+
+<% @posts.each do |post| %>
+<div class="card w-50 mx-auto mt-4 shadow-lg">
+  <% if post.post_image.attached? %>
+   <%= image_tag post.post_image, size: "50×50", class: "card-img-top" %>
+  <% end %>
+  <div class="card-body">
+   <div class="row">
+    <div class="col-10">
+     <p class="card-text">説明：<%= post.explanation %></p>
+     <span><i class="fas fa-user"></i> By <%= post.user.name %> ｜ </span>
+    </div>
+   </div>
+  </div>
+</div>
+<% end %>
 
 <li>
   <%= link_to destroy_user_session_path, method: :delete do %>
