@@ -1,17 +1,13 @@
 class Public::PostsController < ApplicationController
 
-  def new
-    @post = Post.new
-  end
-
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if  @post.save
       flash[:success] = "あなたのbunshowを共有しました!!"
-      redirect_to posts_path(@post)
+      redirect_to posts_path
     else
-      flash.now[:danger] = "bunshowを入力してください"
+      flash.now[:danger] = "共有するにはbunshowを入力してください"
       render :index
     end
   end
@@ -22,9 +18,15 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.new
+    @currentpost = Post.find(params[:id])
   end
-
-  def edit
+  
+  def destroy
+    @currentpost = Post.find(params[:id])
+    @currentpost.destroy
+    flash[:warning] = "あなたのbunshowを削除しました"
+    redirect_to posts_path
   end
 
   private
