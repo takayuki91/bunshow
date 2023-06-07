@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :paragons, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_many :book_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :explanation, presence:true, length:{ maximum:200 }
 

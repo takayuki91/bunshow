@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions:      "public/sessions"
   }
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
     root to: "homes#top"
 
-    resources :posts do
+    resources :posts, only: [:index, :create, :show, :destroy] do
       resource :likes, only: [:create, :destroy]
       resource :paragons, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     end
 
   end
-  
+
   namespace :admin do
     # 後ほど設定
   end

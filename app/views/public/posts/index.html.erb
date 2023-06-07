@@ -1,20 +1,16 @@
 <%= render 'layouts/flash_message' %>
 
 <h1>Post Index</h1>
-
-<div class="container-fluid">
-  <div class="row justify-content-center">
-
-    <%= render partial: "newpost", locals: { form_url: posts_path, button_label: "post!" } %>
-  </div>
-</div>
+<%= render partial: "newpost", locals: { form_url: posts_path, button_label: "post!" } %>
 
 <div class="d-flex flex-wrap">
   <% @posts.each do |post| %>
   <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card mx-auto mt-4 shadow-lg">
       <% if post.post_image.attached? %>
-       <%= image_tag post.post_image, size: "300x300", class: "card-img-top" %>
+        <%= link_to post_path(post.id) do %>
+          <%= image_tag post.post_image, size: "300x300", class: "card-img-top" %>
+        <% end %>
       <% end %>
       <div class="card-body">
         <p class="card-text">説明：<%= post.explanation %></p>
