@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      
+      <% post.comments.each do |comment| %>
+        <div class="card mx-auto mt-4 shadow-lg">
+          <div class="card-body">
+            <p class="card-text">コメント：<%= comment.comment %></p>
+          <div class="row">
+            <div class="col">
+             <span><i class="fas fa-user"></i> By <%= comment.user.name %></span>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+              <% if comment.user == current_user %>
+                <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </div>
+          </div>
+          </div>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>
+</div>
