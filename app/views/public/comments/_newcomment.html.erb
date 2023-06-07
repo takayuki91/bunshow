@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+
+      <h5 class="text-dark bg-light mb-0 text-center">comment</h5>
+
+      <div class="form-body p-4">
+      <%= form_with model: [post, comment] do |f| %>
+
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-pencil"></i></span>
+          </div>
+          <%= f.text_area :comment, :placeholder =>"bunshowにコメントしてみよう！", required: true, class: "form-control" %>
+        </div>
+
+        <hr>
+        <%= f.submit "comment!", class: "btn btn-sm btn-block btn-dark mt-4" %>
+
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
