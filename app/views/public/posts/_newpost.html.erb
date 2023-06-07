@@ -1,25 +1,26 @@
-<div class="container-fluid">
-<div class="row justify-content-center">
-
-<div class="form-inline">
-  <%= form_with model: @post, url: form_url do |f| %>
-
-  <div class="form-group">
-    <%= f.label :post_image, "画像" %>
-    <%= f.file_field :post_image, accept: "image/*", class: "form-control-file" %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      
+      <h5 class="text-dark bg-light mb-0 text-center">new bunshow</h5>
+      
+      <div class="form-body p-4">
+      <%= form_with model: @post, url: form_url do |f| %>
+      
+        <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
+        
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-person-chalkboard"></i></span>
+          </div>
+          <%= f.text_area :explanation, :placeholder =>"今日のあなたのbunshowは？", required: true, class: "form-control" %>
+        </div>
+        
+        <hr>
+        <%= f.submit button_label, class: "btn btn-sm btn-block btn-dark mt-4" %>
+      
+      <% end %>
+      </div>
+    </div>
   </div>
-  
-  <div class="form-group">
-    <%= f.label :explanation, "投稿" %>
-    <%= f.text_area :explanation, :placeholder =>"今日の指導は？", required: true, class: "form-control" %>
-  </div>
-  
-  <div>
-    <%= f.submit button_label, class: "btn btn-success" %>
-  </div>
-
-  <% end %>
-</div>
-
-</div>
 </div>

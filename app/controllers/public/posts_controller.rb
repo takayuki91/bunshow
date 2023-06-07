@@ -18,12 +18,13 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.new
+    @currentpost = Post.find(params[:id])
   end
   
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    @currentpost = Post.find(params[:id])
+    @currentpost.destroy
     flash[:warning] = "あなたのbunshowを削除しました"
     redirect_to posts_path
   end
