@@ -1,0 +1,9 @@
+<% if post.user_has_bookmark?(current_user) %>
+  <%= link_to post_bookmarks_path(post), method: :delete do %>
+    <i class="fa-solid fa-bookmark"></i><%= post.bookmarks.count %>
+  <% end %>
+<% else %>
+  <%= link_to post_bookmarks_path(post), method: :post do %>
+    <i class="fa-regular fa-bookmark"></i><%= post.bookmarks.count %>
+  <% end %>
+<% end %>

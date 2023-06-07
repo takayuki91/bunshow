@@ -19,6 +19,9 @@
          <span><i class="fas fa-user"></i> By <%= post.user.name %> ｜ </span>
         </div>
         <div class="col">
+          <%= render "public/likes/like-btn", post: post %>&nbsp;
+          <%= render "public/paragons/paragon-btn", post: post %>&nbsp;
+          <%= render "public/bookmarks/bookmark-btn", post: post %>
         </div>
         <div class="col">
         </div>

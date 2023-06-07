@@ -1,0 +1,9 @@
+<% if post.user_has_paragon?(current_user) %>
+  <%= link_to post_paragons_path(post), method: :delete do %>
+    <i class="fa-solid fa-heart"></i><%= post.paragons.count %>
+  <% end %>
+<% else %>
+  <%= link_to post_paragons_path(post), method: :post do %>
+    <i class="fa-regular fa-heart"></i><%= post.paragons.count %>
+  <% end %>
+<% end %>
