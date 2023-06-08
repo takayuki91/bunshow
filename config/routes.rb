@@ -31,8 +31,8 @@ Rails.application.routes.draw do
         patch  "withdraw"         => "users#withdraw",    as: "withdraw"
       end
       resource :relationships, only: [:create, :destroy]
-      get :follow, on: :member
-      get :followed, on: :member
+      get :follows, on: :member
+      get :followeds, on: :member
     end
 
     resources :groups do
