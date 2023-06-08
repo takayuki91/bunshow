@@ -18,6 +18,16 @@ class Public::UsersController < ApplicationController
     flash[:dark] = "あなたのユーザー情報を更新しました!!"
     redirect_to user_path(@user.id)
   end
+  
+  def follows
+    @user = User.find(params[:id]) 
+    @users = @user.follows
+  end
+  
+  def followeds
+    @user = User.find(params[:id]) 
+    @users = @user.followeds
+  end
 
   def unsubscribe
   end
