@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if  @post.save
-      flash[:success] = "あなたのbunshowを共有しました!!"
+      flash[:dark] = "あなたのbunshowを共有しました!!"
       redirect_to posts_path
     else
       flash.now[:danger] = "共有するにはbunshowを入力してください"
@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @currentpost = Post.find(params[:id])
     @currentpost.destroy
-    flash[:warning] = "あなたのbunshowを削除しました"
+    flash[:dark] = "あなたのbunshowを削除しました"
     redirect_to posts_path
   end
 
