@@ -1,31 +1,37 @@
 <h1>Post Show</h1>
-<%= render partial: "newpost", locals: { form_url: posts_path, button_label: "post!" } %>
+<%= render partial: "new_post", locals: { form_url: posts_path, button_label: "post!" } %>
 
-<div class="d-flex flex-wrap justify-content-center">
+<div class="card-list-container py-5">
   <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
     <div class="card mx-auto mt-4 shadow-lg">
       <% if @currentpost.post_image.attached? %>
        <%= image_tag @currentpost.post_image, size: "300x300", class: "card-img-top" %>
       <% end %>
       <div class="card-body">
-        <p class="card-text">説明：<%= @currentpost.explanation %></p>
-      <div class="row">
-        <div class="col">
-         <span><i class="fas fa-user"></i> By <%= @currentpost.user.name %> ｜ </span>
+        <div class="row justify-content-center">
+          <div class="col-2 d-flex justify-content-center">
+            <%= image_tag @currentpost.user.get_profile_image, size: "100x100" %>
+          </div>
+          <div class="col-6">
+           <p class="card-title">説明：<%= @currentpost.explanation %></p>
+           <p class="card-text">
+            <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
+              <span><i class="fas fa-user"></i> By <%= @currentpost.user.name %></span>
+            <% end %>
+              <span>
+                <%= render "public/likes/like-btn", post: @currentpost %>&nbsp;
+                <%= render "public/paragons/paragon-btn", post: @currentpost %>&nbsp;
+                <%= render "public/bookmarks/bookmark-btn", post: @currentpost %>
+              </span>
+          </div>
+          <div class="col-2 justify-content-center">
+            <% if @currentpost.user == current_user %>
+              <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
         </div>
-        <div class="col">
-          <%= render "public/likes/like-btn", post: @currentpost %>&nbsp;
-          <%= render "public/paragons/paragon-btn", post: @currentpost %>&nbsp;
-          <%= render "public/bookmarks/bookmark-btn", post: @currentpost %>
-        </div>
-        <div class="col">
-        </div>
-      </div>
       </div>
     </div>
-    <% if @currentpost.user == current_user %>
-      <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-    <% end %>
   </div>
 </div>
 

@@ -10,7 +10,7 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to posts_path, class: 'nav-link text-dark' do  %>
+              <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do  %>
                 <i class="fas fa-users"></i> My page
               <% end %>
             </li>
