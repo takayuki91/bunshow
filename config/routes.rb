@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :users, only: [:index,:show,:edit,:update]do
+    resources :users, only: [:index,:show,:edit,:update] do
       get :bookmarks, on: :member
       collection do
         get    "unsubscribe"      => "users#unsubscribe", as: "unsubscribe"
