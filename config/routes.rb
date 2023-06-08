@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:index,:show,:edit,:update]do
+      get :bookmarks, on: :member
       collection do
         get    "unsubscribe"      => "users#unsubscribe", as: "unsubscribe"
         patch  "withdraw"         => "users#withdraw",    as: "withdraw"
