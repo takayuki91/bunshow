@@ -1,0 +1,33 @@
+<% users.each do |user| %>
+
+  <div class="card-list-container py-5">
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4 d-flex justify-content-center">
+            <%= image_tag user.get_profile_image, size: "100x100" %>
+          </div>
+          <div class="col-8">
+            <p class="card-title"><i class="fas fa-user"></i> <%= user.name %>
+              <% if user == current_user %>
+                  | <%= link_to("編集", edit_user_path(user), class:"text-dark") %>
+              <% else %>
+                <% if user.is_followed_by?(current_user) %>
+                  | <%= link_to(user_relationships_path(user.id), method: :delete, class:"text-dark") do %>
+                  <i class="fa-solid fa-handshake"></i><%= "フォロー中" %>
+                <% end %>
+                <% else %>
+                  | <%= link_to(user_relationships_path(user.id), method: :post, class:"text-dark") do %>
+                  <i class="fa-solid fa-handshake-slash"></i><%= "フォローする" %>
+                  <% end %>
+                <% end %>
+              <% end %></p>
+            <p class="card-text">投稿数: <%= user.posts.count %></p>
+            <p class="card-text">フォロー数:<%= link_to(user.follows.count, follows_user_path(user), class:"text-dark") %> | フォロワー数:<%= link_to(user.followeds.count, followeds_user_path(user), class:"text-dark") %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

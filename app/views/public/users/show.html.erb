@@ -12,7 +12,7 @@
         <div class="col-8">
           <p class="card-title"><i class="fas fa-user"></i> <%= @user.name %>
             <% if @user == current_user %>
-                | <%= link_to "編集", edit_user_path(@user) %>
+                | <%= link_to("編集", edit_user_path(@user), class:"text-dark") %>
             <% else %>
               <% if @user.is_followed_by?(current_user) %>
                 | <%= link_to(user_relationships_path(@user.id), method: :delete, class:"text-dark") do %>
@@ -25,7 +25,7 @@
               <% end %>
             <% end %></p>
           <p class="card-text">投稿数: <%= @user.posts.count %></p>
-          <p class="card-text">フォロー数:<%= @user.follows.count %> | フォロワー数:<%= @user.followeds.count %></p>
+          <p class="card-text">フォロー数:<%= link_to(@user.follows.count, follows_user_path(@user), class:"text-dark") %> | フォロワー数:<%= link_to(@user.followeds.count, followeds_user_path(@user), class:"text-dark") %></p>
         </div>
       </div>
     </div>
