@@ -1,9 +1,9 @@
 <% if post.user_has_like?(current_user) %>
-  <%= link_to post_likes_path(post), method: :delete do %>
+  <%= link_to(post_likes_path(post), method: :delete, class:"text-danger") do %>
     <i class="fa-solid fa-thumbs-up"></i><%= post.likes.count %>
   <% end %>
 <% else %>
-  <%= link_to post_likes_path(post), method: :post do %>
+  <%= link_to(post_likes_path(post), method: :post, class:"text-dark") do %>
     <i class="fa-regular fa-thumbs-up"></i><%= post.likes.count %>
   <% end %>
 <% end %>
