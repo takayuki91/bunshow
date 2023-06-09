@@ -1,9 +1,8 @@
-<section class="inner">
-  <h2 class="section-ttl">管理者トップ</h2>
-  <h1 class="admin_top-txt">
-  	<%= link_to "hogehoge", destroy_admin_session_path, method: :delete, class: "underline" %>
-  </h1>
-  <h1 class="admin_top-txt">
-  	<%= link_to "登録者", admin_users_path, class: "underline" %>
-  </h1>
-</section>
+<div class="container-fluid position-relative overflow-hidden text-center bg-light min-vh-90">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <h1 class="display-4 font-weight-normal">管理者トップページ</h1>
+    <p class="lead font-weight-normal">This page allows you to manage. What you can do is change the user's registration information, manage the user's posts, and affect the user in general.</p>
+    <%= link_to "ユーザー情報へ", admin_users_path, class: "btn btn-outline-secondary" %>
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
