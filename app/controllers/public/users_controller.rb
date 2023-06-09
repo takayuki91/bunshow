@@ -1,6 +1,8 @@
 class Public::UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :follows, :followeds, :bookmarks ]
+  before_action :check_deleted_user, only: [:show]
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
   end
@@ -37,9 +39,8 @@ class Public::UsersController < ApplicationController
   def withdraw
     @user = current_user
     @user.update(is_deleted: true)
-    #セッション情報を全て削除（セキュリティ面のリスク回避のため）
     reset_session
-    flash[:info] = "退会処理を実行いたしました。"
+    flash[:dark] = "退会処理を実行いたしました。"
     redirect_to root_path
 
   end
@@ -48,6 +49,23 @@ class Public::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  # 本人のみが編集可能にする
+  def ensure_correct_user
+    unless @user == current_user
+      flash[:danger] = "このアクセスは許可されていません。"
+      redirect_to user_path(current_user.id)
+    end
+  end
+
+  # 退会ユーザーのページに遷移できないようにする
+  def check_deleted_user
+    user = User.find(params[:id])
+    if user.is_deleted?
+      flash[:danger] = "お探しのユーザーが見つかりません。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def user_params
