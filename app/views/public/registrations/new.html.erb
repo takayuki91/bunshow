@@ -1,54 +1,41 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      
-      <div class="mb-2 nav">
-        <h2>Sign up</h2>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 mx-sm-auto shadow-lg rounded px-2 py-4 mt-5">
+
+      <div class="row justify-content-center">
+        <%= image_tag "no_image.jpg", size: "72x72", class: "d-flex" %>
       </div>
 
-      <%= form_with model: @user, url: registration_path(resource_name), local: true do |f| %>
+      <h1 class="h3 mb-3 font-weight-normal text-center">Please sign up</h1>
+
+        <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
 
-        <table class="user_info user_form">
-          <thead>
-            <th></th>
-            <th></th>
-            <th></th>
-          </thead>
+          <hr>
+          <%= f.label :email, class: "sr-only" %>
+          <%= f.email_field :email, placeholder: "メールアドレス", required: true, autofocus: true, class: "form-control" %>
 
-          <tbody>
-            <tr>
-              <td><%= f.label :email, "email" %></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-            </tr>
+          <%= f.label :name, class: "sr-only" %>
+          <%= f.text_field :name, placeholder: "ニックネーム ", required: true, class: "form-control" %>
 
-            <tr>
-              <td><%= f.label :name, "username" %></td>
-              <td><%= f.text_field :name, :placeholder =>"your bunshow's name" %></td>
-            </tr>
+          <%= f.label :password, class: "sr-only" %>
+          <%= f.password_field :password, placeholder: "パスワード(#{@minimum_password_length}文字以上)", required: true, class: "form-control" %>
 
-            <tr>
-              <td><%= f.label :password, "(#{@minimum_password_length}characters or more)" %></td>
-              <td colspan="2"><%= f.password_field :password, autocomplete: "new-password" %></td>
-            </tr>
+          <%= f.label :password_confirmation, class: "sr-only" %>
+          <%= f.password_field :password_confirmation, placeholder: "パスワード確認", required: true, class: "form-control" %>
 
-            <tr>
-              <td><%= f.label :password_confirmation, "password_confirmation" %></td>
-              <td colspan="2"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-            </tr>
+          <hr>
+          <%= f.submit "SignUp", class: "btn btn-dark btn-block" %>
 
-            <tr>
-              <td></td>
-              <td colspan="2"><%= f.submit "SignUp", class: "btn btn-success" %></td>
-            </tr>
-
-          </tbody>
-        </table>
-      <% end %>
-
-      <h2 class="section-ttl">既に登録済みの方</h2>
-      <p><%= link_to "こちら", new_user_session_path, class: "underline" %>からログインしてください。</p>
+        <% end %>
 
     </div>
   </div>
+
+    <div class="row justify-content-center mt-5">
+      <h5>既に登録済みの方</h5>
+      <p>こちら<%= link_to "#{content_tag(:i, "", class: "fas fa-sign-in-alt")}".html_safe, new_user_session_path, class: "underline text-dark" %>からログインしてください</p>
+    </div>
+
 </div>

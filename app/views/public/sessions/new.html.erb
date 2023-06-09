@@ -1,50 +1,35 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <div class="mb-2 nav">
-        <h2>Log in</h2>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 mx-sm-auto shadow-lg rounded px-2 py-4 mt-5">
+
+      <div class="row justify-content-center">
+        <%= image_tag "no_image.jpg", size: "72x72", class: "d-flex" %>
       </div>
-      
-      <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-        
-        <table class="user_info user_form">
-          <thead>
-            <th></th>
-            <th></th>
-            <th></th>
-          </thead>
-          
-          <tbody>
-            <tr>
-              <td><%= f.label :email, "email" %></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-            </tr>
-            
-            <tr>
-              <td><%= f.label :password %></td>
-              <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-            </tr>
-            
-            <% if devise_mapping.rememberable? %>
-            <tr>
-              <td><%= f.check_box :remember_me %></td>
-              <td><%= f.label :remember_me %></td>
-            </tr>
-            <% end %>
-            
-            <tr>
-              <td></td>
-              <td align="center"><%= f.submit "Login", class: "btn btn-success" %></td>
-            </tr>
-            
-          </tbody>
-        </table>
+
+      <h1 class="h3 mb-3 font-weight-normal text-center">Log in</h1>
+
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+
+        <hr>
+        <%= f.label :email, class: "sr-only" %>
+        <%= f.email_field :email, placeholder: "メールアドレス", required: true, autofocus: true, class: "form-control" %>
+
+        <%= f.label :password, class: "sr-only" %>
+        <%= f.password_field :password, placeholder: "パスワード", required: true, class: "form-control" %>
+
+        <hr>
+        <%= f.submit "Login", class: "btn btn-dark btn-block" %>
+
       <% end %>
-        
-        <h2 class="">登録がお済みでない方</h2>
-        <p><%= link_to "こちら", new_user_registration_path, class: "underline" %>から新規登録を行ってください。</p>
 
     </div>
   </div>
+
+      <div class="row justify-content-center mt-5">
+        <h5>アカウントをお持ちでない方</h5>
+        <p>こちら<%= link_to "#{content_tag(:i, "", class: "fas fa-user-plus")}".html_safe, new_user_registration_path, class: "underline text-dark" %>から新規登録を行ってください。</p>
+      </div>
+
 </div>
