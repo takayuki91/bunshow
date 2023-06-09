@@ -8,6 +8,7 @@
 
 # 管理者アカウント
 Admin.create!(
-	          email: "admin@example.com",
-	          password: "hogehoge",
-	          password_confirmation: "hogehoge")
+  email: "admin@example.com",
+  password: "hogehoge",
+  password_confirmation: "hogehoge"
+)
