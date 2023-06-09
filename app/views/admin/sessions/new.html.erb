@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h4>管理者ログイン</h4>
+    <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
+
+      <div class="row justify-content-center form-group ">
+        <label class="col-2 col-form-label">管理アドレス</label>
+        <div class="col-4">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
+        </div>
+      </div>
+      <div class="row justify-content-center form-group">
+        <label class="col-2 col-form-label">管理パスワード</label>
+        <div class="col-4">
+          <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+        </div>
+        </div>
+      <div class="row justify-content-center form-group">
+        <div class="mr-5">
+          <div><%= f.submit "ログイン", class: "btn btn-primary" %></div>
+        </div>
+      </div>
+    <% end %>
+</div>
