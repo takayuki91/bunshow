@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.includes(:user).where(users: { is_deleted: false })
   end
 
   def show
@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
     @currentpost = Post.find(params[:id])
     @comment = Comment.new
   end
-  
+
   def destroy
     @currentpost = Post.find(params[:id])
     @currentpost.destroy
