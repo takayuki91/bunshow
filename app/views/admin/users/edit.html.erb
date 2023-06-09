@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-5">
+
+      <h1 class="mb-5">会員編集（<%= @user.name %>）</h1>
+
+      <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+
+        <div class="col mb-2">
+          ID : <%= @user.id %>
+        </div>
+
+        <div class="col mb-2">登録名
+          <%= f.text_field :name, required: true, class: "form-control family_name" %>
+        </div>
+
+        <div class="col mb-2">ProfileImage
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+        </div>
+
+        <div class="col mb-2">メールアドレス
+          <%= f.text_field :email, required: true, class: "form-control email" %>
+        </div>
+
+        <div class="col mb-2">会員ステータス
+        </div>
+        <div class="row justify-content-center">
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :is_deleted, false, class: 'form-check-input customer_is_deleted_true' %>
+            <%= f.label :is_deleted, "有効", value: true, class: 'form-check-label align-middle' %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :is_deleted, true, class: 'form-check-input customer_is_deleted_false' %>
+            <%= f.label :is_deleted, "退会", value: false, class: 'form-check-label align-middle'  %>
+          </div>
+        </div>
+
+        <div class="row mt-2 justify-content-center">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
