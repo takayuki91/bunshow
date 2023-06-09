@@ -35,6 +35,13 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+    @user = current_user
+    @user.update(is_deleted: true)
+    #セッション情報を全て削除（セキュリティ面のリスク回避のため）
+    reset_session
+    flash[:info] = "退会処理を実行いたしました。"
+    redirect_to root_path
+
   end
 
   private
