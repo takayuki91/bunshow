@@ -38,7 +38,7 @@
                   <% end %>
                 </td>
                 <td><%= link_to "情報編集", edit_admin_user_path(user.id), class: "btn btn-info" %></td>
-                <td><%= link_to "投稿管理", admin_posts_path(user.id), class: "btn btn-warning" %></td>
+                <td><%= link_to "投稿管理", admin_user_path(user.id), class: "btn btn-warning" %></td>
               </tr>
             <% end %>
           </tbody>

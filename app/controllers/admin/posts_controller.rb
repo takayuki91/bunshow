@@ -1,8 +1,14 @@
 class Admin::PostsController < ApplicationController
   
-  def index
-    @user = User.find(params[:id])
-    @posts = Post.where(user_id: @user.id).order(created_at: :desc)
+  def show
+    @currentpost = Post.find(params[:id])
+  end
+  
+  def destroy
+    @currentpost = Post.find(params[:id])
+    @currentpost.destroy
+    flash[:dark] = "あなたのbunshowを削除しました"
+    redirect_to admin_user_path(@currentpost.user.id)
   end
   
 end

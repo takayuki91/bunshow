@@ -1,0 +1,24 @@
+<div class="card-list-container py-5">
+  <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+    <div class="card mx-auto mt-4 shadow-lg">
+      <% if @currentpost.post_image.attached? %>
+       <%= image_tag @currentpost.post_image, size: "300x300", class: "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <div class="row justify-content-center">
+          <div class="col-2 d-flex justify-content-center">
+            <%= image_tag @currentpost.user.get_profile_image, size: "100x100" %>
+          </div>
+          <div class="col-6">
+           <p class="card-title">説明：<%= @currentpost.explanation %></p>
+           <p class="card-text">
+              <span><i class="fas fa-user"></i> By <%= @currentpost.user.name %></span>
+          </div>
+          <div class="col-2 justify-content-center">
+              <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

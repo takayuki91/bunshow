@@ -9,7 +9,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    
+    @user = User.find(params[:id])
+    @posts = Post.where(user_id: @user.id).order(created_at: :desc)
+    # @currentpost = Post.find(params[:id])
   end
 
   def destroy
@@ -17,7 +19,7 @@ class Admin::UsersController < ApplicationController
     @currentpost = Post.find(params[:id])
     @currentpost.destroy
     flash[:dark] = "#{@user.name}のbunshowを削除しました。"
-    redirect_to posts_path
+    redirect_to admin_user_path(@user.id)
   end
 
   def update
