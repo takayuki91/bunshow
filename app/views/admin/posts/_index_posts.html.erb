@@ -1,0 +1,26 @@
+<h1>投稿管理（<%= @user.name %>）</h1>
+
+<div class="d-flex flex-wrap">
+  <% @posts.each do |post| %>
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card mx-auto mt-4 shadow-lg">
+      <% if post.post_image.attached? %>
+        <%= link_to post_path(post.id) do %>
+          <%= image_tag post.post_image, size: "300x300", class: "card-img-top" %>
+        <% end %>
+      <% end %>
+      <div class="card-body">
+        <p class="card-text">説明：<%= post.explanation %></p>
+      <div class="row">
+        <div class="col">
+            <span><i class="fas fa-user"></i> By <%= post.user.name %></span>
+        </div>
+        <div class="col-2 justify-content-center">
+          <%= link_to '投稿詳細', admin_post_path(post.id), class: "btn btn-warning" %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

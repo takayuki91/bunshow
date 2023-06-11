@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.includes(:user).where(users: { is_deleted: false })
+    @posts = Post.includes(:user).where(users: { is_deleted: false }).order(created_at: :desc)
   end
 
   def show

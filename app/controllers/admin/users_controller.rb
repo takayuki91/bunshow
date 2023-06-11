@@ -8,10 +8,24 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show
+    @user = User.find(params[:id])
+    @posts = Post.where(user_id: @user.id).order(created_at: :desc)
+    # @currentpost = Post.find(params[:id])
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @currentpost = Post.find(params[:id])
+    @currentpost.destroy
+    flash[:dark] = "#{@user.name}のbunshowを削除しました。"
+    redirect_to admin_user_path(@user.id)
+  end
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    flash[:dark] = "ユーザー情報を更新しました。"
+    flash[:dark] = "#{@user.name}のユーザー情報を更新しました。"
     redirect_to admin_users_path
   end
 
