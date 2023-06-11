@@ -2,7 +2,7 @@
   <div class="row no-gutters">
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto rounded px-0 my-5">
 
-      <% post.comments.each do |comment| %>
+      <% post.comments.order(created_at: :desc).each do |comment| %>
 
         <!--有効なユーザーのコメントのみ表示-->
         <% unless comment.user.is_deleted %>

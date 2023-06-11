@@ -1,6 +1,6 @@
 <%= render 'layouts/flash_message' %>
 
-<div class="card-list-container py-2">
+<div class="card-list-container">
   <div class="card w-75 mx-auto mt-4 shadow-lg">
     <div class="card-body">
       <div class="row">
@@ -29,7 +29,7 @@
             <% end %></p>
           <hr>
           <p class="card-text">投稿数: <%= @user.posts.count %></p>
-          <p class="card-text"><%= link_to("フォロー中:" + @user.follows.count.to_s, follows_user_path(@user), class:"text-dark") %><br><%= link_to("フォロワー:" + @user.followeds.count.to_s, followeds_user_path(@user), class:"text-dark") %></p>
+          <p class="card-text"><%= link_to("フォロー中: " + @user.follows.count.to_s, follows_user_path(@user), class:"text-dark") %><br><%= link_to("フォロワー: " + @user.followeds.count.to_s, followeds_user_path(@user), class:"text-dark") %></p>
           <p class="card-text"><i class="fa-solid fa-bookmark"></i><%= link_to("ブックマーク", bookmarks_user_path(@user), class:"text-dark") %></p>
         </div>
       </div>

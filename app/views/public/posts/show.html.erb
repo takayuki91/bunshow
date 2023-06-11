@@ -23,6 +23,10 @@
                 <%= render "public/paragons/paragon-btn", post: @currentpost %>&nbsp;
                 <%= render "public/bookmarks/bookmark-btn", post: @currentpost %>
               </span>
+            </p>
+            <p class="card-text">
+              <span><i class="fa-regular fa-clock"></i><%= l @currentpost.created_at %></span>
+            </p>
           </div>
           <div class="col-2 justify-content-center">
             <% if @currentpost.user == current_user %>
