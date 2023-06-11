@@ -35,13 +35,15 @@ Rails.application.routes.draw do
       get :follows, on: :member
       get :followeds, on: :member
     end
+    
+    resources :communities do
+      member do
+        post 'join'
+      end
+    end
 
     resources :groups do
       resource :group_users, only: [:create, :destroy]
-    end
-
-    resources :communities do
-      resource :community_users, only: [:create, :destroy]
     end
 
   end

@@ -1,0 +1,10 @@
+<h1>コミュニティ一覧</h1>
+
+<ul>
+  <% @communities.each do |community| %>
+    <li>
+      <%= community.name %>
+      <%= button_to '参加する', join_community_path(community), method: :post %>
+    </li>
+  <% end %>
+</ul>
