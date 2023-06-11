@@ -14,7 +14,12 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.includes(:user).where(users: { is_deleted: false }).order(created_at: :desc)
+    if current_user.communities.present?
+      community_user_ids = User.joins(:communities).where(communities: { id: current_user.communities }).pluck(:id)
+      @posts = Post.includes(:user).where(users: { is_deleted: false, id: community_user_ids }).order(created_at: :desc)
+    else
+      @posts = Post.includes(:user).where(users: { is_deleted: false }).order(created_at: :desc)
+    end
   end
 
   def show
