@@ -9,6 +9,11 @@
         </div>
         <div class="col-8">
           <p class="card-title text-center"><i class="fas fa-user"></i> <%= @user.name %>
+            <% if @user.communities.present? %>
+              | コミュニティ: <% @user.communities.each do |community| %><%= community.name %><% end %>
+            <% else %>
+              | 所属なし
+            <% end %>
             <% if @user == current_user %>
                 | <%= link_to("プロフィール編集", edit_user_path(@user), class:"text-dark") %>
             <% else %>
