@@ -24,7 +24,7 @@
             <% end %></p>
           <hr>
           <p class="card-text">投稿数: <%= @user.posts.count %></p>
-          <p class="card-text"><%= link_to("フォロー数:" + @user.follows.count.to_s, follows_user_path(@user), class:"text-dark") %> | <%= link_to("フォロワー数:" + @user.followeds.count.to_s, followeds_user_path(@user), class:"text-dark") %></p>
+          <p class="card-text"><%= link_to("フォロー中:" + @user.follows.count.to_s, follows_user_path(@user), class:"text-dark") %><br><%= link_to("フォロワー:" + @user.followeds.count.to_s, followeds_user_path(@user), class:"text-dark") %></p>
           <p class="card-text"><i class="fa-solid fa-bookmark"></i><%= link_to("ブックマーク", bookmarks_user_path(@user), class:"text-dark") %></p>
         </div>
       </div>

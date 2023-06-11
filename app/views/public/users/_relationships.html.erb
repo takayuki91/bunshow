@@ -23,7 +23,7 @@
                 <% end %>
               <% end %></p>
             <p class="card-text">投稿数: <%= user.posts.count %></p>
-            <p class="card-text">フォロー数:<%= link_to(user.follows.count, follows_user_path(user), class:"text-dark") %> | フォロワー数:<%= link_to(user.followeds.count, followeds_user_path(user), class:"text-dark") %></p>
+            <p class="card-text">フォロー中:<%= link_to(user.follows.count, follows_user_path(user), class:"text-dark") %><br>フォロワー:<%= link_to(user.followeds.count, followeds_user_path(user), class:"text-dark") %></p>
           </div>
         </div>
       </div>
