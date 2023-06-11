@@ -1,9 +1,10 @@
 class Public::CommunitiesController < ApplicationController
-  
+
   def index
+    @user = current_user
     @communities = Community.all
   end
-  
+
   def join
     @user = current_user
     @community = Community.find(params[:id])
@@ -11,7 +12,7 @@ class Public::CommunitiesController < ApplicationController
     flash[:dark] = "コミュニティに参加しました!!"
     redirect_to user_path(@user.id)
   end
-  
+
   def edit
     @user = current_user
     @communities = Community.all
@@ -19,7 +20,7 @@ class Public::CommunitiesController < ApplicationController
 
   def update
     @user = current_user
-    @user.community_ids = params[:user][:community_ids] # 選択されたコミュニティのIDを更新
+    @user.community_ids = params[:user][:community_ids]
     if @user.save
       flash[:dark] = "コミュニティを更新しました!!"
       redirect_to user_path(@user.id)
@@ -28,5 +29,5 @@ class Public::CommunitiesController < ApplicationController
       render :edit
     end
   end
-  
+
 end
