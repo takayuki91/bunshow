@@ -21,6 +21,7 @@
           <%= render "public/bookmarks/bookmark-btn", post: post %>
         </div>
         <div class="col">
+          <span><i class="fa-regular fa-clock"></i><%= l post.created_at, format: :short %></span>
         </div>
       </div>
       </div>
