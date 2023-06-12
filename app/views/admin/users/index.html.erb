@@ -2,9 +2,8 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-lg-10">
+    <div class="col-10">
       <h1 class="mb-5">会員一覧</h1>
-      <div class="col-md-10">
 
         <table class="table table-hover table-inversetext-center">
           <thead class="table table-secondary">
@@ -14,7 +13,7 @@
               <th>登録名</th>
               <th>メールアドレス</th>
               <th>ステータス</th>
-              <th colspan="2"></th>
+              <th colspan="3"></th>
             </tr>
           </thead>
 
@@ -39,12 +38,12 @@
                 </td>
                 <td><%= link_to "情報編集", edit_admin_user_path(user.id), class: "btn btn-info" %></td>
                 <td><%= link_to "投稿管理", admin_user_path(user.id), class: "btn btn-warning" %></td>
+                <td><%= link_to "コメント管理", admin_user_comments_path(user.id), class: "btn btn-warning" %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
 
-      </div>
     </div>
   </div>
 </div>
