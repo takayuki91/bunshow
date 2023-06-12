@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       get :follows, on: :member
       get :followeds, on: :member
     end
-    
+
     resources :communities do
       member do
         post 'join'
@@ -50,8 +50,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :posts, only: [:index, :show, :destroy] 
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:index, :show, :destroy]
+    end
+    resources :posts, only: [:index, :show, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
