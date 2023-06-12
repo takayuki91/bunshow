@@ -22,3 +22,7 @@
     </div>
   </div>
 </div>
+
+<%= link_to(admin_user_path(@currentpost.user.id), class:"text-dark") do %>
+  <span><i class="fa-solid fa-backward"></i> Back</span>
+<% end %>
