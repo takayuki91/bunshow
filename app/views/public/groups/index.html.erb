@@ -1,1 +1,44 @@
+<%= render 'layouts/flash_message' %>
+
 <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "Create!" } %>
+
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto rounded px-0 my-5">
+
+      <% @groups.each do |group| %>
+
+          <div class="card mt-2 shadow-lg">
+            <div class="card-body">
+              <p class="card-text"><i class="fa-solid fa-people-group"></i>: <%= group.name %> | <%= group.users.count %>人</p>
+            <div class="row px-1">
+              <div class="col-2">
+                <%= image_tag group.get_group_profile_image, size: "50x50" %>
+              </div>
+              <div class="col-6">
+                <%= group.introduction %>
+              </div>
+              <div class="col-2">
+                <% if group.owner_id == current_user.id %>
+                  <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-outline-secondary" %>
+                <% end %>
+              </div>
+              <div class="col-2">
+                <% if group.owner_id == current_user.id %>
+                  <%= link_to 'Destroy', group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+                <% elsif group.users.include?(current_user) %>
+                  <%= link_to '退会', group_group_users_path(group), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+                <% else %>
+                  <%= link_to '参加', group_group_users_path(group), method: :post, class: "btn btn-sm btn-outline-secondary" %>
+                <% end %>
+              </div>
+            </div>
+            </div>
+          </div>
+
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
