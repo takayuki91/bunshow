@@ -1,14 +1,15 @@
 class Admin::PostsController < ApplicationController
-  
+
   def show
-    @currentpost = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
-  
+
   def destroy
-    @currentpost = Post.find(params[:id])
-    @currentpost.destroy
-    flash[:dark] = "あなたのbunshowを削除しました"
-    redirect_to admin_user_path(@currentpost.user.id)
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @post.destroy
+    flash[:dark] = "ユーザーのbunshowを削除しました"
+    redirect_to admin_user_path(@user)
   end
-  
+
 end
