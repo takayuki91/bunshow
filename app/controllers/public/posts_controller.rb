@@ -15,7 +15,11 @@ class Public::PostsController < ApplicationController
   def index
     @post = Post.new
     if current_user.communities.present?
-      community_user_ids = User.joins(:communities).where(communities: { id: current_user.communities }).pluck(:id)
+      # ユーザーが所属するコミュニティとその子孫コミュニティのIDを取得し、重複を除いて一つの配列にまとめる
+      community_ids = current_user.communities.map(&:subtree_ids).flatten
+      # コミュニティに所属するユーザーの中で、上記で取得したコミュニティのIDに該当するユーザーのIDを取得する
+      community_user_ids = User.joins(:communities).where(communities: { id: community_ids }).pluck(:id)
+      # ユーザーが削除されていないかつ、上記で取得したユーザーIDに該当する投稿を取得し、作成日時の降順で並び替える
       @posts = Post.includes(:user).where(users: { is_deleted: false, id: community_user_ids }).order(created_at: :desc)
     else
       @posts = Post.includes(:user).where(users: { is_deleted: false }).order(created_at: :desc)
