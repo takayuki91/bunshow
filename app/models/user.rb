@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :community_users
   has_many :communities, through: :community_users
   
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
   def is_followed_by?(user)
