@@ -1,6 +1,8 @@
 <%= render 'layouts/flash_message' %>
 
-<%= render partial: "new_group", locals: { form_url: groups_path, button_label: "Create!" } %>
+<% if current_user.name != "guestuser" %>
+  <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "Create!" } %>
+<% end %>
 
 <div class="container">
   <div class="row no-gutters">
