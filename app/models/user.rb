@@ -24,10 +24,10 @@ class User < ApplicationRecord
   has_many :follows, through: :active_relationships, source: :followed
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followeds, through: :passive_relationships, source: :follow
-  
+
   has_many :community_users
   has_many :communities, through: :community_users
-  
+
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
