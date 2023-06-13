@@ -11,20 +11,25 @@
        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to groups_path, class: 'nav-link' do %>
                 <i class="fa-solid fa-people-group"></i> Group
               <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to edit_community_path(current_user.id), class: 'nav-link' do %>
                 <i class="fas fa-users"></i> Community
               <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to user_path(current_user.id), class: 'nav-link' do %>
                 <i class="fa-solid fa-user"></i> My page
               <% end %>
+            </li>
+            <li class="nav-item">
+              <%= render 'layouts/search' %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>

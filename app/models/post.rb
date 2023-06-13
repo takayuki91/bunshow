@@ -1,12 +1,23 @@
 class Post < ApplicationRecord
 
+  validates :explanation, presence:true, length:{ maximum:200 }
+
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :paragons, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :explanation, presence:true, length:{ maximum:200 }
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @posts = Post.where("explanation LIKE?","#{word}")
+    elsif search == "partial_match"
+      @posts = Post.where("explanation LIKE?","%#{word}%" || "#{word}%" || "%#{word}")
+    else
+      @posts = Post.all
+    end
+  end
 
   def user_has_like?(user)
     likes.where(user_id: user.id).exists?
