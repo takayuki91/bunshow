@@ -1,9 +1,9 @@
+<div class="newpost">
 <div class="container">
   <div class="row no-gutters mt-4">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-0">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-0 bg-light">
 
-      <h5 class="text-dark bg-light mb-0 text-center">new BunShow!</h5>
-
+      <div class="newpost-form">
       <div class="form-body p-4">
       <%= form_with model: @post, url: form_url do |f| %>
 
@@ -11,9 +11,11 @@
 
         <div class="input-group mb-1 mt-1">
           <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-person-chalkboard"></i></span>
+            <span class="input-group-text" aria-hidden="true">
+              <i class="fa-solid fa-person-chalkboard"></i>
+            </span>
           </div>
-          <%= f.text_area :explanation, :placeholder =>"今日のあなたのbunshowは？", required: true, class: "form-control" %>
+          <%= f.text_area :explanation, :placeholder =>"今日のあなたのBunShowは？", required: true, class: "form-control" %>
         </div>
 
         <%= f.submit button_label, class: "btn btn-sm btn-block btn-dark mt-1" %>
@@ -22,4 +24,6 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>

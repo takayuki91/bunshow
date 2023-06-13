@@ -4,6 +4,7 @@
 
       <h5 class="text-dark bg-light mb-0 text-center">comment</h5>
 
+      <div class="newcomment-form">
       <div class="form-body p-4">
       <%= form_with model: [post, comment] do |f| %>
 
@@ -11,13 +12,14 @@
           <div class="input-group-prepend">
             <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-pencil"></i></span>
           </div>
-          <%= f.text_area :comment, :placeholder =>"bunshowにコメントしてみよう！", required: true, class: "form-control" %>
+          <%= f.text_area :comment, :placeholder =>"BunShowにコメントしてみよう！", required: true, class: "form-control" %>
         </div>
 
         <hr>
         <%= f.submit "comment!", class: "btn btn-sm btn-block btn-dark mt-4" %>
 
       <% end %>
+      </div>
       </div>
     </div>
   </div>

@@ -4,24 +4,35 @@
   </div>
 <% end %>
 
-<div class="col-md-8 mx-auto">
-<%= form_with model: @user, url: community_path, method: :patch do |f| %>
-  
-<h3>現在のコミュニティ</h3>
-  <ul class="list-group">
-    <% @user.communities.each do |community| %>
-      <li class="list-group-item"><%= community.name %></li>
-    <% end %>
-  </ul>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_with model: @user, url: community_path, method: :patch do |f| %>
+        <div class="mb-4">
+          <h3 class="text-center">現在のコミュニティ</h3>
+          <ul class="list-group">
+            <% if @user.communities.present? %>
+              <% @user.communities.each do |community| %>
+                <li class="list-group-item text-center bg-light"><%= community.name %></li>
+              <% end %>
+            <% else %>
+              <li class="list-group-item text-center bg-light">所属なし</li>
+            <% end %>
+          </ul>
+        </div>
 
-  <h3>コミュニティの選択</h3>
-  <%= f.collection_check_boxes :community_ids, @communities, :id, :name do |b| %>
-    <div>
-        <%= b.check_box %>
-        <%= b.label %>
+        <div class="mb-4">
+          <h3 class="text-center">コミュニティの選択</h3>
+          <%= f.collection_check_boxes :community_ids, @communities, :id, :name do |b| %>
+            <div class="form-check">
+              <%= b.check_box class: "form-check-input" %>
+              <%= b.label class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
+
+        <%= f.submit "変更する", class: "btn btn-outline-secondary btn-block" %>
+      <% end %>
     </div>
-  <% end %>
-
-  <%= f.submit "変更する" %>
-<% end %>
+  </div>
 </div>
