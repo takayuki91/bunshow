@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+
   # ゲストログイン時
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
@@ -31,11 +33,20 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}").where.not(is_deleted: true)
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%" || "#{word}%" || "%#{word}").where.not(is_deleted: true)
+    else
+      @user = User.where.not(is_deleted: true)
+    end
+  end
+
   def is_followed_by?(user)
     passive_relationships.find_by(follow_id: user.id).present?
   end
-
-  # validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   has_one_attached :profile_image
 

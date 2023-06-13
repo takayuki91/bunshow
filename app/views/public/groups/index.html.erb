@@ -1,5 +1,7 @@
 <%= render 'layouts/flash_message' %>
 
+<h1 class="text-center mt-2">指導研究グループ</h1>
+
 <% if current_user.name != "guestuser" %>
   <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "Create!" } %>
 <% end %>

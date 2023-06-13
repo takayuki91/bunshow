@@ -1,0 +1,11 @@
+<h1 class="text-center mt-2">検索結果</h1>
+
+  <% if @range == "User" %>
+
+    <%= render 'public/users/relationships', users: @users %>
+
+  <% else %>
+
+    <%= render partial: "public/posts/index_posts" %>
+
+  <% end %>

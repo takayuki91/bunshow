@@ -1,22 +1,27 @@
 Rails.application.routes.draw do
 
+  # ユーザーログイン
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions:      "public/sessions"
   }
 
+  # 管理者ログイン
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
-  # ゲストユーザー
+  # ゲストログイン
   devise_scope :user do
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+  # ユーザー全般
   scope module: :public do
 
     root to: "homes#top"
+
+    get "search" => "searches#search"
 
     resources :posts, only: [:index, :create, :show, :destroy] do
       resource :likes, only: [:create, :destroy]
@@ -48,12 +53,17 @@ Rails.application.routes.draw do
 
   end
 
+  # 管理者全般
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+
+    get "search" => "searches#search"
+
     resources :users, only: [:index, :show, :edit, :update, :destroy] do
       resources :comments, only: [:index, :show, :destroy]
     end
     resources :posts, only: [:index, :show, :destroy]
   end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
