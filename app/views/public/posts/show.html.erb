@@ -1,4 +1,6 @@
-<%= render partial: "new_post", locals: { form_url: posts_path, button_label: "BunShow投稿！" } %>
+<% if current_user.name != "guestuser" %>
+  <%= render partial: "new_post", locals: { form_url: posts_path, button_label: "BunShow投稿！" } %>
+<% end %>
 
 <div class="card-list-container py-5">
   <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
@@ -38,9 +40,11 @@
   </div>
 </div>
 
-<div id="comments_form">
-  <%= render "public/comments/newcomment", post: @currentpost, comment: @comment %>
-</div>
+<% if current_user.name != "guestuser" %>
+  <div id="comments_form">
+    <%= render "public/comments/newcomment", post: @currentpost, comment: @comment %>
+  </div>
+<% end %>
 
 <div id="comments_index">
   <%= render "public/comments/indexcomment", post: @currentpost %>

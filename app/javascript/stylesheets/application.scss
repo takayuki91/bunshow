@@ -11,14 +11,14 @@ body {
 header {
     background-color: #756867;
     div, p, span, li, a, input, th {
-      color: #fff;
+      color: #EEEEEE;
     }
   }
 
 footer {
     background-color: #756867;
     div, p, span, li, a, input, th {
-      color: #333333;
+      color: #EEEEEE;
     }
   }
 
@@ -31,7 +31,7 @@ footer {
 .newpost-form {
   background-color: #756867;
   position: sticky;
-  top: 0;
+  top: 20px;
   z-index: 9999;
   border-radius: 10px;
 }
