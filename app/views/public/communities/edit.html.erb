@@ -1,3 +1,9 @@
+<% if notice %>
+  <div class="alert text-center alert-dark">
+    <%= notice %>
+  </div>
+<% end %>
+
 <div class="col-md-8 mx-auto">
 <%= form_with model: @user, url: community_path, method: :patch do |f| %>
   
