@@ -1,8 +1,10 @@
 class Public::UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :follows, :followeds, :bookmarks ]
+
   before_action :check_deleted_user, only: [:show]
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
   end
@@ -51,6 +53,15 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # 退会ユーザーのページに遷移できないようにする
+  def check_deleted_user
+    user = User.find(params[:id])
+    if user.is_deleted?
+      flash[:danger] = "お探しのユーザーが見つかりません。"
+      redirect_to user_path(current_user.id)
+    end
+  end
+
   # 本人のみが編集可能にする
   def ensure_correct_user
     unless @user == current_user
@@ -59,11 +70,11 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  # 退会ユーザーのページに遷移できないようにする
-  def check_deleted_user
-    user = User.find(params[:id])
-    if user.is_deleted?
-      flash[:danger] = "お探しのユーザーが見つかりません。"
+  # ゲストユーザー編集ページへのurl直接入力を防ぐ
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      flash[:danger] = "ゲストユーザーはプロフィール編集画面へアクセスできません。"
       redirect_to user_path(current_user.id)
     end
   end
