@@ -1,3 +1,11 @@
+<% if notice %>
+  <div class="alert text-center alert-dark">
+    <%= notice %>
+  </div>
+<% else %>
+  <%= render 'layouts/flash_message' %>
+<% end %>
+
 <div class="container-fluid position-relative overflow-hidden text-center bg-light min-vh-100">
   <div class="col-md-5 p-lg-5 mx-auto my-5">
     <h1 class="display-4 font-weight-normal mb-5">管理者トップ</h1>

@@ -8,7 +8,7 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_user.id
     @group.users << current_user
     if @group.save
-      flash[:dark] = "グループを作成しました!!"
+      flash[:dark] = "グループを立ち上げました!!"
       redirect_to groups_path
     else
       render "new"
@@ -39,6 +39,7 @@ class Public::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    flash[:dark] = "グループを解散しました。"
     redirect_to groups_path
   end
 

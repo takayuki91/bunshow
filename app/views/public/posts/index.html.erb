@@ -1,4 +1,10 @@
-<%= render 'layouts/flash_message' %>
+<% if notice %>
+  <div class="alert text-center alert-dark">
+    <%= notice %>
+  </div>
+<% else %>
+  <%= render 'layouts/flash_message' %>
+<% end %>
 
 <%= render partial: "new_post", locals: { form_url: posts_path, button_label: "post!" } %>
 
