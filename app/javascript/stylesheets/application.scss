@@ -1,1 +1,41 @@
 @use '~bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+body {
+    background-color: #D5D6D2;
+    height: 100%;
+    font-family: 'Rampart One', cursive;
+      }
+
+header {
+    background-color: #756867;
+    div, p, span, li, a, input, th {
+      color: #fff;
+    }
+  }
+
+footer {
+    background-color: #756867;
+    div, p, span, li, a, input, th {
+      color: #333333;
+    }
+  }
+
+.newpost {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.newpost-form {
+  background-color: #756867;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  border-radius: 10px;
+}
+
+.newcomment-form {
+  background-color: #756867;
+}

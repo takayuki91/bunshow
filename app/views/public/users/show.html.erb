@@ -1,5 +1,7 @@
 <%= render 'layouts/flash_message' %>
 
+<h1 class="text-center mt-2"><%= @user.name %>さんのページ</h1>
+
 <div class="card-list-container">
   <div class="card w-75 mx-auto mt-4 shadow-lg">
     <div class="card-body">
@@ -10,9 +12,9 @@
         <div class="col-8">
           <p class="card-title text-center"><i class="fas fa-user"></i> <%= @user.name %>
             <% if @user.communities.present? %>
-              | <i class="fa-solid fa-people-group"></i><% @user.communities.each do |community| %>: <%= community.name %><% end %>
+              | <i class="fas fa-users"></i><% @user.communities.each do |community| %>:<%= community.name %><% end %>
             <% else %>
-              | <i class="fa-solid fa-people-group"></i>: なし
+              | <i class="fas fa-users"></i>:なし
             <% end %>
             <% if @user == current_user %>
                 | <%= link_to("編集", edit_user_path(@user), class:"text-dark") %>
