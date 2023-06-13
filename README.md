@@ -46,6 +46,7 @@
 - ancestry
 
 ## 使用素材
+- [Google Fonts](https://fonts.google.com/?subset=japanese&noto.script=Jpan)
 - [FontAwesome](https://fontawesome.com/)
 - [ヒューマンピクトグラム2.0](https://pictogram2.com/)
 - その他使用検討中です
