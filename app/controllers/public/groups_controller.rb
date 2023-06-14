@@ -11,7 +11,7 @@ class Public::GroupsController < ApplicationController
       flash[:dark] = "グループを立ち上げました!!"
       redirect_to groups_path
     else
-      render "new"
+      render "index"
     end
   end
 
@@ -22,6 +22,16 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @posts = []
+    @group.users.each do |user|
+      @posts.concat(user.posts)
+    end
+    @posts.sort_by! { |post| post.created_at }.reverse!
+  end
+  
+  def users
+    @group = Group.find(params[:id])
+    @users = @group.users
   end
 
   def edit

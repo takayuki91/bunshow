@@ -48,8 +48,11 @@ Rails.application.routes.draw do
     end
 
     resources :groups, only: [:index, :create, :show, :edit, :update, :destroy] do
+      get "users" => "groups#users", on: :member
       resource :group_users, only: [:create, :destroy]
     end
+
+
 
   end
 
