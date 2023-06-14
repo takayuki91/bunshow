@@ -8,11 +8,9 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  # 検索方法分岐
+  # 検索方法
   def self.looks(search, word)
-    if search == "perfect_match"
-      @posts = Post.where("explanation LIKE?","#{word}")
-    elsif search == "partial_match"
+    if search == "partial_match"
       @posts = Post.where("explanation LIKE?","%#{word}%" || "#{word}%" || "%#{word}")
     else
       @posts = Post.all
