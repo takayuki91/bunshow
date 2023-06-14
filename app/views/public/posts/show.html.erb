@@ -1,10 +1,12 @@
+<h1 class="text-center mt-2">指導を見る</h1>
+
 <% if current_user.name != "guestuser" %>
   <%= render partial: "new_post", locals: { form_url: posts_path, button_label: "BunShow投稿！" } %>
 <% end %>
 
 <div class="card-list-container py-5">
   <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-    <div class="card mx-auto mt-4 shadow-lg">
+    <div class="card mx-auto mt-2 shadow-lg">
       <% if @currentpost.post_image.attached? %>
        <%= image_tag @currentpost.post_image, size: "300x300", class: "card-img-top" %>
       <% end %>
@@ -46,12 +48,13 @@
   </div>
 </div>
 
+<h1 class="text-center">指導へのフィードバック</h1>
+<div id="comments_index">
+  <%= render "public/comments/indexcomment", post: @currentpost %>
+</div>
+
 <% if current_user.name != "guestuser" %>
   <div id="comments_form">
     <%= render "public/comments/newcomment", post: @currentpost, comment: @comment %>
   </div>
 <% end %>
-
-<div id="comments_index">
-  <%= render "public/comments/indexcomment", post: @currentpost %>
-</div>
