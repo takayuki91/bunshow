@@ -29,6 +29,9 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.new
     @currentpost = Post.find(params[:id])
+    unless Paragon.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @currentpost.id)
+      current_user.paragons.create(post_id: @currentpost.id)
+    end
     @comment = Comment.new
   end
 

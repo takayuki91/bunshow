@@ -1,9 +1,9 @@
-<% if post.user_has_paragon?(current_user) %>
-  <%= link_to(post_paragons_path(post), method: :delete, class:"text-danger") do %>
-    <i class="fa-solid fa-heart"></i><%= post.paragons.count %>
-  <% end %>
+<% if current_user && post.user_has_paragon?(current_user) %>
+  <div class="text-danger">
+    <i class="fa-solid fa-eye"></i><%= post.paragons.count %>
+  </div>
 <% else %>
-  <%= link_to(post_paragons_path(post), method: :post, class:"text-dark") do %>
-    <i class="fa-regular fa-heart"></i><%= post.paragons.count %>
-  <% end %>
+  <div class="text-dark">
+    <i class="fa-solid fa-eye-slash"></i><%= post.paragons.count %>
+  </div>
 <% end %>

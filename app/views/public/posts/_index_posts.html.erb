@@ -27,16 +27,17 @@
             </div>
 
             <div class="col-2">
-              <div class="paragon-btn">
-                <%= render "public/paragons/paragon-btn", post: post %>
-              </div>
-            </div>
-
-            <div class="col-2">
               <div class="bookmark-btn">
                 <%= render partial: "public/bookmarks/bookmark-btn", locals: { post: post } %>
               </div>
             </div>
+            
+            <div class="col-2">
+              <div class="paragon-btn">
+                <%= render partial: "public/paragons/paragon-btn", locals: { post: post } %>
+              </div>
+            </div>
+            
           </div>
         </div>
 
