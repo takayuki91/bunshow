@@ -1,6 +1,9 @@
 <%= render 'layouts/flash_message' %>
 
 <h1 class="text-center mt-2">指導研究グループ</h1>
+<p class="text-center">
+  <span>特化した領域での<br>指導力を高めたい指導者向け！<br>コミュニティの垣根を超えた<br>指導研究グループです。</span>
+</p>
 
 <% if current_user.name != "guestuser" %>
   <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "Create!" } %>
