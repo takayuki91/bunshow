@@ -13,7 +13,7 @@
           <div class="col-2 d-flex justify-content-center">
             <%= image_tag @currentpost.user.get_profile_image, size: "100x100" %>
           </div>
-          <div id="post_<%= @post.id %>" class="col-6">
+          <div id="post_<%= @currentpost.id %>" class="col-6">
            <p class="card-title">説明：<%= @currentpost.explanation %></p>
            <p class="card-text">
             <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
