@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <div class="search_form">
     <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
+      <%= f.text_field :word, :placeholder =>"キーワード" %>
       <%= f.select :range, options_for_select([["指導者"], ["Bunshow"]]) %>
-      <%= f.select :search, options_for_select([["キーワード","partial_match"], ["完全一致","perfect_match"]]) %>
+      <%= f.hidden_field :search, value: "partial_match" %>
       <%= f.submit "検索", class: "btn btn-sm btn-secondary" %>
     <% end %>
   </div>
