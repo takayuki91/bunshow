@@ -58,3 +58,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 追加したもの
 gem 'devise'
 gem 'ancestry'
+gem 'jquery-rails'
