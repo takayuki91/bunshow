@@ -1,0 +1,10 @@
+<h1 class="text-center mt-2">"<%= @group.name %>"の指導集</h1>
+
+<div class="btn-wrapper mx-auto">
+  <div class="row justify-content-center">
+    <%= link_to 'グループ一覧に戻る', groups_path, class: "btn btn-sm btn-outline-secondary mr-2" %>
+    <%= link_to 'グループの指導者', users_group_path(@group.id), class: "btn btn-sm btn-outline-secondary" %>
+  </div>
+</div>
+
+<%= render partial: "public/posts/index_posts" %>
