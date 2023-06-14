@@ -6,7 +6,7 @@
 
       <div class="newcomment-form">
       <div class="form-body p-4">
-      <%= form_with model: [post, comment] do |f| %>
+      <%= form_with model: [post, comment], local: false do |f| %>
 
         <div class="input-group mb-3 mt-4">
           <div class="input-group-prepend">
