@@ -25,12 +25,15 @@
                 <div class="like-btn">
                   <%= render partial: "public/likes/like-btn", locals: { post: @currentpost } %>
                 </div>
-                <div class="paragon-btn">
-                  <%= render "public/paragons/paragon-btn", post: @currentpost %>
-                </div>
+
                 <div class="bookmark-btn">
                   <%= render partial: "public/bookmarks/bookmark-btn", locals: { post: @currentpost } %>
                 </div>
+
+                <div class="paragon-btn">
+                  <%= render partial: "public/paragons/paragon-btn", locals: { post: @currentpost } %>
+                </div>
+
               </span>
             </p>
             <p class="card-text">
