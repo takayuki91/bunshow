@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
