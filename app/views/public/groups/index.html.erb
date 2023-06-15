@@ -1,20 +1,35 @@
 <%= render 'layouts/flash_message' %>
 
 <h1 class="text-center mt-2">指導研究グループ</h1>
+<p class="text-center">
+  <span>特化した領域での<br>指導力を高めたい指導者向け！<br>コミュニティの垣根を超えた<br>指導研究グループです。</span>
+</p>
+
+<div class="btn-wrapper mx-auto mt-2">
+  <div class="row justify-content-center">
+    <%= link_to 'Homeに戻る', posts_path, class: "btn btn-sm btn-outline-secondary mr-2" %>
+  </div>
+</div>
 
 <% if current_user.name != "guestuser" %>
-  <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "Create!" } %>
+  <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "グループを作成!" } %>
 <% end %>
 
 <div class="container">
   <div class="row no-gutters">
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto rounded px-0 my-5">
-
       <% @groups.each do |group| %>
 
           <div class="card mt-2 shadow-lg">
             <div class="card-body">
-              <p class="card-text"><i class="fa-solid fa-people-group"></i>: <%= group.name %> | <%= group.users.count %>人</p>
+              <%= link_to(group_path(group.id), class:"text-dark") do %>
+                <p class="card-text"><i class="fa-solid fa-people-group"></i>: <%= group.name %> | <%= group.users.count %>人</p>
+              <% end %>
+
+              <%= link_to(user_path(group.owner.id), class:"text-dark") do %>
+                <p class="card-text"><i class="fa-solid fa-star"></i>: 研究部長 | <%= group.owner.name %></p>
+              <% end %>
+
             <div class="row px-1">
               <div class="col-2">
                 <%= image_tag group.get_group_profile_image, size: "50x50" %>

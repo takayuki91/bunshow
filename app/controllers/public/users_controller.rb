@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   before_action :set_user, only: [:show, :edit, :update, :follows, :followeds, :bookmarks ]
 
   before_action :check_deleted_user, only: [:show]

@@ -11,8 +11,13 @@
        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to likes_posts_path, class: 'nav-link' do %>
+                <i class="fa-solid fa-ranking-star"></i> Ranking
+              <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to groups_path, class: 'nav-link' do %>
                 <i class="fa-solid fa-people-group"></i> Group
@@ -27,9 +32,6 @@
               <%= link_to user_path(current_user.id), class: 'nav-link' do %>
                 <i class="fa-solid fa-user"></i> My page
               <% end %>
-            </li>
-            <li class="nav-item">
-              <%= render 'layouts/search' %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
@@ -52,4 +54,13 @@
       </div>
     </div>
   </nav>
+  <div class="container">
+    <ul class="navbar-nav">
+      <div class="ml-auto mb-1">
+      <li class="nav-item">
+        <%= render 'layouts/search' %>
+      </li>
+      </div>
+    </ul>
+  </div>
 </header>

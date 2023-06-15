@@ -35,9 +35,7 @@ class User < ApplicationRecord
 
   # 検索方法分岐
   def self.looks(search, word)
-    if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}").where.not(is_deleted: true)
-    elsif search == "partial_match"
+    if search == "partial_match"
       @user = User.where("name LIKE?","%#{word}%" || "#{word}%" || "%#{word}").where.not(is_deleted: true)
     else
       @user = User.where.not(is_deleted: true)

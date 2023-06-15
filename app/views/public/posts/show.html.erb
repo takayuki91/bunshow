@@ -1,10 +1,12 @@
+<h1 class="text-center mt-2">指導を見る</h1>
+
 <% if current_user.name != "guestuser" %>
   <%= render partial: "new_post", locals: { form_url: posts_path, button_label: "BunShow投稿！" } %>
 <% end %>
 
 <div class="card-list-container py-5">
   <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
-    <div class="card mx-auto mt-4 shadow-lg">
+    <div class="card mx-auto mt-2 shadow-lg">
       <% if @currentpost.post_image.attached? %>
        <%= image_tag @currentpost.post_image, size: "300x300", class: "card-img-top" %>
       <% end %>
@@ -13,16 +15,25 @@
           <div class="col-2 d-flex justify-content-center">
             <%= image_tag @currentpost.user.get_profile_image, size: "100x100" %>
           </div>
-          <div class="col-6">
+          <div id="post_<%= @currentpost.id %>" class="col-6">
            <p class="card-title">説明：<%= @currentpost.explanation %></p>
            <p class="card-text">
             <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
               <span><i class="fas fa-user"></i> By <%= @currentpost.user.name %></span>
             <% end %>
               <span>
-                <%= render "public/likes/like-btn", post: @currentpost %>&nbsp;
-                <%= render "public/paragons/paragon-btn", post: @currentpost %>&nbsp;
-                <%= render "public/bookmarks/bookmark-btn", post: @currentpost %>
+                <div class="like-btn">
+                  <%= render partial: "public/likes/like-btn", locals: { post: @currentpost } %>
+                </div>
+
+                <div class="bookmark-btn">
+                  <%= render partial: "public/bookmarks/bookmark-btn", locals: { post: @currentpost } %>
+                </div>
+
+                <div class="paragon-btn">
+                  <%= render partial: "public/paragons/paragon-btn", locals: { post: @currentpost } %>
+                </div>
+
               </span>
             </p>
             <p class="card-text">
@@ -40,12 +51,13 @@
   </div>
 </div>
 
+<h1 class="text-center">指導へのフィードバック</h1>
+<div id="comments_index">
+  <%= render "public/comments/indexcomment", post: @currentpost %>
+</div>
+
 <% if current_user.name != "guestuser" %>
   <div id="comments_form">
     <%= render "public/comments/newcomment", post: @currentpost, comment: @comment %>
   </div>
 <% end %>
-
-<div id="comments_index">
-  <%= render "public/comments/indexcomment", post: @currentpost %>
-</div>

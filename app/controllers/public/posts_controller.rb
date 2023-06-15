@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -26,9 +28,26 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def likes
+    @posts = Post.joins(:likes, :user)
+                 .where(users: { is_deleted: false })
+                 .group('posts.id')
+                 .order('COUNT(likes.id) DESC, posts.created_at DESC')
+  end
+
+  def paragons
+    @posts = Post.joins(:paragons, :user)
+                 .where(users: { is_deleted: false })
+                 .group('posts.id')
+                 .order('COUNT(paragons.id) DESC, posts.created_at DESC')
+  end
+
   def show
     @post = Post.new
     @currentpost = Post.find(params[:id])
+    unless Paragon.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @currentpost.id)
+      current_user.paragons.create(post_id: @currentpost.id)
+    end
     @comment = Comment.new
   end
 

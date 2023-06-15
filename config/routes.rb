@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
     resources :posts, only: [:index, :create, :show, :destroy] do
+      collection do
+        get "likes" => "posts#likes"
+        get "paragons" => "posts#paragons"
+      end
       resource :likes, only: [:create, :destroy]
       resource :paragons, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
@@ -48,8 +52,11 @@ Rails.application.routes.draw do
     end
 
     resources :groups, only: [:index, :create, :show, :edit, :update, :destroy] do
+      get "users" => "groups#users", on: :member
       resource :group_users, only: [:create, :destroy]
     end
+
+
 
   end
 
