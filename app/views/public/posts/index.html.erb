@@ -8,7 +8,6 @@
 
 <h1 class="text-center mt-2">Home</h1>
 
-
 <% if current_user.name != "guestuser" %>
   <%= render partial: "new_post", locals: { form_url: posts_path, button_label: "BunShow投稿！" } %>
 <% end %>
