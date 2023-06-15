@@ -2,6 +2,12 @@
 
 <h1 class="text-center mt-2">"<%= @user.name %>"の指導記録</h1>
 
+<div class="btn-wrapper mx-auto mt-2">
+  <div class="row justify-content-center">
+    <%= link_to 'Homeに戻る', posts_path, class: "btn btn-sm btn-outline-secondary mr-2" %>
+  </div>
+</div>
+
 <div class="card-list-container">
   <div class="card w-75 mx-auto mt-4 shadow-lg">
     <div class="card-body">
