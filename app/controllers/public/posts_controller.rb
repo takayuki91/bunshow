@@ -28,6 +28,20 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def likes
+    @posts = Post.joins(:likes, :user)
+                 .where(users: { is_deleted: false })
+                 .group('posts.id')
+                 .order('COUNT(likes.id) DESC, posts.created_at DESC')
+  end
+
+  def paragons
+    @posts = Post.joins(:paragons, :user)
+                 .where(users: { is_deleted: false })
+                 .group('posts.id')
+                 .order('COUNT(paragons.id) DESC, posts.created_at DESC')
+  end
+
   def show
     @post = Post.new
     @currentpost = Post.find(params[:id])
