@@ -1,26 +1,22 @@
-<div class="container">
-  <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+<div class="row no-gutters">
+  <div class="col mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
 
-      <h5 class="text-dark bg-light mb-0 text-center">comment</h5>
+    <div class="newcomment-form">
+    <div class="form-body p-1">
+    <%= form_with model: [post, comment], local: false do |f| %>
 
-      <div class="newcomment-form">
-      <div class="form-body p-4">
-      <%= form_with model: [post, comment], local: false do |f| %>
-
-        <div class="input-group mb-3 mt-4">
-          <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-pencil"></i></span>
-          </div>
-          <%= f.text_area :comment, :placeholder =>"BunShowにコメントしてみよう！", required: true, class: "form-control" %>
+      <div class="input-group mb-1 mt-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-pencil"></i></span>
         </div>
-
-        <hr>
-        <%= f.submit "comment!", class: "btn btn-sm btn-block btn-dark mt-4" %>
-
-      <% end %>
+        <%= f.text_area :comment, :placeholder =>"BunShowにコメントしてみよう！", required: true, class: "form-control" %>
       </div>
-      </div>
+
+      <hr>
+      <%= f.submit "comment!", class: "btn btn-sm btn-block btn-dark" %>
+
+    <% end %>
+    </div>
     </div>
   </div>
 </div>
