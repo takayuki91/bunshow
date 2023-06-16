@@ -15,7 +15,7 @@
         <div class="col-4 d-flex justify-content-center align-items-center">
           <%= image_tag @user.get_profile_image, size: "100x100" %>
         </div>
-        <div class="col-8">
+        <div id="user_<%= @user.id %>" class="col-8">
           <p class="card-title text-center"><i class="fas fa-user"></i> <%= @user.name %>
             <% if @user.communities.present? %>
               | <i class="fas fa-users"></i><% @user.communities.each do |community| %>:<%= community.name %><% end %>
@@ -25,19 +25,13 @@
             <% if @user == current_user && @user.name != "guestuser" %>
                 | <%= link_to("編集", edit_user_path(@user), class:"text-dark") %>
             <% elsif @user.name != "guestuser" %>
-              <% if @user.is_followed_by?(current_user) %>
-                | <%= link_to(user_relationships_path(@user.id), method: :delete, class:"text-dark") do %>
-                    <i class="fa-solid fa-handshake"></i><%= "フォロー中" %>
-                  <% end %>
-              <% else %>
-                | <%= link_to(user_relationships_path(@user.id), method: :post, class:"text-dark") do %>
-                    <i class="fa-solid fa-handshake-slash"></i><%= "フォローする" %>
-                  <% end %>
-              <% end %>
+              <div class="follow-btn">
+                <%= render partial: "public/users/follow-btn", locals: { user: @user } %>
+              </div>
             <% end %></p>
           <hr>
           <p class="card-text">投稿数: <%= @user.posts.count %></p>
-          <p class="card-text"><%= link_to("フォロー中: " + @user.follows.count.to_s, follows_user_path(@user), class:"text-dark") %><br><%= link_to("フォロワー: " + @user.followeds.count.to_s, followeds_user_path(@user), class:"text-dark") %></p>
+          <p id="count-relationship" class="card-text"><%= render partial: "public/users/count-relationship", locals: { user: @user } %></p>
           <p class="card-text"><i class="fa-solid fa-bookmark"></i><%= link_to("ブックマーク", bookmarks_user_path(@user), class:"text-dark") %></p>
         </div>
       </div>
