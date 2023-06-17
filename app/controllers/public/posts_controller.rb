@@ -43,7 +43,6 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.new
     @currentpost = Post.find(params[:id])
     if current_user.name != "guestuser"
       unless Paragon.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @currentpost.id)

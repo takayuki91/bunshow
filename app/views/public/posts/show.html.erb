@@ -1,64 +1,88 @@
-<h1 class="text-center mt-2">指導を見る</h1>
+<h1 class="text-center mt-2">BunShowを見る</h1>
 
-<% if current_user.name != "guestuser" %>
-  <%= render partial: "new_post", locals: { form_url: posts_path, button_label: "BunShow投稿！" } %>
-<% end %>
+<div class="btn-wrapper mx-auto mt-2">
+  <div class="row justify-content-center">
+    <%= link_to 'Homeに戻る', posts_path, class: "btn btn-sm btn-outline-secondary mr-2" %>
+  </div>
+</div>
 
-<div class="card-list-container py-2">
-  <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
-    <div class="card mx-auto mt-2 shadow-lg">
-      <% if @currentpost.post_image.attached? %>
-       <%= image_tag @currentpost.post_image, size: "200x300", class: "card-img-top" %>
-      <% end %>
-      <div class="card-body py-3">
-        <div class="row justify-content-center">
-          <div class="col-4 d-flex justify-content-center align-items-center">
-            <%= image_tag @currentpost.user.get_profile_image, size: "120x120" %>
-          </div>
+<div class='container px-2 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class="card-list-container">
+        <div class="card mx-auto mt-2 shadow-lg">
+          <% if @currentpost.post_image.attached? %>
+           <%= image_tag @currentpost.post_image, size: "200x300", class: "card-img-top" %>
+          <% end %>
+          <div class="card-body py-3">
+            <div class="row">
+              <div class="col-4 d-flex justify-content-center align-items-center">
+                <%= image_tag @currentpost.user.get_profile_image, size: "150x150" %>
+              </div>
 
-          <div id="post_<%= @currentpost.id %>" class="col-8">
-           <p class="card-title">説明：<%= @currentpost.explanation %></p>
-           <p class="card-text">
-            <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
-              <span><i class="fas fa-user"></i> By <%= @currentpost.user.name %></span>
-            <% end %>
-              <span>
-                <div class="like-btn">
-                  <%= render partial: "public/likes/like-btn", locals: { post: @currentpost } %>
+              <div class="col-8">
+                <p class="card-title">
+                  <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
+                    <i class="fas fa-user"></i> By <%= @currentpost.user.name %>
+                  <% end %>
+                </p>
+                <hr>
+                <p class="card-text">:<%= @currentpost.explanation %></p>
+
+                <div id="post_<%= @currentpost.id %>" class="col-12">
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="like-btn">
+                        <%= render partial: "public/likes/like-btn", locals: { post: @currentpost } %>
+                      </div>
+                    </div>
+
+                    <div class="col-3">
+                      <div class="bookmark-btn">
+                        <%= render partial: "public/bookmarks/bookmark-btn", locals: { post: @currentpost } %>
+                      </div>
+                    </div>
+
+                    <div class="col-3">
+                      <div class="paragon-btn">
+                        <%= render partial: "public/paragons/paragon-btn", locals: { post: @currentpost } %>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="bookmark-btn">
-                  <%= render partial: "public/bookmarks/bookmark-btn", locals: { post: @currentpost } %>
-                </div>
+                  <div class="row">
+                    <div class="col-12 text-right">
+                      <i class="fa-regular fa-clock"></i><%= l @currentpost.created_at %>
+                    </div>
+                  </div>
 
-                <div class="paragon-btn">
-                  <%= render partial: "public/paragons/paragon-btn", locals: { post: @currentpost } %>
-                </div>
-
-              </span>
-            </p>
-            <p class="card-text">
-              <span><i class="fa-regular fa-clock"></i><%= l @currentpost.created_at %></span>
-            </p>
-          </div>
-          <div class="col-2 justify-content-center">
-            <% if @currentpost.user == current_user %>
-              <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-            <% end %>
+                   <div class="row">
+                    <div class="col-12 mt-1 text-right">
+                      <% if @currentpost.user == current_user %>
+                        <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+                      <% end %>
+                    </div>
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class='col-md-6 justify-content-center'>
+      <% if current_user.name != "guestuser" %>
+        <div id="comments_form">
+          <%= render "public/comments/new_comment", post: @currentpost, comment: @comment %>
+        </div>
+      <% end %>
+
+      <h4 class="text-center mt-3">フィードバック</h4>
+      <div id="comments_index">
+        <%= render "public/comments/indexcomment", post: @currentpost %>
+      </div>
+    </div>
+
   </div>
 </div>
-
-<h1 class="text-center">指導へのフィードバック</h1>
-<div id="comments_index">
-  <%= render "public/comments/indexcomment", post: @currentpost %>
-</div>
-
-<% if current_user.name != "guestuser" %>
-  <div id="comments_form">
-    <%= render "public/comments/newcomment", post: @currentpost, comment: @comment %>
-  </div>
-<% end %>

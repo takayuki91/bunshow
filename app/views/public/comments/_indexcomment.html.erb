@@ -1,34 +1,32 @@
-<div class="container">
-  <div class="row no-gutters">
-    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto rounded px-0 my-1">
+<div class="row no-gutters">
+  <div class="col mx-2 mx-sm-auto shadow-lg rounded px-0 my-2">
+    <% post.comments.order(created_at: :desc).each do |comment| %>
 
-      <% post.comments.order(created_at: :desc).each do |comment| %>
-
-        <!--有効なユーザーのコメントのみ表示-->
-        <% unless comment.user.is_deleted %>
-          <div class="card mt-2 shadow-lg">
-            <div class="card-body">
-              <p class="card-text">コメント：<%= comment.comment %></p>
+      <!--有効なユーザーのコメントのみ表示-->
+      <% unless comment.user.is_deleted %>
+        <div class="card mx-auto mt-2 shadow-lg">
+          <div class="card-body py-3">
             <div class="row">
-              <div class="col">
+              <div class="col-4 d-flex justify-content-center align-items-center">
+                <%= image_tag comment.user.get_profile_image, size: "80x80" %>
+              </div>
+              <div class="col-8">
                 <%= link_to(user_path(comment.user.id), class:"text-dark") do %>
-                  <span><i class="fas fa-user"></i> By <%= comment.user.name %></span>
+                  <p><i class="fas fa-user"></i> By <%= comment.user.name %></p>
                 <% end %>
+                <hr>
+                <p class="card-text">コメント：<%= comment.comment %></p>
+                <p class="text-right">
+                  <% if comment.user == current_user %>
+                    <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+                  <% end %>
+                </p>
               </div>
-              <div class="col">
-              </div>
-              <div class="col">
-                <% if comment.user == current_user %>
-                  <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
-                <% end %>
-              </div>
-            </div>
             </div>
           </div>
-        <% end %>
-
+        </div>
       <% end %>
 
-    </div>
+    <% end %>
   </div>
 </div>
