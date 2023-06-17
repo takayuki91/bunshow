@@ -2,9 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <% if user_signed_in? %>
-        <a class="navbar-brand p-3" href="<%= posts_path %>">BunShow!!</a>
+        <a class="navbar-brand p-3" href="<%= posts_path %>"><img src="<%= asset_path('logo_image.jpg') %>" alt="BunShow!!" style="width: 150px; height: auto;"></a>
       <% else %>
-        <a class="navbar-brand p-3" href="<%= root_path %>">BunShow!!</a>
+        <a class="navbar-brand p-3" href="<%= root_path %>"><img src="<%= asset_path('logo_image.jpg') %>" alt="BunShow!!"  style="width: 150px; height: auto;"></a>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
