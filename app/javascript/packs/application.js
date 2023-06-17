@@ -8,11 +8,13 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import $ from 'jquery';
 import "jquery";
 import "popper.js";
 import "bootstrap";
 
 import "../stylesheets/application";
+import "../stylesheets/top";
 import "../stylesheets/new_form";
 import "../stylesheets/card";
 

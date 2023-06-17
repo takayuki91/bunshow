@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   # ゲストログイン時
   def self.guest

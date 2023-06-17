@@ -6,10 +6,57 @@
   <%= render 'layouts/flash_message' %>
 <% end %>
 
-<h1 class="text-center mt-2">Top</h1>
+<div class="topimage">
+  <div class='container'>
+    <div class='row'>
+    </div>
+  </div>
+</div>
 
-<div class="btn-wrapper col-4 mx-auto">
+<div class='container'>
+  <div class='row'>
+    <h1 class="title px-3 mx-auto mt-5">
+      <span>指</span>
+      <span>導</span>
+      <span>者</span>
+      <span>の</span>
+    </h1>
+  </div>
+  <div class='row'>
+    <h1 class="title px-3 mx-auto">
+      <span>指</span>
+      <span>導</span>
+      <span>者</span>
+      <span>に</span>
+      <span>よ</span>
+      <span>る</span>
+    </h1>
+  </div>
+  <div class='row'>
+    <h1 class="title px-3 mx-auto">
+      <span>指</span>
+      <span>導</span>
+      <span>者</span>
+      <span>の</span>
+      <span>た</span>
+      <span>め</span>
+      <span>の</span>
+    </h1>
+  </div>
+  <div class='row'>
+    <h1 class="title px-3 mx-auto">
+      <span>コ</span>
+      <span>ミ</span>
+      <span>ュ</span>
+      <span>二</span>
+      <span>テ</span>
+      <span>ィ</span>
+    </h1>
+  </div>
+</div>
+
+<div class="btn-wrapper col-4 mx-auto mt-5">
   <div class="row">
-    <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+    <%= link_to raw('ゲストユーザー<br>（試してみる）'), public_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
   </div>
 </div>

@@ -1,0 +1,42 @@
+.title {
+  display: flex;
+  overflow: hidden;
+  color: #7BA4A8;
+
+  span {
+    display: block;
+    transform: translate(0, 105%);
+    transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+  }
+
+  &.-visible span {
+    transform: translate(0, 0);
+  }
+
+  $transition-delay: 0.06s;
+  @for $i from 2 through 7 {
+    span:nth-child(#{$i}) {
+      transition-delay: $transition-delay;
+      $transition-delay: $transition-delay + 0.1s;
+    }
+  }
+}
+
+
+.topimage {
+  position: relative;
+  overflow: hidden;
+}
+
+.topimage::before {
+  content: "";
+  display: block;
+  padding-top: 60%; /* 画像のアスペクト比に応じて調整 */
+}
+
+.topimage::before {
+  background-image: url("../../assets/images/cover_image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
