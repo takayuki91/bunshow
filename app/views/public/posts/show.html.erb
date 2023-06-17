@@ -1,4 +1,4 @@
-<h1 class="text-center mt-2">指導を見る</h1>
+<h1 class="text-center mt-2">BunShowを見る</h1>
 
 <div class="btn-wrapper mx-auto mt-2">
   <div class="row justify-content-center">
@@ -74,11 +74,11 @@
     <div class='col-md-6 justify-content-center'>
       <% if current_user.name != "guestuser" %>
         <div id="comments_form">
-          <%= render "public/comments/newcomment", post: @currentpost, comment: @comment %>
+          <%= render "public/comments/new_comment", post: @currentpost, comment: @comment %>
         </div>
       <% end %>
 
-      <h1 class="text-center">フィードバック</h1>
+      <h4 class="text-center mt-3">フィードバック</h4>
       <div id="comments_index">
         <%= render "public/comments/indexcomment", post: @currentpost %>
       </div>

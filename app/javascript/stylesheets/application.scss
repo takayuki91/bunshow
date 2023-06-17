@@ -3,39 +3,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 
 body {
-    background-color: #D5D6D2;
+    background-color: #ffffff;
     height: 100%;
     font-family: 'Rampart One', cursive;
-      }
+  }
 
 header {
-    background-color: #756867;
-    div, p, span, li, a, input, th {
-      color: #EEEEEE;
-    }
+    background-color: #DDDEDE;
   }
 
 footer {
-    background-color: #756867;
-    div, p, span, li, a, input, th {
+    background-color: #232122;
       color: #EEEEEE;
-    }
   }
-
-.newpost {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-}
-
-.newpost-form {
-  background-color: #756867;
-  position: sticky;
-  top: 20px;
-  z-index: 9999;
-  border-radius: 10px;
-}
-
-.newcomment-form {
-  background-color: #756867;
-}

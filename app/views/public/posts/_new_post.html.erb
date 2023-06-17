@@ -1,10 +1,10 @@
 <div class="newpost">
 <div class="container">
-  <div class="row no-gutters mt-4">
+  <div class="row no-gutters my-2">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-0 bg-light">
 
       <div class="newpost-form">
-      <div class="form-body p-4">
+      <div class="form-body p-1">
       <%= form_with model: @post, url: form_url do |f| %>
 
         <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
