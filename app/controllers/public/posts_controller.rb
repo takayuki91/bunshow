@@ -9,8 +9,8 @@ class Public::PostsController < ApplicationController
       flash[:dark] = "あなたのbunshowを共有しました!!"
       redirect_to posts_path
     else
-      flash.now[:danger] = "共有するにはbunshowを入力してください"
-      render :index
+      flash[:danger] = "BunShowの文字数は100文字までです。"
+      redirect_to posts_path
     end
   end
 

@@ -12,7 +12,7 @@
 </div>
 
 <% if current_user.name != "guestuser" %>
-  <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "グループを作成!" } %>
+  <%= render partial: "new_group", locals: { form_url: groups_path, button_label: "ラボを作成!" } %>
 <% end %>
 
 <div class="container">
@@ -35,7 +35,7 @@
               <div class="col-2">
                 <%= image_tag group.get_group_profile_image, size: "50x50" %>
               </div>
-              <div class="col-6">
+              <div class="col-6 text-range">
                 <%= group.introduction %>
               </div>
               <div class="col-2">
@@ -51,6 +51,9 @@
                 <% else %>
                   <%= link_to '参加', group_group_users_path(group), method: :post, class: "btn btn-sm btn-outline-secondary" %>
                 <% end %>
+              </div>
+              <div class="col-12 text-right">
+                <p class="card-text">Since <i class="fa-regular fa-clock"></i><%= l group.created_at, format: :short %></p>
               </div>
             </div>
             </div>
