@@ -15,22 +15,22 @@
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to likes_posts_path, class: 'nav-link' do %>
-                <i class="fa-solid fa-ranking-star"></i> Ranking
+                <i class="fa-solid fa-ranking-star"></i> ランキング
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to groups_path, class: 'nav-link' do %>
-                <i class="fa-solid fa-people-group"></i> Group
+                <i class="fa-solid fa-flask-vial"></i> ラボ
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to edit_community_path(current_user.id), class: 'nav-link' do %>
-                <i class="fas fa-users"></i> Community
+                <i class="fas fa-users"></i> コミュニティ
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to user_path(current_user.id), class: 'nav-link' do %>
-                <i class="fa-solid fa-user"></i> My page
+                <i class="fa-solid fa-user"></i> BunShowログ
               <% end %>
             </li>
             <li class="nav-item">

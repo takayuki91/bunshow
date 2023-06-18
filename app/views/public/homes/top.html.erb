@@ -14,9 +14,9 @@
   </div>
 </div>
 
-<div class='container'>
+<div class='container my-3'>
   <div class='row'>
-    <h1 class="title px-3 mx-auto mt-3">
+    <h1 class="title px-3 mx-auto">
       <span>指</span>
       <span>導</span>
       <span>者</span>
@@ -56,39 +56,68 @@
   </div>
 </div>
 
-<h2 class="display-5 font-weight-normal mt-3 text-center">今日の<br>BunShow数:<%= @today_posts_count %></h2>
+<div class="topcolor py-3">
 
-<div class="btn-wrapper col-4 mx-auto mt-3">
-  <div class="row">
-    <%= link_to raw('ゲストユーザー<br>（試してみる）'), public_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+  <div class="btn-wrapper mx-auto">
+    <div class="row justify-content-center">
+      <%= link_to 'ログインはこちら', new_user_session_path, class: "btn btn-lg btn-outline-secondary mr-2" %>
+      <%= link_to '新規登録はこちら', new_user_registration_path, class: "btn btn-lg btn-outline-secondary" %>
+    </div>
   </div>
-</div>
 
-<div class="btn-wrapper mx-auto">
-  <div class="row justify-content-center">
-    <%= link_to 'ログインはこちら', new_user_session_path, class: "btn btn-sm btn-outline-secondary mr-2" %>
-    <%= link_to '新規登録はこちら', new_user_registration_path, class: "btn btn-sm btn-outline-secondary" %>
+  <div class="btn-wrapper col-4 mx-auto mt-3">
+    <div class="row">
+      <%= link_to raw('試してみる<br>（投稿や編集はできません）'), public_guest_sign_in_path, class: "btn btn-secondary btn-block mb-3 sign_in", method: :post %>
+    </div>
   </div>
+
+  <h2 class="font-weight-normal mt-3 text-center text-dark">新着BunShow"<%= @today_posts_count %>"</h2>
+
 </div>
 
 <h2 class="display-5 font-weight-normal mt-5 text-center">BunShowとは？</h2>
 
-<div class="swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-       <%= image_tag "1.jpg", size: "600×600", class:"slide-image" %>
+<div class="row mx-5 my-5">
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2">concept1</strong>
+          <h3 class="mb-0">
+            <a class="text-dark">指導法✖コミュニティ️</a>
+          <hr>
+          </h3>
+          <p class="card-text mb-auto">コミュニティを選択し、指導者（教員やコーチ）が指導方法を共有するサイトです。</p>
+        </div>
+        <img class="card-img-right flex-auto d-none d-lg-block" src="/assets/1.jpg" alt="image" style="max-width: 100%; height: auto;">
+      </div>
     </div>
-    <div class="swiper-slide">
-       <%= image_tag "2.jpg", size: "600×600", class:"slide-image" %>
-    </div>
-    <div class="swiper-slide">
-       <%= image_tag "3.jpg", size: "600×600", class:"slide-image" %>
-    </div>
-    <div class="swiper-slide">
-       <%= image_tag "4.jpg", size: "600×600", class:"slide-image" %>
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2">concept2</strong>
+          <h3 class="mb-0">
+            <a class="text-dark">"手軽"な実践共有</a>
+          <hr>
+          </h3>
+          <p class="card-text mb-auto">指導技術共有、相互称賛、モチベーションアップが目的。</p>
+        </div>
+        <img class="card-img-right flex-auto d-none d-lg-block" src="/assets/1.jpg" alt="image" style="max-width: 100%; height: auto;">
+      </div>
     </div>
   </div>
-  <div class="swiper-pagination"></div>
 </div>
 
 <h2 class="display-5 font-weight-normal mt-5 text-center">使い方</h2>
+
+<div class='container px-2 px-sm-0'>
+  <div class='row justify-content-center my-5'>
+    <div class='col-md-10'>
+      <div class="card-list-container">
+        <div class="card mx-auto shadow-lg">
+           <img class="card-img flex-auto d-none d-lg-block" src="/assets/loadmap.jpg" alt="image" style="max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,23 @@
+// カバーイラスト
+.topimage {
+  position: relative;
+  overflow: hidden;
+}
+
+.topimage::before {
+  content: "";
+  display: block;
+  padding-top: 60%; /* 画像のアスペクト比に応じて調整 */
+}
+
+.topimage::before {
+  background-image: url("../../assets/images/cover_image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// テキストスライド
 .title {
   display: flex;
   overflow: hidden;
@@ -22,21 +42,20 @@
   }
 }
 
+// 投稿数とログインボタンの背景
+.topcolor {
+    background-color: #7BA4A8;
+  }
 
-.topimage {
-  position: relative;
-  overflow: hidden;
+// BunShowとは？
+.card-img-right {
+  max-width: 100%;
+  height: auto;
 }
 
-.topimage::before {
-  content: "";
-  display: block;
-  padding-top: 60%; /* 画像のアスペクト比に応じて調整 */
-}
-
-.topimage::before {
-  background-image: url("../../assets/images/cover_image.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+@media (min-width: 992px) {
+  .card-img-right {
+    width: auto;
+    max-height: 200px;
+  }
 }
