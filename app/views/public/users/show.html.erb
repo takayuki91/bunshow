@@ -30,7 +30,7 @@
           <p class="card-text"><i class="fa-solid fa-bookmark"></i><%= link_to("ブックマーク", bookmarks_user_path(@user), class:"text-dark") %></p>
           <p class="text-right">
             <% if @user == current_user && @user.name != "guestuser" %>
-              <%= link_to("編集", edit_user_path(@user), class:"text-dark") %>
+              <i class="fa-solid fa-pen-to-square"></i><%= link_to("編集", edit_user_path(@user), class:"text-dark") %>
             <% elsif @user.name != "guestuser" %>
               <div class="follow-btn text-right">
                 <%= render partial: "public/users/follow-btn", locals: { user: @user } %>

@@ -1,3 +1,5 @@
+<%= render 'layouts/flash_message' %>
+
 <h1 class="text-center mt-2">BunShowを見る</h1>
 
 <div class="btn-wrapper mx-auto mt-2">
@@ -11,62 +13,60 @@
     <div class='col-md-6'>
       <div class="card-list-container">
         <div class="card mx-auto mt-2 shadow-lg">
-          <% if @currentpost.post_image.attached? %>
-           <%= image_tag @currentpost.post_image, size: "200x300", class: "card-img-top" %>
-          <% end %>
-          <div class="card-body py-3">
-            <div class="row">
-              <div class="col-4 d-flex justify-content-center align-items-center">
-                <%= image_tag @currentpost.user.get_profile_image, size: "150x150" %>
-              </div>
+          <%= image_tag @currentpost.get_post_image, size: "200x300", class: "card-img-top" %>
+        <div class="card-body py-3">
+          <div class="row">
+            <div class="col-4 d-flex justify-content-center align-items-center">
+              <%= image_tag @currentpost.user.get_profile_image, size: "150x150" %>
+            </div>
 
-              <div class="col-8">
-                <p class="card-title">
-                  <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
-                    <i class="fas fa-user"></i> By <%= @currentpost.user.name %>
-                  <% end %>
-                </p>
-                <hr>
-                <p class="card-text">:<%= @currentpost.explanation %></p>
+            <div class="col-8">
+              <p class="card-title">
+                <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
+                  <i class="fas fa-user"></i> By <%= @currentpost.user.name %>
+                <% end %>
+              </p>
+              <hr>
+              <p class="card-text">:<%= @currentpost.explanation %></p>
 
-                <div id="post_<%= @currentpost.id %>" class="col-12">
-                  <div class="row">
-                    <div class="col-3">
-                      <div class="like-btn">
-                        <%= render partial: "public/likes/like-btn", locals: { post: @currentpost } %>
-                      </div>
+              <div id="post_<%= @currentpost.id %>" class="col-12">
+                <div class="row">
+                  <div class="col-3">
+                    <div class="like-btn">
+                      <%= render partial: "public/likes/like-btn", locals: { post: @currentpost } %>
                     </div>
+                  </div>
 
-                    <div class="col-3">
-                      <div class="bookmark-btn">
-                        <%= render partial: "public/bookmarks/bookmark-btn", locals: { post: @currentpost } %>
-                      </div>
+                  <div class="col-3">
+                    <div class="bookmark-btn">
+                      <%= render partial: "public/bookmarks/bookmark-btn", locals: { post: @currentpost } %>
                     </div>
+                  </div>
 
-                    <div class="col-3">
-                      <div class="paragon-btn">
-                        <%= render partial: "public/paragons/paragon-btn", locals: { post: @currentpost } %>
-                      </div>
+                  <div class="col-3">
+                    <div class="paragon-btn">
+                      <%= render partial: "public/paragons/paragon-btn", locals: { post: @currentpost } %>
                     </div>
                   </div>
                 </div>
-
-                  <div class="row">
-                    <div class="col-12 text-right">
-                      <i class="fa-regular fa-clock"></i><%= l @currentpost.created_at %>
-                    </div>
-                  </div>
-
-                   <div class="row">
-                    <div class="col-12 mt-1 text-right">
-                      <% if @currentpost.user == current_user %>
-                        <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-                      <% end %>
-                    </div>
-                  </div>
               </div>
+
+                <div class="row">
+                  <div class="col-12 text-right">
+                    <i class="fa-regular fa-clock"></i><%= l @currentpost.created_at %>
+                  </div>
+                </div>
+
+                 <div class="row">
+                  <div class="col-12 mt-1 text-right">
+                    <% if @currentpost.user == current_user %>
+                      <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+                    <% end %>
+                  </div>
+                </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

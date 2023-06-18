@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-  validates :explanation, presence:true, length:{ maximum:200 }
+  validates :explanation, presence:true, length:{ maximum:100 }
 
   belongs_to :user
   has_many :likes, dependent: :destroy

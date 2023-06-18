@@ -4,16 +4,18 @@ class Public::CommentsController < ApplicationController
     @currentpost = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @currentpost.id
-    @comment.save
-    # redirect_to request.referer
-    @comment = Comment.new
+    if @comment.save
+      @comment = Comment.new
+    else
+      flash[:danger] = "コメントの文字数は100文字までです。"
+      redirect_to post_path(@currentpost.id)
+    end
 
   end
 
   def destroy
     Comment.find(params[:id]).destroy
     @currentpost = Post.find(params[:post_id])
-    # redirect_to request.referer
   end
 
   private

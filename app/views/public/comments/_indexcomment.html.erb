@@ -1,10 +1,10 @@
 <div class="row no-gutters">
-  <div class="col mx-2 mx-sm-auto shadow-lg rounded px-0 my-2">
+  <div class="col mx-2 mx-sm-auto rounded px-0 my-2">
     <% post.comments.order(created_at: :desc).each do |comment| %>
 
       <!--有効なユーザーのコメントのみ表示-->
       <% unless comment.user.is_deleted %>
-        <div class="card mx-auto mt-2 shadow-lg">
+        <div class="card mx-auto shadow-lg mt-2">
           <div class="card-body py-1">
             <div class="row">
               <div class="col-4 d-flex justify-content-center align-items-center">
@@ -15,10 +15,10 @@
                   <p><i class="fas fa-user"></i> By <%= comment.user.name %></p>
                 <% end %>
                 <hr>
-                <p class="card-text">コメント：<%= comment.comment %></p>
+                <p class="card-text text-range">コメント：<%= comment.comment %></p>
                 <p class="text-right">
                   <% if comment.user == current_user %>
-                    <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+                    <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-outline-secondary" %>
                   <% end %>
                 </p>
               </div>

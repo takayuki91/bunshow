@@ -1,3 +1,5 @@
+/*global $*/
+
 const CLASSNAME = "-visible";
 const TIMEOUT = 3000;
 $(document).on("turbolinks:load", () => {
