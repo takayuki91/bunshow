@@ -5,7 +5,7 @@
       <!--有効なユーザーのコメントのみ表示-->
       <% unless comment.user.is_deleted %>
         <div class="card mx-auto mt-2 shadow-lg">
-          <div class="card-body py-3">
+          <div class="card-body py-1">
             <div class="row">
               <div class="col-4 d-flex justify-content-center align-items-center">
                 <%= image_tag comment.user.get_profile_image, size: "80x80" %>

@@ -9,6 +9,7 @@
 <div class="topimage">
   <div class='container'>
     <div class='row'>
+      <!--cover_imageが入っている-->
     </div>
   </div>
 </div>
@@ -71,5 +72,23 @@
 </div>
 
 <h2 class="display-5 font-weight-normal mt-5 text-center">BunShowとは？</h2>
+
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+       <%= image_tag "1.jpg", size: "600×600", class:"slide-image" %>
+    </div>
+    <div class="swiper-slide">
+       <%= image_tag "2.jpg", size: "600×600", class:"slide-image" %>
+    </div>
+    <div class="swiper-slide">
+       <%= image_tag "3.jpg", size: "600×600", class:"slide-image" %>
+    </div>
+    <div class="swiper-slide">
+       <%= image_tag "4.jpg", size: "600×600", class:"slide-image" %>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
 
 <h2 class="display-5 font-weight-normal mt-5 text-center">使い方</h2>
