@@ -1,8 +1,8 @@
 <%= render 'layouts/flash_message' %>
 
-<h1 class="text-center mt-2">指導研究グループ</h1>
+<h1 class="text-center mt-2">BunShowラボ</h1>
 <p class="text-center">
-  <span>特化した領域での<br>指導力を高めたい指導者向け！<br>コミュニティの垣根を超えた<br>指導研究グループです。</span>
+  <span>特化した領域での<br>指導力向上を目指す指導者向け！<br>コミュニティの垣根を超えた<br>ラボラトリーです。</span>
 </p>
 
 <div class="btn-wrapper mx-auto mt-2">
@@ -23,14 +23,15 @@
           <div class="card mt-2 shadow-lg">
             <div class="card-body">
               <%= link_to(group_path(group.id), class:"text-dark") do %>
-                <p class="card-text"><i class="fa-solid fa-people-group"></i>: <%= group.name %> | <%= group.users.count %>人</p>
+                <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %> : <%= group.users.count %>人</p>
               <% end %>
 
               <%= link_to(user_path(group.owner.id), class:"text-dark") do %>
-                <p class="card-text"><i class="fa-solid fa-star"></i>: 研究部長 | <%= group.owner.name %></p>
+                <p class="card-text"><i class="fa-solid fa-star"></i>オーナー : <%= group.owner.name %></p>
               <% end %>
 
-            <div class="row px-1">
+            <hr>
+            <div class="row px-2">
               <div class="col-2">
                 <%= image_tag group.get_group_profile_image, size: "50x50" %>
               </div>
@@ -42,7 +43,7 @@
                   <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-outline-secondary" %>
                 <% end %>
               </div>
-              <div class="col-2">
+              <div class="col-2 px-2">
                 <% if group.owner_id == current_user.id %>
                   <%= link_to 'Destroy', group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
                 <% elsif group.users.include?(current_user) %>
