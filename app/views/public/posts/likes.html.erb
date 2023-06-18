@@ -1,9 +1,5 @@
 <h1 class="text-center mt-2">人気のBunShow</h1>
 
-<% if current_user.name != "guestuser" %>
-  <%= render partial: "new_post", locals: { form_url: posts_path, button_label: "BunShow投稿！" } %>
-<% end %>
-
 <div class="btn-wrapper mx-auto mt-2">
   <div class="row justify-content-center">
     <%= link_to 'Homeに戻る', posts_path, class: "btn btn-sm btn-outline-secondary mr-2" %>

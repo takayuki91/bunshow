@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
     @currentpost = Post.find(params[:id])
     @currentpost.destroy
     flash[:dark] = "あなたのbunshowを削除しました"
-    redirect_to posts_path
+    redirect_to user_path(current_user.id)
   end
 
   private
