@@ -11,7 +11,8 @@ class Public::GroupsController < ApplicationController
       flash[:dark] = "グループを立ち上げました!!"
       redirect_to groups_path
     else
-      render "index"
+      flash[:danger] = "ラボの名前は20文字まで、紹介は100文字までです。"
+      redirect_to groups_path
     end
   end
 
@@ -28,7 +29,7 @@ class Public::GroupsController < ApplicationController
     end
     @posts.sort_by! { |post| post.created_at }.reverse!
   end
-  
+
   def users
     @group = Group.find(params[:id])
     @users = @group.users

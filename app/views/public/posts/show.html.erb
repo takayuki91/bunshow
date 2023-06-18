@@ -13,7 +13,13 @@
     <div class='col-md-6'>
       <div class="card-list-container">
         <div class="card mx-auto mt-2 shadow-lg">
-          <%= image_tag @currentpost.get_post_image, size: "200x300", class: "card-img-top" %>
+          <% if @currentpost.post_image.attached? %>
+            <%= link_to @currentpost.get_post_image, "data-lightbox": @currentpost.get_post_image do %>
+              <%= image_tag @currentpost.get_post_image, size: "200x300", class: "card-img-top" %>
+            <% end %>
+          <% else %>
+            <%= image_tag @currentpost.get_post_image, size: "200x300", class: "card-img-top" %>
+          <% end %>
         <div class="card-body py-3">
           <div class="row">
             <div class="col-4 d-flex justify-content-center align-items-center">

@@ -14,12 +14,12 @@
                 <%= link_to(user_path(comment.user.id), class:"text-dark") do %>
                   <p><i class="fas fa-user"></i> By <%= comment.user.name %></p>
                 <% end %>
-                <hr>
                 <p class="card-text text-range">コメント：<%= comment.comment %></p>
                 <p class="text-right">
                   <% if comment.user == current_user %>
                     <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-outline-secondary" %>
                   <% end %>
+                  <i class="fa-regular fa-clock"></i><%= l comment.created_at, format: :short %>
                 </p>
               </div>
             </div>
