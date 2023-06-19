@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_admin!, if: :admin_url
 
   # フラッシュメッセージの色指定
-  add_flash_types :success, :info, :warning, :danger, :light, :dark
+  add_flash_types :success, :info, :danger, :dark
 
   # 管理者のurlを直接入力した際にログイン画面に
   def admin_url
