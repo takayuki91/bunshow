@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
@@ -20,5 +20,19 @@ import "../stylesheets/card";
 import "../stylesheets/paginate";
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
+
+// 文字アニメーション
+$(document).ready(function () {
+  const CLASSNAME = "-visible";
+  const TIMEOUT = 3000;
+  const $target = $(".title");
+
+  setInterval(() => {
+    $target.addClass(CLASSNAME);
+    setTimeout(() => {
+      $target.removeClass(CLASSNAME);
+    }, TIMEOUT);
+  }, TIMEOUT * 2);
+});
