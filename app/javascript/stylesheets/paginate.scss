@@ -1,0 +1,10 @@
+// Twitter Bootstrapの変数を上書きする
+$primary-color: #A5C05B;
+$text-color: #232122;
+
+// 以降のスタイルの定義
+.pagination {
+  background-color: $primary-color !important;
+  color: $text-color !important;
+  /* 他のスタイルプロパティ */
+}

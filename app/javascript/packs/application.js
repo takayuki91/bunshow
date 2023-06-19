@@ -17,6 +17,7 @@ import "../stylesheets/application";
 import "../stylesheets/top";
 import "../stylesheets/new_form";
 import "../stylesheets/card";
+import "../stylesheets/paginate";
 
 Rails.start()
 Turbolinks.start()

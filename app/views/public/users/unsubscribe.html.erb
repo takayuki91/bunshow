@@ -1,28 +1,15 @@
-<div class="container mt-5">
-  <div class="row text-center"
-    <div class="mx-auto col-md-6 col-md-offset-3">
-      <div class="mb-5">
-        <h4>
-          <strong>本当に退会しますか？</strong>
-        </h4>
-      </div>
-      <div class="mb-5">
-        <p>
-          退会すると、会員情報閲覧や<br>
-          bunshowの投稿ができなくなります。<br>
-          同意いただける場合は、「退会する」をクリックしてください。
-        </p>
-      </div>
-      <div class="row justify-content-center">
-        <div class="mt-5 mb-5 btn-group">
-          <div class="col-sm-7 mb-3">
-            <%= link_to "退会しない", user_path(current_user.id), class: "btn btn-primary" %>
-          </div>
-          <div class="col-sm-7 mb-3">
-            <%= link_to "退会する", withdraw_users_path, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
-          </div>
-        </div>
-      </div>
+<h1 class="text-center mt-2">本当に退会しますか？</h1>
+<p class="text-center">
+  <span>退会すると、指導者ログ閲覧や<br>bunshowの投稿ができなくなります。<br>同意いただける場合は、<br>「退会する」をクリックしてください。</span>
+</p>
+
+<div class="row justify-content-center">
+  <div class="mt-5 mb-5 btn-group">
+    <div class="col">
+      <%= link_to "戻る", user_path(current_user.id), class: "btn btn-outline-secondary" %>
+    </div>
+    <div class="col">
+      <%= link_to "退会", withdraw_users_path, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
     </div>
   </div>
 </div>

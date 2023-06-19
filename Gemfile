@@ -59,6 +59,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'ancestry'
 gem 'jquery-rails'
+gem 'kaminari','~> 1.2.1'
+gem 'bootstrap4-kaminari-views'
 
 gem 'dotenv-rails'
 group :production do
