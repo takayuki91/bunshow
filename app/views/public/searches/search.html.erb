@@ -1,11 +1,19 @@
 <h1 class="text-center mt-2">検索結果</h1>
 
   <% if @range == "指導者" %>
-
     <%= render 'public/users/relationships', users: @users %>
-
+    <% if @users.empty? %>
+    <div class="h4 text-center">
+      該当する指導者はいません。
+      <%= image_tag "empty_leader.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+    </div>
+    <% end %>
   <% else %>
-
     <%= render partial: "public/posts/index_posts" %>
-
+    <% if @posts.empty? %>
+    <div class="h4 text-center">
+      該当するBunShowはありません。
+      <%= image_tag "empty_BunShow.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+    </div>
+    <% end %>
   <% end %>

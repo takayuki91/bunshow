@@ -40,12 +40,12 @@
               </div>
               <div class="col-2">
                 <% if group.owner_id == current_user.id %>
-                  <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-outline-secondary" %>
+                  <%= link_to '編集', edit_group_path(group), class: "btn btn-sm btn-outline-secondary" %>
                 <% end %>
               </div>
               <div class="col-2 px-2">
                 <% if group.owner_id == current_user.id %>
-                  <%= link_to 'Destroy', group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+                  <%= link_to '解散', group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
                 <% elsif group.users.include?(current_user) %>
                   <%= link_to '退会', group_group_users_path(group), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
                 <% else %>
