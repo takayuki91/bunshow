@@ -4,6 +4,12 @@
   </div>
 <% end %>
 
+<% if alert %>
+  <div class="alert text-center alert-danger">
+    <%= alert %>
+  </div>
+<% end %>
+
 <div class="container mt-5">
   <h4>管理者ログイン</h4>
     <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>

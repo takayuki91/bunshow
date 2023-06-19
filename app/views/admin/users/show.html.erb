@@ -1,7 +1,12 @@
 <%= render 'layouts/flash_message' %>
 
+<h1 class="text-center mt-2">投稿管理（<%= @user.name %>）</h1>
+
+<div class='row justify-content-center my-2'>
+  <%= link_to(admin_users_path, class:"text-dark") do %>
+    <span><i class="fa-solid fa-backward"></i> Back</span>
+  <% end %>
+</div>
+
 <%= render partial: "admin/posts/index_posts" %>
 
-<%= link_to(admin_users_path, class:"text-dark") do %>
-  <span><i class="fa-solid fa-backward"></i> Back</span>
-<% end %>

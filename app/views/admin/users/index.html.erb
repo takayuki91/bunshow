@@ -1,12 +1,18 @@
 <%= render 'layouts/flash_message' %>
 
+<h1 class="text-center mt-2">会員一覧</h1>
+
+<div class='row justify-content-center my-2'>
+  <%= link_to(admin_top_path, class:"text-dark") do %>
+    <span><i class="fa-solid fa-backward"></i> Back</span>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-10">
-      <h1 class="mb-5">会員一覧</h1>
 
         <table class="table table-hover table-inversetext-center">
-          <thead class="table table-secondary">
+          <thead class="table table-light">
             <tr>
               <th>ID</th>
               <th>画像</th>
@@ -27,27 +33,26 @@
                 <td><%= user.email %></td>
                 <td>
                   <% if user.is_deleted == false %>
-                    <span class="text-success font-weight-bold">
+                    <span class="font-weight-bold">
                       <%= '有効会員' %>
                     </span>
                   <% else %>
-                    <span class="text-secondary font-weight-bold">
+                    <span class="text-danger font-weight-bold">
                       <%= '退会済み' %>
                     </span>
                   <% end %>
                 </td>
-                <td><%= link_to "情報編集", edit_admin_user_path(user.id), class: "btn btn-info" %></td>
-                <td><%= link_to "投稿管理", admin_user_path(user.id), class: "btn btn-warning" %></td>
-                <td><%= link_to "コメント管理", admin_user_comments_path(user.id), class: "btn btn-warning" %></td>
+                <td><%= link_to "情報", edit_admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
+                <td><%= link_to "投稿", admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
+                <td><%= link_to "コメント", admin_user_comments_path(user.id), class: "btn btn-outline-secondary" %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
 
-    </div>
   </div>
 </div>
 
-<%= link_to(admin_top_path, class:"text-dark") do %>
-  <span><i class="fa-solid fa-backward"></i> Back</span>
-<% end %>
+<div class='row justify-content-center'>
+  <%= paginate @users, theme: 'twitter-bootstrap-4' %>
+</div>
