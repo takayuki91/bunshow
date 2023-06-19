@@ -4,7 +4,7 @@ class Public::CommunitiesController < ApplicationController
 
   def index
     @user = current_user
-    @communities = Community.all
+    @communities = Community.where(ancestry: nil)
   end
 
   def join

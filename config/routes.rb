@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       get :followeds, on: :member
     end
 
-    resources :communities, only: [:edit, :update] do
+    resources :communities, only: [:index, :edit, :update] do
       member do
         post 'join'
       end
