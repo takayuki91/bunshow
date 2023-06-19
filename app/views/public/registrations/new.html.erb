@@ -2,9 +2,26 @@
   <div class="alert text-center alert-dark">
     <%= notice %>
   </div>
-<% else %>
-  <%= render 'layouts/flash_message' %>
 <% end %>
+
+<% if @user.errors[:name].any? %>
+  <div class="alert text-center alert-danger">
+    この名前は既に使われています
+  </div>
+<% end %>
+
+<% if @user.errors[:email].any? %>
+  <div class="alert text-center alert-danger">
+    このアドレスは既に使われています
+  </div>
+<% end %>
+
+<% if @user.errors[:password].any? %>
+  <div class="alert text-center alert-danger">
+    パスワードは6文字以上です
+  </div>
+<% end %>
+
 
 <div class="container">
 
@@ -15,10 +32,10 @@
         <%= image_tag "logo_image_2.jpg", size: "72x72", class: "d-flex" %>
       </div>
 
-      <h1 class="h3 mb-3 font-weight-normal text-center">Please sign up</h1>
+      <p class="h3 mb-3 font-weight-normal text-center">Please sign up</p>
 
         <%= form_with model: @user, url: user_registration_path do |f| %>
-        <!--<%#= render "public/shared/error_messages", resource: resource %>-->
+        <%#= render "public/shared/error_messages", resource: @user %>
 
           <hr>
           <%= f.label :email, class: "sr-only" %>

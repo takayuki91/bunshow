@@ -2,8 +2,12 @@
   <div class="alert text-center alert-dark">
     <%= notice %>
   </div>
-<% else %>
-  <%= render 'layouts/flash_message' %>
+<% end %>
+
+<% if alert %>
+  <div class="alert text-center alert-danger">
+    <%= alert %>
+  </div>
 <% end %>
 
 <div class="container">
@@ -15,7 +19,7 @@
         <%= image_tag "logo_image_2.jpg", size: "72x72", class: "d-flex" %>
       </div>
 
-      <h1 class="h3 mb-3 font-weight-normal text-center">Log in</h1>
+      <p class="h3 mb-3 font-weight-normal text-center">Log in</p>
 
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
       <!--<%#= render "public/shared/error_messages", resource: resource %>-->

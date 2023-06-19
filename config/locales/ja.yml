@@ -26,7 +26,7 @@ ja:
       # not_locked: "was not locked"
       not_saved:
         one: "エラーが発生しました。以下ご確認お願いいたします。"
-        other: "エラーが発生しました。以下ご確認お願いいたします。"
+        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
 
   views:
       pagination:
