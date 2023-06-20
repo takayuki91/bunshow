@@ -7,10 +7,15 @@
 <% end %>
 
 <div class="container-fluid position-relative overflow-hidden text-center">
-  <div class="col-md-5 p-lg-5 mx-auto my-5">
+  <div class="col-md-5 p-lg-5 mx-auto my-2">
     <h1 class="display-4 font-weight-normal mb-5">管理者トップ</h1>
-    <h2 class="display-5 font-weight-normal">今日の新規投稿数: <%= @today_posts_count %></h2>
+    <h2 class="display-5 font-weight-normal">本日の新規投稿数: <%= @today_posts_count %></h2>
   </div>
+
+  <div class="ml-auto mb-1">
+    <%= render 'layouts/admin_search' %>
+  </div>
+
   <div class="col-md-5 p-lg-5 mx-auto my-5">
     <%= link_to "ユーザー情報へ", admin_users_path, class: "btn btn-outline-secondary" %>
     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>

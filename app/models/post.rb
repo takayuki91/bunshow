@@ -8,10 +8,25 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  # 検索方法
+ # public側の検索
   def self.looks(search, word)
     if search == "partial_match"
       @posts = Post.where("explanation LIKE?","%#{word}%" || "#{word}%" || "%#{word}")
+    else
+      @posts = Post.all
+    end
+  end
+  
+  # admin側の検索
+  def self.find_records(search, word)
+    if search == "perfect_match"
+      @posts = Post.where("explanation LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @posts = Post.where("explanation LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @posts = Post.where("explanation LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @posts = Post.where("explanation LIKE?","%#{word}%")
     else
       @posts = Post.all
     end

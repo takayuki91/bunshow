@@ -34,12 +34,27 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
-  # 検索方法分岐
+  # public側の検索
   def self.looks(search, word)
     if search == "partial_match"
       @user = User.where("name LIKE?","%#{word}%" || "#{word}%" || "%#{word}").where.not(is_deleted: true)
     else
       @user = User.where.not(is_deleted: true)
+    end
+  end
+  
+  # admin側の
+  def self.find_records(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
     end
   end
 

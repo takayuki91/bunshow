@@ -1,5 +1,5 @@
 <div class="d-flex flex-wrap">
-  <% @posts.each do |post| %>
+  <% posts.each do |post| %>
   <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card mx-auto mt-2 shadow-lg">
       <%= link_to admin_post_path(post.id) do %>
@@ -24,8 +24,4 @@
     </div>
   </div>
   <% end %>
-</div>
-
-<div class='row justify-content-center mt-2'>
-  <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
 </div>
