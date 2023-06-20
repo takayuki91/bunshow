@@ -1,3 +1,16 @@
 <h1 class="text-center mt-2">"<%= @user.name %>"のブックマーク</h1>
 
+<div class="btn-wrapper mx-auto mt-2">
+  <div class="row justify-content-center">
+    <%= link_to 'Homeに戻る', posts_path, class: "btn btn-sm btn-outline-secondary mr-2" %>
+  </div>
+</div>
+
 <%= render "public/posts/index_posts" %>
+
+<% if @posts.empty? %>
+<div class="h4 text-center">
+  今のところブックマークはありません。
+  <%= image_tag "empty_BunShow.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+</div>
+<% end %>

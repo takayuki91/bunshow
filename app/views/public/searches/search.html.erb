@@ -1,7 +1,9 @@
 <h1 class="text-center mt-2">検索結果</h1>
 
   <% if @range == "指導者" %>
-    <%= render 'public/users/relationships', users: @users %>
+    <div class="scroll-list jscroll">
+      <%= render 'public/users/relationships', users: @users %>
+    </div>
     <% if @users.empty? %>
     <div class="h4 text-center">
       該当する指導者はいません。

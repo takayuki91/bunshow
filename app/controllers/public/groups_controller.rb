@@ -18,7 +18,7 @@ class Public::GroupsController < ApplicationController
 
   def index
     @group = Group.new
-    @groups = Group.all
+    @groups = Group.all.page(params[:page]).per(10)
   end
 
   def show
@@ -33,7 +33,7 @@ class Public::GroupsController < ApplicationController
 
   def users
     @group = Group.find(params[:id])
-    @users = @group.users
+    @users = @group.users.where(users: { is_deleted: false }).page(params[:page]).per(10)
   end
 
   def edit
@@ -41,17 +41,18 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      flash[:dark] = "グループ情報を更新しました!!"
+      flash[:dark] = "ラボ情報を更新しました!!"
       redirect_to groups_path
     else
-      render "edit"
+      flash[:danger] = "ラボの名前は20文字まで、紹介は100文字までです。"
+      redirect_to edit_group_path(@group.id)
     end
   end
 
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    flash[:dark] = "グループを解散しました。"
+    flash[:dark] = "ラボを解散しました。"
     redirect_to groups_path
   end
 

@@ -6,16 +6,19 @@ class Public::CommentsController < ApplicationController
     @comment.post_id = @currentpost.id
     if @comment.save
       @comment = Comment.new
+      flash[:dark] = "フィードバックを共有しました!!"
+      redirect_to request.referer
     else
       flash[:danger] = "コメントの文字数は100文字までです。"
       redirect_to post_path(@currentpost.id)
     end
-
   end
 
   def destroy
     Comment.find(params[:id]).destroy
     @currentpost = Post.find(params[:post_id])
+    flash[:dark] = "フィードバックを削除しました。"
+    redirect_to request.referer
   end
 
   private

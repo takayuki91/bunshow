@@ -79,15 +79,15 @@
 
     <div class='col-md-6 col-lg-6 px-3 justify-content-center'>
       <% if current_user.name != "guestuser" %>
-        <div id="comments_form">
+        <!--<div id="comments_form">-->
           <%= render "public/comments/new_comment", post: @currentpost, comment: @comment %>
-        </div>
+        <!--</div>-->
       <% end %>
 
       <h4 class="text-center mt-3">フィードバック</h4>
-      <div id="comments_index">
-        <%= render "public/comments/index_comment", post: @currentpost %>
-      </div>
+      <!--<div id="comments_index">-->
+        <%= render "public/comments/index_comment" %>
+      <!--</div>-->
     </div>
 
   </div>
