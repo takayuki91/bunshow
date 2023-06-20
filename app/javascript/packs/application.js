@@ -4,10 +4,11 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
+
+// Lightboxとの兼ね合いでコメントアウト
 // import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
 // 無限スクロールの際にコメントアウト
 // import $ from 'jquery';
 // import "jquery";
@@ -20,6 +21,7 @@ import "../stylesheets/new_form";
 import "../stylesheets/card";
 
 Rails.start()
+// Lightboxとの兼ね合いでコメントアウト
 // Turbolinks.start()
 ActiveStorage.start()
 
