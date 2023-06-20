@@ -38,7 +38,7 @@ class Public::UsersController < ApplicationController
 
   def bookmarks
     bookmarks = Bookmark.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.find(bookmarks)
+    @posts = Post.where(id: bookmarks).page(params[:page]).per(9)
   end
 
   def unsubscribe

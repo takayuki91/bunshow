@@ -8,7 +8,7 @@ class Public::SearchesController < ApplicationController
     if @range == "指導者"
       @users = User.looks(params[:search], params[:word])
     else
-      @posts = Post.looks(params[:search], params[:word]).joins(:user).where(user: { is_deleted: false }).order(created_at: :desc)
+      @posts = Post.looks(params[:search], params[:word]).joins(:user).where(user: { is_deleted: false }).order(created_at: :desc).page(params[:page]).per(9)
     end
   end
 end
