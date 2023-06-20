@@ -28,6 +28,7 @@ class Public::GroupsController < ApplicationController
       @posts.concat(user.posts)
     end
     @posts.sort_by! { |post| post.created_at }.reverse!
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(9)
   end
 
   def users
