@@ -2,6 +2,10 @@
   <div class="alert text-center alert-dark">
     <%= notice %>
   </div>
+<% elsif alert %>
+  <div class="alert text-center alert-danger">
+    <%= alert %>
+  </div>
 <% else %>
   <%= render 'layouts/flash_message' %>
 <% end %>

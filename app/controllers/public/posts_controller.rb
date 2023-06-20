@@ -22,9 +22,9 @@ class Public::PostsController < ApplicationController
       # コミュニティに所属するユーザーの中で、上記で取得したコミュニティのIDに該当するユーザーのIDを取得する
       community_user_ids = User.joins(:communities).where(communities: { id: community_ids }).pluck(:id)
       # ユーザーが削除されていないかつ、上記で取得したユーザーIDに該当する投稿を取得し、作成日時の降順で並び替える
-      @posts = Post.includes(:user).where(users: { is_deleted: false, id: community_user_ids }).order(created_at: :desc)
+      @posts = Post.includes(:user).where(users: { is_deleted: false, id: community_user_ids }).order(created_at: :desc).page(params[:page]).per(9)
     else
-      @posts = Post.includes(:user).where(users: { is_deleted: false }).order(created_at: :desc)
+      @posts = Post.includes(:user).where(users: { is_deleted: false }).order(created_at: :desc).page(params[:page]).per(9)
     end
   end
 
@@ -32,14 +32,14 @@ class Public::PostsController < ApplicationController
     @posts = Post.joins(:likes, :user)
                  .where(users: { is_deleted: false })
                  .group('posts.id')
-                 .order('COUNT(likes.id) DESC, posts.created_at DESC')
+                 .order('COUNT(likes.id) DESC, posts.created_at DESC').page(params[:page]).per(9)
   end
 
   def paragons
     @posts = Post.joins(:paragons, :user)
                  .where(users: { is_deleted: false })
                  .group('posts.id')
-                 .order('COUNT(paragons.id) DESC, posts.created_at DESC')
+                 .order('COUNT(paragons.id) DESC, posts.created_at DESC').page(params[:page]).per(9)
   end
 
   def show
@@ -50,6 +50,7 @@ class Public::PostsController < ApplicationController
       end
     end
     @comment = Comment.new
+    @comments = @currentpost.comments.order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def destroy

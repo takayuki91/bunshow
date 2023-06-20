@@ -8,8 +8,9 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import $ from 'jquery';
-import "jquery";
+// 無限スクロールの際にコメントアウト
+// import $ from 'jquery';
+// import "jquery";
 import "popper.js";
 import "bootstrap";
 
@@ -17,13 +18,14 @@ import "../stylesheets/application";
 import "../stylesheets/top";
 import "../stylesheets/new_form";
 import "../stylesheets/card";
-import "../stylesheets/paginate";
 
 Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 
-// 文字アニメーション
+/*global $*/
+
+// TOPページ文字アニメーション
 $(document).ready(function () {
   const CLASSNAME = "-visible";
   const TIMEOUT = 3000;
@@ -35,4 +37,17 @@ $(document).ready(function () {
       $target.removeClass(CLASSNAME);
     }, TIMEOUT);
   }, TIMEOUT * 2);
+});
+
+// 無限スクロール
+import 'jquery.jscroll.min.js';
+$(window).on('scroll', function() {
+  var scrollHeight = $(document).height();
+  var scrollPosition = $(window).height() + $(window).scrollTop();
+  if ((scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+    $('.jscroll').jscroll({
+      contentSelector: '.scroll-list',
+      nextSelector: 'span.next:last a'
+    });
+  }
 });
