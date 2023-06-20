@@ -29,11 +29,11 @@ class Public::UsersController < ApplicationController
   end
 
   def follows
-    @users = @user.follows
+    @users = @user.follows.page(params[:page]).per(10)
   end
 
   def followeds
-    @users = @user.followeds
+    @users = @user.followeds.page(params[:page]).per(10)
   end
 
   def bookmarks

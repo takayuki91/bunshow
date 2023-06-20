@@ -1,3 +1,5 @@
+<%= render 'layouts/flash_message' %>
+
 <h1 class="text-center mt-2">ラボの編集</h1>
 
 <%= render partial: "new_group", locals: { form_url: group_path, button_label: "Edit!" }, group: @group %>

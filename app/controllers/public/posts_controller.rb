@@ -32,25 +32,28 @@ class Public::PostsController < ApplicationController
     @posts = Post.joins(:likes, :user)
                  .where(users: { is_deleted: false })
                  .group('posts.id')
-                 .order('COUNT(likes.id) DESC, posts.created_at DESC').page(params[:page]).per(9)
+                 .order('COUNT(likes.id) DESC, posts.created_at DESC')
+                 .page(params[:page]).per(9)
   end
 
   def paragons
     @posts = Post.joins(:paragons, :user)
                  .where(users: { is_deleted: false })
                  .group('posts.id')
-                 .order('COUNT(paragons.id) DESC, posts.created_at DESC').page(params[:page]).per(9)
+                 .order('COUNT(paragons.id) DESC, posts.created_at DESC')
+                 .page(params[:page]).per(9)
   end
 
   def show
     @currentpost = Post.find(params[:id])
+    # 閲覧数をカウントする
     if current_user.name != "guestuser"
       unless Paragon.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @currentpost.id)
         current_user.paragons.create(post_id: @currentpost.id)
       end
     end
     @comment = Comment.new
-    @comments = @currentpost.comments.order(created_at: :desc).page(params[:page]).per(9)
+    @comments = @currentpost.comments.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def destroy
@@ -65,6 +68,5 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:post_image, :explanation)
   end
-
 
 end
