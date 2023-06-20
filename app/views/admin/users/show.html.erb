@@ -8,4 +8,8 @@
   <% end %>
 </div>
 
-<%= render partial: "admin/posts/index_posts" %>
+<%= render "admin/posts/index_posts", posts: @posts %>
+
+<div class='row justify-content-center mt-2'>
+  <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+</div>
