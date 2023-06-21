@@ -6,3 +6,9 @@
   height: 50px;
   overflow-y: auto;
 }
+
+.container-fluid .card-list-container {
+  position: sticky;
+  top: 50px;
+  z-index: 9999;
+}
