@@ -24,7 +24,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @posts = []
-    @group.users.each do |user|
+    @group.users.where(users: { is_deleted: false }).each do |user|
       @posts.concat(user.posts)
     end
     @posts.sort_by! { |post| post.created_at }.reverse!
