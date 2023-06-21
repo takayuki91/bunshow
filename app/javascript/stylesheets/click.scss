@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+
+  img {
+    width: 50px;
+  }
+
+  &::after {
+    content: "Jump high!!";
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+}
