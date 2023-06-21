@@ -23,7 +23,7 @@ class Public::UsersController < ApplicationController
       flash[:dark] = "あなたのユーザー情報を更新しました!!"
       redirect_to user_path(@user.id)
     else
-      flash[:dark] = "更新に失敗しました。"
+      flash[:danger] = "既に存在するニックネーム、アドレスは設定できません。"
       render :edit
     end
   end
@@ -86,7 +86,7 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :email, :profile_image)
   end
 
 end
