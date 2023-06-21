@@ -7,11 +7,14 @@ import Rails from "@rails/ujs"
 
 // Lightboxとの兼ね合いでコメントアウト
 // import Turbolinks from "turbolinks"
+
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+
 // 無限スクロールの際にコメントアウト
 // import $ from 'jquery';
 // import "jquery";
+
 import "popper.js";
 import "bootstrap";
 
@@ -19,10 +22,13 @@ import "../stylesheets/application";
 import "../stylesheets/top";
 import "../stylesheets/new_form";
 import "../stylesheets/card";
+import "../stylesheets/click";
 
 Rails.start()
+
 // Lightboxとの兼ね合いでコメントアウト
 // Turbolinks.start()
+
 ActiveStorage.start()
 
 /*global $*/
@@ -52,4 +58,14 @@ $(window).on('scroll', function() {
       nextSelector: 'span.next:last a'
     });
   }
+});
+
+// マウスクリックイベント
+$(function() {
+  $('#back a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
 });

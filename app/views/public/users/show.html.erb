@@ -13,7 +13,7 @@
     <div class="card-body py-3">
       <div class="row">
         <div class="col-4 d-flex justify-content-center align-items-center">
-          <%= image_tag @user.get_profile_image, size: "150x150" %>
+          <%= image_tag @user.get_profile_image, size: "120x120" %>
         </div>
         <div id="user_<%= @user.id %>" class="col-8">
           <p class="card-title text-center"><i class="fas fa-user"></i> <%= @user.name %></p>
@@ -44,3 +44,5 @@
 </div>
 
 <%= render partial: "public/posts/index_posts" %>
+
+<%= render 'layouts/click' %>
