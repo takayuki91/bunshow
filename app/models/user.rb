@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
-  # validates :encrypted_password, length: { minimum: 6 }, presence: { message: "パスワードは6文字以上です" }
 
   # ゲストログイン時
   def self.guest
@@ -42,8 +41,8 @@ class User < ApplicationRecord
       @user = User.where.not(is_deleted: true)
     end
   end
-  
-  # admin側の
+
+  # admin側の検索
   def self.find_records(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
