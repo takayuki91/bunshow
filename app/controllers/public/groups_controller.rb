@@ -21,6 +21,10 @@ class Public::GroupsController < ApplicationController
     @groups = Group.all.page(params[:page]).per(10)
   end
 
+  def mygroups
+    @groups = current_user.groups.page(params[:page]).per(10)
+  end
+
   def show
     @group = Group.find(params[:id])
     @posts = []

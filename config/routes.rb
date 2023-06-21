@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 
     resources :groups, only: [:index, :create, :show, :edit, :update, :destroy] do
       get "users" => "groups#users", on: :member
+      get "mygroups" => "groups#mygroups", on: :member
       resource :group_users, only: [:create, :destroy]
     end
 
@@ -61,9 +62,12 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
     resources :users, only: [:index, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:index, :show, :destroy]
+      resources :comments, only: [:index, :destroy]
     end
-    resources :posts, only: [:index, :show, :destroy]
+
+    resources :posts, only: [:show, :destroy]
+
+    resources :groups, only: [:show, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,23 @@
+<h1 class="text-center mt-2"><%= current_user.name %>の参加ラボ</h1>
+
+<div class="btn-wrapper mx-auto">
+  <div class="row justify-content-center">
+    <%= link_to 'ラボ一覧に戻る', groups_path, class: "btn btn-sm btn-outline-secondary" %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto rounded px-0 my-3">
+      <div class="scroll-list jscroll">
+
+        <%= render 'index_groups', groups: @groups %>
+
+        <%= paginate @groups %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/click' %>
