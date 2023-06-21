@@ -19,7 +19,7 @@
               <th>登録名</th>
               <th>メールアドレス</th>
               <th>ステータス</th>
-              <th colspan="3"></th>
+              <th colspan="4"></th>
             </tr>
           </thead>
 
@@ -45,6 +45,7 @@
                 <td><%= link_to "情報", edit_admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
                 <td><%= link_to "投稿", admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
                 <td><%= link_to "コメント", admin_user_comments_path(user.id), class: "btn btn-outline-secondary" %></td>
+                <td><%= link_to "グループ", admin_group_path(user.id), class: "btn btn-outline-secondary" %></td>
               </tr>
             <% end %>
           </tbody>
