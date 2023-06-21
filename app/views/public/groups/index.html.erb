@@ -5,16 +5,6 @@
   <span>特化した領域での<br>指導力向上を目指す指導者向け！<br>コミュニティの垣根を超えた<br>ラボラトリーです。</span>
 </p>
 
-<script>
-  // クリックで表示/非表示を切り替える処理
-  document.addEventListener("DOMContentLoaded", function() {
-    var textContainer = document.querySelector(".text-range");
-    textContainer.addEventListener("click", function() {
-      this.querySelector("span").classList.toggle("hidden");
-    });
-  });
-</script>
-
 <div class="btn-wrapper mx-auto mt-2">
   <div class="row justify-content-center">
     <%= link_to 'Homeに戻る', posts_path, class: "btn btn-sm btn-outline-secondary mr-2" %>
@@ -29,49 +19,53 @@
   <div class="row no-gutters">
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto rounded px-0 my-5">
       <div class="scroll-list jscroll">
+
         <% @groups.each do |group| %>
 
-            <div class="card mt-2 shadow-lg">
-              <div class="card-body">
-                <%= link_to(group_path(group.id), class:"text-dark") do %>
-                  <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %> : <%= group.users.where(users: { is_deleted: false }).count %>人</p>
-                <% end %>
+        <!--有効なユーザーのグループのみ表示-->
+        <% unless group.owner.is_deleted %>
+          <div class="card mt-2 shadow-lg">
+            <div class="card-body">
+              <%= link_to(group_path(group.id), class:"text-dark") do %>
+                <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %> : <%= group.users.where(users: { is_deleted: false }).count %>人</p>
+              <% end %>
 
-                <%= link_to(user_path(group.owner.id), class:"text-dark") do %>
-                  <p class="card-text"><i class="fa-solid fa-star"></i>オーナー : <%= group.owner.name %></p>
-                <% end %>
+              <%= link_to(user_path(group.owner.id), class:"text-dark") do %>
+                <p class="card-text"><i class="fa-solid fa-star"></i>オーナー : <%= group.owner.name %></p>
+              <% end %>
 
-              <hr>
-              <div class="row px-2">
-                <div class="col-2">
-                  <%= image_tag group.get_group_profile_image, size: "50x50" %>
-                </div>
-                <div class="col-6 text-range">
-                  <%= group.introduction %>
-                </div>
-                <div class="col-2">
-                  <% if group.owner_id == current_user.id %>
-                    <%= link_to '編集', edit_group_path(group), class: "btn btn-sm btn-outline-secondary" %>
-                  <% end %>
-                </div>
-                <div class="col-2 px-2">
-                  <% if group.owner_id == current_user.id %>
-                    <%= link_to '解散', group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
-                  <% elsif group.users.include?(current_user) %>
-                    <%= link_to '退会', group_group_users_path(group), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
-                  <% else %>
-                    <%= link_to '参加', group_group_users_path(group), method: :post, class: "btn btn-sm btn-outline-secondary" %>
-                  <% end %>
-                </div>
-                <div class="col-12 text-right">
-                  <p class="card-text">Since <i class="fa-regular fa-clock"></i><%= l group.created_at, format: :short %></p>
-                </div>
+            <hr>
+            <div class="row px-2">
+              <div class="col-2">
+                <%= image_tag group.get_group_profile_image, size: "50x50" %>
               </div>
+              <div class="col-6 text-range">
+                <%= group.introduction %>
+              </div>
+              <div class="col-2">
+                <% if group.owner_id == current_user.id %>
+                  <%= link_to '編集', edit_group_path(group), class: "btn btn-sm btn-outline-secondary" %>
+                <% end %>
+              </div>
+              <div class="col-2 px-2">
+                <% if group.owner_id == current_user.id %>
+                  <%= link_to '解散', group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+                <% elsif group.users.include?(current_user) %>
+                  <%= link_to '退会', group_group_users_path(group), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+                <% else %>
+                  <%= link_to '参加', group_group_users_path(group), method: :post, class: "btn btn-sm btn-outline-secondary" %>
+                <% end %>
+              </div>
+              <div class="col-12 text-right">
+                <p class="card-text">Since <i class="fa-regular fa-clock"></i><%= l group.created_at, format: :short %></p>
               </div>
             </div>
-
+            </div>
+          </div>
+        <% end %>
 
         <% end %>
+
       <%= paginate @groups %>
 
     </div>

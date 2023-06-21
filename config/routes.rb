@@ -45,18 +45,12 @@ Rails.application.routes.draw do
       get :followeds, on: :member
     end
 
-    resources :communities, only: [:index, :edit, :update] do
-      member do
-        post 'join'
-      end
-    end
+    resources :communities, only: [:edit, :update]
 
     resources :groups, only: [:index, :create, :show, :edit, :update, :destroy] do
       get "users" => "groups#users", on: :member
       resource :group_users, only: [:create, :destroy]
     end
-
-
 
   end
 

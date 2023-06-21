@@ -34,6 +34,11 @@
             </div>
           </div>
 
+          <div class="col-3">
+            <p><i class="fa-solid fa-pencil"></i>
+            <%= post.comments.where(post_id: post.id, user_id: User.where(is_deleted: false)).count %></p>
+          </div>
+
         </div>
       </div>
 

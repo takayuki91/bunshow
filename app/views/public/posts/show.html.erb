@@ -54,6 +54,12 @@
                       <%= render partial: "public/paragons/paragon-btn", locals: { post: @currentpost } %>
                     </div>
                   </div>
+
+                  <div class="col-3">
+                    <p><i class="fa-solid fa-pencil"></i>
+                    <%= @currentpost.comments.where(post_id: @currentpost.id, user_id: User.where(is_deleted: false)).count %></p>
+                  </div>
+
                 </div>
               </div>
 

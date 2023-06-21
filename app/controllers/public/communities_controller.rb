@@ -2,19 +2,6 @@ class Public::CommunitiesController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    @user = current_user
-    @communities = Community.where(ancestry: nil)
-  end
-
-  def join
-    @user = current_user
-    @community = Community.find(params[:id])
-    current_user.communities << @community
-    flash[:dark] = "コミュニティに参加しました!!"
-    redirect_to user_path(@user.id)
-  end
-
   def edit
     @user = current_user
     @communities = Community.all
