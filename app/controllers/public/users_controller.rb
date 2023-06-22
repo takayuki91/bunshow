@@ -12,7 +12,9 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(9)
+    @posts = @user.posts
+                  .order(created_at: :desc)
+                  .page(params[:page]).per(9)
   end
 
   def edit
@@ -29,11 +31,15 @@ class Public::UsersController < ApplicationController
   end
 
   def follows
-    @users = @user.follows.where(is_deleted: false).page(params[:page]).per(10)
+    @users = @user.follows
+                  .where(is_deleted: false)
+                  .page(params[:page]).per(10)
   end
 
   def followeds
-    @users = @user.followeds.where(is_deleted: false).page(params[:page]).per(10)
+    @users = @user.followeds
+                  .where(is_deleted: false)
+                  .page(params[:page]).per(10)
   end
 
   def bookmarks
