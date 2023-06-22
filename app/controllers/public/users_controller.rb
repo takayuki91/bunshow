@@ -29,16 +29,21 @@ class Public::UsersController < ApplicationController
   end
 
   def follows
-    @users = @user.follows.page(params[:page]).per(10)
+    @users = @user.follows.where(is_deleted: false).page(params[:page]).per(10)
   end
 
   def followeds
-    @users = @user.followeds.page(params[:page]).per(10)
+    @users = @user.followeds.where(is_deleted: false).page(params[:page]).per(10)
   end
 
   def bookmarks
     bookmarks = Bookmark.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.where(id: bookmarks).page(params[:page]).per(9)
+    @posts = Post.joins(:bookmarks)
+                 .joins(:user)
+                 .where(users: { is_deleted: false })
+                 .where(id: bookmarks)
+                 .group('posts.id')
+                 .page(params[:page]).per(9)
   end
 
   def unsubscribe
