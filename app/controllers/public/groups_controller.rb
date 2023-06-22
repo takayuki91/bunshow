@@ -8,7 +8,7 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_user.id
     @group.users << current_user
     if @group.save
-      flash[:dark] = "グループを立ち上げました!!"
+      flash[:dark] = "ラボを立ち上げました!!"
       redirect_to groups_path
     else
       flash[:danger] = "ラボの名前は20文字まで、紹介は100文字までです。"
