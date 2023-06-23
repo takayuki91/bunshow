@@ -25,7 +25,15 @@
             <% end %>
           </p>
           <hr>
-          <p class="card-text">BunShow数: <%= @user.posts.count %></p>
+          <p class="card-text">BunShow数:
+            <% if @user.posts.count >= 10 %>
+              <span style="font-size: 30px;"><%= @user.posts.count %> Excellent BunShonist!!</span>
+            <% elsif @user.posts.count >= 5 %>
+              <span style="font-size: 24px;"><%= @user.posts.count %> Good BunShonist</span>
+            <% else %>
+              <span><%= @user.posts.count %> Beginner BunShonist</span>
+            <% end %>
+          </p>
           <p id="count-relationship" class="card-text"><%= render partial: "public/users/count-relationship", locals: { user: @user } %></p>
           <p class="card-text"><i class="fa-solid fa-bookmark"></i><%= link_to("ブックマーク", bookmarks_user_path(@user), class:"text-dark") %></p>
           <p class="text-right">

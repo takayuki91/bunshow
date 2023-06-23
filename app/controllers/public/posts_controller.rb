@@ -62,7 +62,9 @@ class Public::PostsController < ApplicationController
 
   def show
     @currentpost = Post.find(params[:id])
-
+    
+    # currentユーザーのコメントがあるか確認するため
+    # 詳細ページのみコントローラーに記述
     @user_comments = @currentpost.comments.where(user_id: current_user.id)
 
     # 閲覧数をカウントする
