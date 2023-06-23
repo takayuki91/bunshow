@@ -63,6 +63,8 @@ class Public::PostsController < ApplicationController
   def show
     @currentpost = Post.find(params[:id])
 
+    @user_comments = @currentpost.comments.where(user_id: current_user.id)
+
     # 閲覧数をカウントする
     if current_user.name != "guestuser"
       unless Paragon.where(created_at: Time.zone.now.all_day)
