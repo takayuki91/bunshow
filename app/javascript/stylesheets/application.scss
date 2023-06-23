@@ -16,6 +16,19 @@ body {
   margin-bottom: 0;
 }
 
+.animated-text {
+  animation: moveText 2s infinite alternate;
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(20px);
+  }
+}
+
 header {
     background-color: #DDDEDE;
   }
