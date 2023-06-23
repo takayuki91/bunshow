@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:dark] = "あなたのユーザー情報を更新しました!!"
+      flash[:dark] = "あなたの指導者情報を更新しました!!"
       redirect_to user_path(@user.id)
     else
       flash[:danger] = "既に存在するニックネーム、アドレスは設定できません。"
@@ -74,7 +74,7 @@ class Public::UsersController < ApplicationController
   def check_deleted_user
     user = User.find(params[:id])
     if user.is_deleted?
-      flash[:danger] = "お探しのユーザーが見つかりません。"
+      flash[:danger] = "お探しの指導者が見つかりません。"
       redirect_to user_path(current_user.id)
     end
   end
