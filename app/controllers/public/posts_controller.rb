@@ -77,6 +77,21 @@ class Public::PostsController < ApplicationController
                             .page(params[:page]).per(10)
   end
 
+  def edit
+    @currentpost = Post.find(params[:id])
+  end
+
+  def update
+    @currentpost = Post.find(params[:id])
+    if @currentpost.update(post_params)
+      flash[:dark] = "あなたのBunsShowを更新しました!!"
+      redirect_to post_path(@currentpost.id)
+    else
+      flash[:danger] = "BunShowの文字数は100文字までです。"
+      redirect_to edit_post_path(@currentpost.id)
+    end
+  end
+
   def destroy
     @currentpost = Post.find(params[:id])
     @currentpost.destroy

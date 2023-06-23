@@ -33,12 +33,6 @@
                 <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
                   <i class="fas fa-user"></i> By <%= @currentpost.user.name %>
                 <% end %>
-                <% if @currentpost.user == current_user %>
-                  <!--Twitterへの投稿-->
-                  <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【BunShow】指導者×コミュニティ%0a%0a#{ @currentpost.get_post_image }", target: '_blank' do %>
-                    <i class="fab fa-twitter" style='color: #3399FF;'></i>ツイート
-                  <% end %>
-                <% end %>
               </p>
               <hr>
               <p class="card-text">:<%= @currentpost.explanation %></p>
@@ -76,14 +70,22 @@
                     <i class="fa-regular fa-clock"></i><%= l @currentpost.created_at %>
                   </div>
                 </div>
-
-                 <div class="row">
-                  <div class="col-12 mt-1 text-right">
-                    <% if @currentpost.user == current_user %>
-                      <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+              <% if @currentpost.user == current_user %>
+                <div class="row mt-1">
+                  <div class="col-4 text-center">
+                    <!--Twitterへの投稿-->
+                    <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【BunShow】指導者×コミュニティ%0a%0a#{ @currentpost.get_post_image }", target: '_blank' do %>
+                      <i class="fab fa-twitter" style='color: #3399FF;'></i>シェア
                     <% end %>
                   </div>
+                  <div class="col-4 text-center">
+                    <%= link_to('編集', edit_post_path(@currentpost), class: "btn btn-sm btn-outline-secondary") %>
+                  </div>
+                  <div class="col-4 text-center">
+                      <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+                  </div>
                 </div>
+              <% end %>
             </div>
           </div>
         </div>
