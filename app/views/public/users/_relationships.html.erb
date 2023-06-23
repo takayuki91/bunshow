@@ -5,7 +5,9 @@
       <div class="card-body py-2">
         <div class="row">
           <div class="col-4 d-flex justify-content-center align-items-center">
-            <%= image_tag user.get_profile_image, size: "80x80" %>
+            <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_profile_image, size: "80x80" %>
+            <% end %>
           </div>
           <div id="user_<%= user.id %>" class="col-8">
             <%= link_to(user_path(user.id), class:"text-dark") do %>

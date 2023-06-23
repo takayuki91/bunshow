@@ -23,7 +23,9 @@
         <div class="card-body py-3">
           <div class="row">
             <div class="col-4 d-flex justify-content-center align-items-center">
-              <%= image_tag @currentpost.user.get_profile_image, size: "120x120" %>
+              <%= link_to user_path(@currentpost.user.id) do %>
+                <%= image_tag @currentpost.user.get_profile_image, size: "120x120" %>
+              <% end %>
             </div>
 
             <div class="col-8">
@@ -32,6 +34,7 @@
                   <i class="fas fa-user"></i> By <%= @currentpost.user.name %>
                 <% end %>
                 <% if @currentpost.user == current_user %>
+                  <!--Twitterへの投稿-->
                   <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【BunShow】指導者×コミュニティ%0a%0a#{ @currentpost.get_post_image }", target: '_blank' do %>
                     <i class="fab fa-twitter" style='color: #3399FF;'></i>ツイート
                   <% end %>

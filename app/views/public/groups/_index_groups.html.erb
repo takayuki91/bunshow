@@ -15,7 +15,9 @@
     <hr>
     <div class="row px-2">
       <div class="col-2">
-        <%= image_tag group.get_group_profile_image, size: "50x50" %>
+        <%= link_to group_path(group.id) do %>
+          <%= image_tag group.get_group_profile_image, size: "50x50" %>
+        <% end %>
       </div>
       <div class="col-6 text-range">
         <%= group.introduction %>

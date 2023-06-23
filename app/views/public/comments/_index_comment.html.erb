@@ -9,7 +9,9 @@
           <div class="card-body py-1">
             <div class="row">
               <div class="col-4 d-flex justify-content-center align-items-center">
-                <%= image_tag comment.user.get_profile_image, size: "80x80" %>
+                <%= link_to user_path(comment.user.id) do %>
+                  <%= image_tag comment.user.get_profile_image, size: "80x80" %>
+                <% end %>
               </div>
               <div class="col-8">
                 <%= link_to(user_path(comment.user.id), class:"text-dark") do %>
