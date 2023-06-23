@@ -10,6 +10,6 @@ class Group < ApplicationRecord
   has_one_attached :group_profile_image
 
   def get_group_profile_image
-    (group_profile_image.attached?) ? group_profile_image : 'no_image.jpg'
+    (group_profile_image.attached?) ? group_profile_image : 'no_image_group.jpg'
   end
 end
