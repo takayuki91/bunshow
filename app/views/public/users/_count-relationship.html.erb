@@ -1,1 +1,2 @@
-<%= link_to("フォロー中: " + user.follows.where(is_deleted: false).count.to_s, follows_user_path(user), class:"text-dark") %><br><%= link_to("フォロワー: " + user.followeds.where(is_deleted: false).count.to_s, followeds_user_path(user), class:"text-dark") %>
+<%= link_to("フォロー中: " + user.follows.where(is_deleted: false).count.to_s, follows_user_path(user), class:"btn btn-sm btn-outline-secondary mr-1") %>
+<%= link_to("フォロワー: " + user.followeds.where(is_deleted: false).count.to_s, followeds_user_path(user), class:"btn btn-sm btn-outline-secondary mr-2") %>

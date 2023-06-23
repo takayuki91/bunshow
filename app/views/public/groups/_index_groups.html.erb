@@ -4,12 +4,14 @@
 <% unless group.owner.is_deleted %>
   <div class="card mt-2 shadow-lg">
     <div class="card-body">
-      <%= link_to(group_path(group.id), class:"text-dark") do %>
-        <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %> : <%= group.users.where(users: { is_deleted: false }).count %>人</p>
+      <%= link_to(group_path(group.id), class:"btn btn-sm btn-outline-secondary") do %>
+        <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %></p>
       <% end %>
+      : <%= group.users.where(users: { is_deleted: false }).count %>人<br>
 
-      <%= link_to(user_path(group.owner.id), class:"text-dark") do %>
-        <p class="card-text"><i class="fa-solid fa-star"></i>オーナー : <%= group.owner.name %></p>
+      オーナー :
+      <%= link_to(user_path(group.owner.id), class:"btn btn-sm btn-outline-secondary") do %>
+        <p class="card-text"><i class="fas fa-user"></i><%= group.owner.name %></p>
       <% end %>
 
     <hr>
@@ -24,16 +26,24 @@
       </div>
       <div class="col-2">
         <% if group.owner_id == current_user.id %>
-          <%= link_to '編集', edit_group_path(group), class: "btn btn-sm btn-outline-secondary" %>
+          <%= link_to edit_group_path(group), class: "btn btn-sm btn-outline-secondary" do %>
+            <i class="fa-solid fa-pen-to-square"></i>編集
+          <% end %>
         <% end %>
       </div>
       <div class="col-2 px-2">
         <% if group.owner_id == current_user.id %>
-          <%= link_to '解散', group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+          <%= link_to group_path(group), method: :delete, data: { confirm: '本当に解散しますか？' }, class: "btn btn-sm btn-outline-secondary" do  %>
+            <i class="fa-solid fa-plane"></i>解散
+          <% end %>
         <% elsif group.users.include?(current_user) %>
-          <%= link_to '退会', group_group_users_path(group), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+          <%= link_to group_group_users_path(group), method: :delete, data: { confirm: '本当に解散しますか？' }, class: "btn btn-sm btn-outline-secondary" do %>
+            <i class="fa-solid fa-heart-crack"></i>退会
+          <% end %>
         <% else %>
-          <%= link_to '参加', group_group_users_path(group), method: :post, class: "btn btn-sm btn-outline-secondary" %>
+          <%= link_to group_group_users_path(group), method: :post, class: "btn btn-sm btn-outline-secondary" do %>
+            <i class="fa-solid fa-heart"></i>参加
+          <% end %>
         <% end %>
       </div>
       <div class="col-12 text-right">

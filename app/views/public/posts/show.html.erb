@@ -30,7 +30,7 @@
 
             <div class="col-8">
               <p class="card-title">
-                <%= link_to(user_path(@currentpost.user.id), class:"text-dark") do %>
+                <%= link_to(user_path(@currentpost.user.id), class:"btn btn-sm btn-outline-secondary") do %>
                   <i class="fas fa-user"></i> By <%= @currentpost.user.name %>
                 <% end %>
               </p>
@@ -59,10 +59,10 @@
 
                   <div class="col-3">
                     <% if @user_comments.exists? %>
-                      <p class="text-danger"><i class="fa-solid fa-pencil"></i>
+                      <p class="text-danger"><i class="fa-regular fa-comment"></i>
                       <%= @currentpost.comments.where(post_id: @currentpost.id, user_id: User.where(is_deleted: false)).count %></p>
                     <% else %>
-                      <p><i class="fa-solid fa-pencil"></i>
+                      <i class="fa-regular fa-comment"></i>
                       <%= @currentpost.comments.where(post_id: @currentpost.id, user_id: User.where(is_deleted: false)).count %></p>
                     <% end %>
                   </div>
@@ -79,15 +79,19 @@
                 <div class="row mt-1">
                   <div class="col-4 text-center">
                     <!--Twitterへの投稿-->
-                    <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【BunShow】指導者×コミュニティ%0a%0a#{ @currentpost.get_post_image }", target: '_blank' do %>
-                      <i class="fab fa-twitter" style='color: #3399FF;'></i>シェア
+                    <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【BunShow】指導者×コミュニティ%0a%0a#{ @currentpost.get_post_image }", target: '_blank', class: "btn btn-sm btn-outline-secondary" do %>
+                      <i class="fab fa-twitter" style='color: #3399FF;'></i>
                     <% end %>
                   </div>
                   <div class="col-4 text-center">
-                    <%= link_to('編集', edit_post_path(@currentpost), class: "btn btn-sm btn-outline-secondary") %>
+                    <%= link_to edit_post_path(@currentpost), class: "btn btn-sm btn-outline-secondary" do %>
+                      <i class="fa-solid fa-pen-to-square"></i>編集
+                    <% end %>
                   </div>
                   <div class="col-4 text-center">
-                      <%= link_to 'Destroy', @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+                    <%= link_to @currentpost, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" do %>
+                      <i class="fa-solid fa-trash"></i>削除
+                    <% end %>
                   </div>
                 </div>
               <% end %>

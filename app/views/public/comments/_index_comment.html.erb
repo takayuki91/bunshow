@@ -14,13 +14,17 @@
                 <% end %>
               </div>
               <div class="col-8">
-                <%= link_to(user_path(comment.user.id), class:"text-dark") do %>
-                  <p><i class="fas fa-user"></i> By <%= comment.user.name %></p>
+                <p class="card-title">
+                <%= link_to(user_path(comment.user.id), class:"btn btn-sm btn-outline-secondary") do %>
+                  <i class="fas fa-user"></i> By <%= comment.user.name %>
                 <% end %>
-                <p class="card-text text-range">:<%= comment.comment %></p>
+                </p>
+                <p class="card-text text-range"><%= comment.comment %></p>
                 <p class="text-right">
                   <% if comment.user == current_user %>
-                    <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+                    <%= link_to post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-outline-secondary" do %>
+                      <i class="fa-solid fa-trash"></i>
+                    <% end %>
                   <% end %>
                   <i class="fa-regular fa-clock"></i><%= l comment.created_at, format: :short %>
                 </p>

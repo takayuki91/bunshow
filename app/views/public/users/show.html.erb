@@ -27,24 +27,33 @@
           <hr>
           <p class="card-text">BunShow数:
             <% if @user.posts.count >= 10 %>
-              <%= @user.posts.count %> <span style="font-size: 30px; font-weight: bold;"><i class="fa-solid fa-crown"></i> Platinum</span>
+              <%= @user.posts.count %> <span style="font-size: 30px; font-weight: bold; color: #7BA4A8;"><i class="fa-solid fa-crown"></i> Platinum</span>
             <% elsif @user.posts.count >= 5 %>
               <%= @user.posts.count %> <span style="font-size: 24px;"><i class="fa-solid fa-medal" style="color: #FFD700"></i> Gold</span>
             <% else %>
               <%= @user.posts.count %> <span style="font-size: 18px;"><i class="fa-solid fa-medal" style="color: #C0C0C0"></i> Silver</span>
             <% end %>
           </p>
+          <div class="d-flex flex-wrap align-items-center">
           <p id="count-relationship" class="card-text"><%= render partial: "public/users/count-relationship", locals: { user: @user } %></p>
-          <p class="card-text"><i class="fa-solid fa-bookmark"></i><%= link_to("ブックマーク", bookmarks_user_path(@user), class:"text-dark") %></p>
-          <p class="text-right">
-            <% if @user == current_user && @user.name != "guestuser" %>
-              <i class="fa-solid fa-pen-to-square"></i><%= link_to("編集", edit_user_path(@user), class: "text-dark") %>
-            <% elsif @user.name != "guestuser" %>
-              <div class="follow-btn text-right">
-                <%= render partial: "public/users/follow-btn", locals: { user: @user } %>
-              </div>
+          <p>
+            <%= link_to bookmarks_user_path(@user), class:"btn btn-sm btn-outline-secondary mr-2" do %>
+              <i class="fa-solid fa-bookmark"></i>ブックマーク
             <% end %>
           </p>
+          <% if @user == current_user && @user.name != "guestuser" %>
+          <p>
+            <%= link_to edit_user_path(@user), class: "btn btn-sm btn-outline-secondary text-right" do %>
+              <i class="fa-solid fa-pen-to-square"></i>編集
+            <% end %>
+          </p>
+          <% elsif @user.name != "guestuser" %>
+          <p class="follow-btn">
+            <%= render partial: "public/users/follow-btn", locals: { user: @user } %>
+          </p>
+          <% end %>
+
+          </div>
         </div>
       </div>
     </div>
