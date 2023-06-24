@@ -62,6 +62,10 @@ class Public::PostsController < ApplicationController
 
   def show
     @currentpost = Post.find(params[:id])
+    
+    # currentユーザーのコメントがあるか確認するため
+    # 詳細ページのみコントローラーに記述
+    @user_comments = @currentpost.comments.where(user_id: current_user.id)
 
     # 閲覧数をカウントする
     if current_user.name != "guestuser"
@@ -75,6 +79,21 @@ class Public::PostsController < ApplicationController
     @comments = @currentpost.comments
                             .order(created_at: :desc)
                             .page(params[:page]).per(10)
+  end
+
+  def edit
+    @currentpost = Post.find(params[:id])
+  end
+
+  def update
+    @currentpost = Post.find(params[:id])
+    if @currentpost.update(post_params)
+      flash[:dark] = "あなたのBunsShowを更新しました!!"
+      redirect_to post_path(@currentpost.id)
+    else
+      flash[:danger] = "BunShowの文字数は100文字までです。"
+      redirect_to edit_post_path(@currentpost.id)
+    end
   end
 
   def destroy

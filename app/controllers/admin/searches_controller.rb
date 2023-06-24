@@ -12,5 +12,7 @@ class Admin::SearchesController < ApplicationController
     elsif @range == "コメント"
       @comments = Comment.find_records(params[:search], params[:word])
     end
+
   end
+
 end

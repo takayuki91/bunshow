@@ -48,7 +48,6 @@ class Post < ApplicationRecord
 
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image_post.jpg'
-    # post_image.variant(resize_to_limit: [width, height]).processed
   end
 
 end

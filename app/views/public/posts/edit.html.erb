@@ -1,13 +1,17 @@
 <!--文字カウントの呼び出し-->
 <%= render 'layouts/text_count' %>
 
+<%= render 'layouts/flash_message' %>
+
+<h1 class="text-center mt-2">BunShowの編集</h1>
+
 <div class="container">
   <div class="row no-gutters my-2">
     <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-0 bg-light">
 
       <div class="newpost-form">
       <div class="form-body p-1">
-      <%= form_with model: @post, url: form_url do |f| %>
+      <%= form_with model: @currentpost, url: post_path(@currentpost.id) do |f| %>
 
         <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
 
@@ -17,14 +21,14 @@
               <i class="fa-solid fa-person-chalkboard"></i>
             </span>
           </div>
-          <%= f.text_area :explanation, rows: 3, :placeholder =>"今日のBunShowは？", required: true, class: "form-control js-text" %>
+          <%= f.text_area :explanation, rows: 3, :placeholder =>"今日のあなたのBunShowは？", required: true, class: "form-control js-text" %>
         </div>
 
         <div class="js-text-count float-right">
           <!--文字カウント-->
         </div>
 
-        <%= f.submit button_label, class: "btn btn-sm btn-block btn-dark mt-1" %>
+        <%= f.submit "BunShow編集！", class: "btn btn-sm btn-block btn-dark mt-1" %>
 
       <% end %>
       </div>

@@ -13,15 +13,47 @@
   <% if @users.empty? %>
   <div class="h4 mt-3 text-center">
     該当する指導者はいません。
-    <%= image_tag "empty_leader.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+    <%= image_tag "empty_leader.jpg", size: "140x165", class: "mt-3 mx-auto d-block" %>
   </div>
   <% end %>
-<% else %>
+
+<% elsif @range == "BunShow" %>
   <%= render partial: "public/posts/index_posts" %>
   <% if @posts.empty? %>
   <div class="h4 mt-3 text-center">
     該当するBunShowはありません。
-    <%= image_tag "empty_BunShow.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+    <%= image_tag "empty_BunShow.jpg", size: "140x165", class: "mt-3 mx-auto d-block" %>
   </div>
   <% end %>
+
+<% else %>
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-lg-8 col-md-10 col-sm-12 mx-auto rounded px-0 my-3">
+        <div class="scroll-list jscroll">
+          <%= render 'public/groups/index_groups', groups: @groups %>
+          <%= paginate @groups %>
+          <% if @groups.empty? %>
+          <div class="h4 mt-3 text-center">
+            該当するラボはありません。<br>オーナーとして立ち上げませんか？
+            <%= image_tag "empty_group_owner.jpg", size: "140x165", class: "mt-3 mx-auto d-block" %>
+          </div>
+          <div class="row justify-content-center">
+            <%= link_to 'ラボ一覧に戻る', groups_path, class: "btn btn-sm btn-outline-secondary" %>
+          </div>
+          <% elsif @groups.any? { |group| group.owner&.is_deleted } %>
+            <div class="card mt-2 shadow-lg">
+              <div class="card-body">
+                <div class="h4 my-5 text-center">
+                  -----このラボのオーナーは退会しました。-----
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
+
+<%= render 'layouts/click' %>

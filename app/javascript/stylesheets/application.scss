@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 
 body {
-    background-color: #ffffff;
+    background-color: #EEEEEE;
     height: 100%;
     font-family: 'Rampart One', cursive;
   }
@@ -14,6 +14,19 @@ body {
 
 .alert.text-center {
   margin-bottom: 0;
+}
+
+.animated-text {
+  animation: moveText 2s infinite alternate;
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(20px);
+  }
 }
 
 header {
@@ -31,7 +44,7 @@ main h3,
 main h4,
 main h5,
 main h6 {
-  color: #A5C05B;
+  color: #232122;
   font-weight: bold;
 }
 

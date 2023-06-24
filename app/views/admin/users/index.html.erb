@@ -10,47 +10,43 @@
 
 <div class="container">
   <div class="row justify-content-center">
+    <table class="table table-hover table-inversetext-center">
+      <thead class="table table-secondary">
+        <tr>
+          <th>ID</th>
+          <th>画像</th>
+          <th>登録名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
 
-        <table class="table table-hover table-inversetext-center">
-          <thead class="table table-light">
-            <tr>
-              <th>ID</th>
-              <th>画像</th>
-              <th>登録名</th>
-              <th>メールアドレス</th>
-              <th>ステータス</th>
-              <th colspan="4"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td><%= user.id %></td>
-                <td><%= image_tag user.get_profile_image, size: "50x50" %></td>
-                <td><%= user.name %>
-                </td>
-                <td><%= user.email %></td>
-                <td>
-                  <% if user.is_deleted == false %>
-                    <span class="font-weight-bold">
-                      <%= '有効会員' %>
-                    </span>
-                  <% else %>
-                    <span class="text-danger font-weight-bold">
-                      <%= '退会済み' %>
-                    </span>
-                  <% end %>
-                </td>
-                <td><%= link_to "情報", edit_admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
-                <td><%= link_to "投稿", admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
-                <td><%= link_to "コメント", admin_user_comments_path(user.id), class: "btn btn-outline-secondary" %></td>
-                <td><%= link_to "グループ", admin_group_path(user.id), class: "btn btn-outline-secondary" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= image_tag user.get_profile_image, size: "50x50" %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_deleted == false %>
+                <span class="font-weight-bold">
+                  <%= '有効会員' %>
+                </span>
+              <% else %>
+                <span class="text-danger font-weight-bold">
+                  <%= '退会済み' %>
+                </span>
+              <% end %></td>
+            <td><%= link_to "情報", edit_admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
+            <td><%= link_to "投稿", admin_user_path(user.id), class: "btn btn-outline-secondary" %></td>
+            <td><%= link_to "コメント", admin_user_comments_path(user.id), class: "btn btn-outline-secondary" %></td>
+            <td><%= link_to "グループ", admin_group_path(user.id), class: "btn btn-outline-secondary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

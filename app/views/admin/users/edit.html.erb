@@ -3,7 +3,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-5">
-
       <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
 
         <div class="col mb-2">
@@ -40,7 +39,10 @@
         </div>
 
       <% end %>
-
     </div>
   </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+  <%= link_to "会員を削除", admin_user_path(@user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" } %>
 </div>

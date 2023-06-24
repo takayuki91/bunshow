@@ -6,28 +6,31 @@
   <% end %>
 </div>
 
-  <% if @range == "ユーザー" %>
-    <%= render 'admin/users/index_users', users: @users %>
-    <% if @users.empty? %>
-    <div class="h4 text-center">
-      該当するユーザーはいません。
-      <%= image_tag "empty_leader.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
-    </div>
-    <% end %>
-  <% elsif @range == "投稿" %>
-    <%= render "admin/posts/index_posts", posts: @posts %>
-    <% if @posts.empty? %>
-    <div class="h4 text-center">
-      該当する投稿はありません。
-      <%= image_tag "empty_BunShow.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
-    </div>
-    <% end %>
-  <% elsif @range == "コメント" %>
-    <%= render 'admin/comments/index_comments', comments: @comments %>
-    <% if @comments.empty? %>
-    <div class="h4 text-center">
-      該当するコメントはありません。
-      <%= image_tag "empty_BunShow.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
-    </div>
-    <% end %>
+<% if @range == "ユーザー" %>
+  <%= render 'admin/users/index_users', users: @users %>
+  <% if @users.empty? %>
+  <div class="h4 text-center">
+    該当するユーザーはいません。
+    <%= image_tag "empty_leader.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+  </div>
   <% end %>
+
+<% elsif @range == "投稿" %>
+  <%= render "admin/posts/index_posts", posts: @posts %>
+  <% if @posts.empty? %>
+  <div class="h4 text-center">
+    該当する投稿はありません。
+    <%= image_tag "empty_BunShow.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+  </div>
+  <% end %>
+
+<% elsif @range == "コメント" %>
+  <%= render 'admin/comments/index_comments', comments: @comments %>
+  <% if @comments.empty? %>
+  <div class="h4 text-center">
+    該当するコメントはありません。
+    <%= image_tag "empty_BunShow.jpg", size: "100x165", class: "mt-3 mx-auto d-block" %>
+  </div>
+  <% end %>
+
+<% end %>
