@@ -18,11 +18,11 @@ class Public::GroupsController < ApplicationController
 
   def index
     @group = Group.new
-    @groups = Group.all.page(params[:page]).per(10)
+    @groups = Group.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def mygroups
-    @groups = current_user.groups.page(params[:page]).per(10)
+    @groups = current_user.groups.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
