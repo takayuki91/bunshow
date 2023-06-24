@@ -41,6 +41,14 @@
           <div class="row justify-content-center">
             <%= link_to 'ラボ一覧に戻る', groups_path, class: "btn btn-sm btn-outline-secondary" %>
           </div>
+          <% elsif @groups.any? { |group| group.owner&.is_deleted } %>
+            <div class="card mt-2 shadow-lg">
+              <div class="card-body">
+                <div class="h4 my-5 text-center">
+                  -----このラボのオーナーは退会しました。-----
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
