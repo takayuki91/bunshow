@@ -35,15 +35,15 @@
 - OS：Linux
 - フレームワーク：Ruby on Rails(6.1.7)
 - 言語：HTML,CSS,Ruby(3.1.2),JavaScript,SQL
-- JSライブラリ：jQuery
+- JSライブラリ：jQuery,Lightbox2
 - IDE：cloud9
 
 ## Gem
 - devise
 - kaminari','~> 1.2.1'
 - bootstrap4-kaminari-views
-- enum_help
 - ancestry
+- dotenv-rails
 
 ## 使用素材
 - [Google Fonts](https://fonts.google.com/?subset=japanese&noto.script=Jpan)
