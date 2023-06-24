@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @post.destroy
-    flash[:dark] = "ユーザーのbunshowを削除しました"
+    flash[:danger] = "ユーザーのbunshowを削除しました"
     redirect_to admin_user_path(@user)
   end
 

@@ -22,9 +22,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    flash[:dark] = "#{@user.name}のユーザー情報を更新しました。"
-    redirect_to admin_users_path
+    if @user.update(user_params)
+      flash[:dark] = "#{@user.name}のユーザー情報を更新しました。"
+      redirect_to admin_users_path
+    else
+      flash[:danger] = "有効な情報を入力してください。"
+      redirect_to edit_admin_user_path(@user.id)
+    end
   end
 
   private

@@ -6,19 +6,19 @@
 
 <% if @user.errors[:name].any? %>
   <div class="alert text-center alert-danger">
-    この名前は既に使われています
+    このニックネームは設定できません。2〜20文字で固有のものにしてください。
   </div>
 <% end %>
 
 <% if @user.errors[:email].any? %>
   <div class="alert text-center alert-danger">
-    このアドレスは既に使われています
+    このアドレスは既に使われています。
   </div>
 <% end %>
 
 <% if @user.errors[:password].any? %>
   <div class="alert text-center alert-danger">
-    パスワードは6文字以上です
+    パスワードは6文字以上です。
   </div>
 <% end %>
 
@@ -36,14 +36,13 @@
       <p class="h3 mb-3 font-weight-normal text-center">新規登録</p>
 
         <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%#= render "public/shared/error_messages", resource: @user %>
 
           <hr>
           <%= f.label :email, class: "sr-only" %>
           <%= f.email_field :email, placeholder: "メールアドレス", required: true, autofocus: true, class: "form-control" %>
 
           <%= f.label :name, class: "sr-only" %>
-          <%= f.text_field :name, placeholder: "ニックネーム ", required: true, class: "form-control" %>
+          <%= f.text_field :name, placeholder: "ニックネーム(2〜20文字)", required: true, class: "form-control" %>
 
           <%= f.label :password, class: "sr-only" %>
           <%= f.password_field :password, placeholder: "パスワード(#{@minimum_password_length}文字以上)", required: true, class: "form-control" %>
