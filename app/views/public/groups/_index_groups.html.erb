@@ -4,13 +4,13 @@
 <% unless group.owner.is_deleted %>
   <div class="card mt-2 shadow-lg">
     <div class="card-body">
-      <%= link_to(group_path(group.id), class:"btn btn-sm btn-outline-secondary") do %>
+      <%= link_to(group_path(group.id), class:"btn btn-sm btn-outline-dark") do %>
         <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %></p>
       <% end %>
       : <%= group.users.where(users: { is_deleted: false }).count %>人<br>
 
       オーナー :
-      <%= link_to(user_path(group.owner.id), class:"btn btn-sm btn-outline-secondary") do %>
+      <%= link_to(user_path(group.owner.id), class:"btn btn-sm btn-outline-dark") do %>
         <p class="card-text"><i class="fas fa-user"></i><%= group.owner.name %></p>
       <% end %>
 

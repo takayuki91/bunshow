@@ -1,11 +1,6 @@
 <h1 class="text-center mt-2"><%= @user.name %>の所属グループ</h1>
 
-<div class='row justify-content-center my-2'>
-  <%= link_to(admin_users_path, class:"text-dark") do %>
-    <span><i class="fa-solid fa-backward"></i> Back</span>
-  <% end %>
-</div>
-
+<%= render "layouts/admin_screen_transition" %>
 
 <div class="container">
   <div class="row no-gutters">
@@ -14,23 +9,25 @@
       <% @groups.each do |group| %>
         <div class="card mt-2 shadow-lg">
           <div class="card-body">
-              <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %> : 有効ユーザー<%= group.users.where(users: { is_deleted: false }).count %>人 : 退会ユーザー<%= group.users.where(users: { is_deleted: true }).count %>人</p>
+              <p class="card-text"><i class="fa-solid fa-flask-vial"></i>
+              <%= group.name %> : 有効ユーザー<%= group.users.where(users: { is_deleted: false }).count %>人
+                                : 退会ユーザー<%= group.users.where(users: { is_deleted: true }).count %>人</p>
               <p class="card-text"><i class="fa-solid fa-star"></i>オーナー : <%= group.owner.name %></p>
           <hr>
-          <div class="row px-2">
-            <div class="col-2">
-              <%= image_tag group.get_group_profile_image, size: "50x50" %>
+            <div class="row px-2">
+              <div class="col-2">
+                <%= image_tag group.get_group_profile_image, size: "50x50" %>
+              </div>
+              <div class="col-8 text-range">
+                <%= group.introduction %>
+              </div>
+              <div class="col-2 px-2">
+                  <%= link_to '削除', admin_group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
+              </div>
+              <div class="col-12 text-right">
+                <p class="card-text">Since <i class="fa-regular fa-clock"></i><%= l group.created_at, format: :short %></p>
+              </div>
             </div>
-            <div class="col-8 text-range">
-              <%= group.introduction %>
-            </div>
-            <div class="col-2 px-2">
-                <%= link_to '削除', admin_group_path(group), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-secondary" %>
-            </div>
-            <div class="col-12 text-right">
-              <p class="card-text">Since <i class="fa-regular fa-clock"></i><%= l group.created_at, format: :short %></p>
-            </div>
-          </div>
           </div>
         </div>
       <% end %>
