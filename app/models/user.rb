@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_many :communities, through: :community_users
 
   has_many :group_users, dependent: :destroy
-  has_many :groups, through: :group_users
+  has_many :groups, through: :group_users, dependent: :destroy
 
   # public側の検索
   def self.looks(search, word)
