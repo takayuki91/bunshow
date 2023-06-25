@@ -1,6 +1,6 @@
 class Community < ApplicationRecord
 
-  # Gem ancestryを
+  # Gem ancestryを導入のため
   has_ancestry
   
   has_many :community_users
