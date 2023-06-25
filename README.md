@@ -29,7 +29,6 @@
 - 相互フィードバック（称賛）
 
 # 設計書
-[サイトイメージ(6/4時点）](https://docs.google.com/presentation/d/1CYtoc4LJuiONindI2NsoawQ7FLRNeUG2KoAKsUR_P1I/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux
@@ -49,4 +48,7 @@
 - [Google Fonts](https://fonts.google.com/?subset=japanese&noto.script=Jpan)
 - [FontAwesome](https://fontawesome.com/)
 - [ヒューマンピクトグラム2.0](https://pictogram2.com/)
-- その他使用検討中です
+
+## ER図
+![2 2_ER図](https://github.com/takayuki91/bunshow/assets/129576342/7d6b234f-e6ad-40a3-8e56-fd68ebd8ca42)
+
