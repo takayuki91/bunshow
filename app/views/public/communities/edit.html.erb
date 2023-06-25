@@ -9,16 +9,14 @@
 <h1 class="text-center mt-2">指導者コミュニティ</h1>
   <p class="text-center">
     コミュニティに所属することで、<br>
-    ニーズにマッチした投稿が表示されるようになります。<br>
-    あなたの投稿も同じコミュニティの指導者と<br>
-    共有しましょう！
+    ニーズにマッチした投稿が表示されるようになります！<br>
   </p>
 
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <%= form_with model: @user, url: community_path, method: :patch do |f| %>
-        
+
         <div class="mb-4">
           <h3 class="text-center">現在のコミュニティ</h3>
           <ul class="list-group">
@@ -43,7 +41,7 @@
         </div>
 
         <%= f.submit "決定する", class: "btn btn-outline-secondary btn-block" %>
-        
+
       <% end %>
     </div>
   </div>

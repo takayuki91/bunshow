@@ -10,6 +10,7 @@
 <div class="scroll-list jscroll">
   <% if @user.followeds.exists? %>
     <%= render 'relationships', users: @users %>
+    
   <% else %>
     <div class="h4 text-center">
       ユーザーはいません。

@@ -33,6 +33,7 @@
         <div class="scroll-list jscroll">
           <%= render 'public/groups/index_groups', groups: @groups %>
           <%= paginate @groups %>
+          
           <% if @groups.empty? %>
           <div class="h4 mt-3 text-center">
             該当するラボはありません。<br>オーナーとして立ち上げませんか？
@@ -41,6 +42,7 @@
           <div class="row justify-content-center">
             <%= link_to 'ラボ一覧に戻る', groups_path, class: "btn btn-sm btn-outline-secondary" %>
           </div>
+          
           <% elsif @groups.any? { |group| group.owner&.is_deleted } %>
             <div class="card mt-2 shadow-lg">
               <div class="card-body">
@@ -50,6 +52,7 @@
               </div>
             </div>
           <% end %>
+          
         </div>
       </div>
     </div>

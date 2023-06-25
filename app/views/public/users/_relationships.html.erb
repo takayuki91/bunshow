@@ -15,19 +15,21 @@
                 <i class="fas fa-user"></i> <%= user.name %>
               <% end %>
             </p>
+
             <hr>
             <p class="card-title">BunShow数: <%= user.posts.count %></p>
             <p class="text-right">
+
               <% if user == current_user && user.name != "guestuser" %>
                 <%= link_to edit_user_path(user), class:"btn btn-sm btn-outline-secondary" do %>
                   <i class="fa-solid fa-pen-to-square"></i>編集
                 <% end %>
+
               <% elsif user.name != "guestuser" %>
                 <div class="follow-btn text-right">
                   <%= render partial: "public/users/follow-btn", locals: { user: user } %>
                 </div>
-              <% end %>
-            </p>
+              <% end %></p>
           </div>
         </div>
       </div>

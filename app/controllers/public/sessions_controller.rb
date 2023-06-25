@@ -26,9 +26,11 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
     # 入力されたemailからアカウントを１件取得
     @user = User.find_by(email: params[:user] [:email])
+    
     # アカウントを取得できなかった場合、このメソッドを修了する
     return if !@user
-    # 取得したアカウントのパスワードと入力されたパスワードが一致している、かつis_deletedカラムがtrue(退会済み)判別
+    
+    # 取得したアカウントのパスワードと入力されたパスワードが一致している、かつis_deletedカラムがtrue(退会済み)か判別
     if @user.valid_password?(params[:user] [:password] ) && (@user.is_deleted == true )
       flash[:danger] = "退会済みです。再度ご登録をしてご利用ください"
       redirect_to new_user_registration_path

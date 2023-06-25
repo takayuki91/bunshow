@@ -13,12 +13,12 @@
                   <%= image_tag comment.user.get_profile_image, size: "80x80" %>
                 <% end %>
               </div>
+              
               <div class="col-8">
                 <p class="card-title">
-                <%= link_to(user_path(comment.user.id), class:"btn btn-sm btn-outline-secondary") do %>
-                  <i class="fas fa-user"></i> By <%= comment.user.name %>
-                <% end %>
-                </p>
+                  <%= link_to(user_path(comment.user.id), class:"btn btn-sm btn-outline-secondary") do %>
+                    <i class="fas fa-user"></i> By <%= comment.user.name %>
+                  <% end %></p>
                 <p class="card-text text-range"><%= comment.comment %></p>
                 <p class="text-right">
                   <% if comment.user == current_user %>
@@ -26,15 +26,17 @@
                       <i class="fa-solid fa-trash"></i>
                     <% end %>
                   <% end %>
-                  <i class="fa-regular fa-clock"></i><%= l comment.created_at, format: :short %>
-                </p>
+                  <i class="fa-regular fa-clock"></i><%= l comment.created_at, format: :short %></p>
               </div>
             </div>
           </div>
         </div>
       <% end %>
+      
     <% end %>
+    
     <%= paginate @comments %>
+    
     </div>
   </div>
 </div>

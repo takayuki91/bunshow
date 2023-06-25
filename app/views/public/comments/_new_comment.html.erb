@@ -2,29 +2,29 @@
 <%= render 'layouts/text_count' %>
 
 <div class="newcomment">
-<div class="row no-gutters">
-  <div class="col mx-2 mx-sm-auto shadow-lg rounded px-0 my-2">
-
-    <div class="newcomment-form">
-    <div class="form-body p-1">
-    <%= form_with model: [post, comment] do |f| %>
-
-      <div class="input-group mb-1 mt-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-pencil"></i></span>
+  <div class="row no-gutters">
+    <div class="col mx-2 mx-sm-auto shadow-lg rounded px-0 my-2">
+  
+      <div class="newcomment-form">
+        <div class="form-body p-1">
+          <%= form_with model: [post, comment] do |f| %>
+      
+            <div class="input-group mb-1 mt-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-pencil"></i></span>
+              </div>
+              <%= f.text_area :comment, rows: 3, :placeholder =>"BunShowにフィードバックしよう！", required: true, class: "form-control js-text" %>
+            </div>
+      
+            <div class="js-text-count float-right">
+              <!--文字カウント-->
+            </div>
+      
+            <%= f.submit "フィードバック投稿！", class: "btn btn-sm btn-block btn-dark mt-1" %>
+      
+          <% end %>
         </div>
-        <%= f.text_area :comment, rows: 3, :placeholder =>"BunShowにフィードバックしよう！", required: true, class: "form-control js-text" %>
       </div>
-
-      <div class="js-text-count float-right">
-        <!--文字カウント-->
-      </div>
-
-      <%= f.submit "フィードバック投稿！", class: "btn btn-sm btn-block btn-dark mt-1" %>
-
-    <% end %>
-    </div>
     </div>
   </div>
-</div>
 </div>
