@@ -10,29 +10,30 @@
     <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-0 bg-light">
 
       <div class="newpost-form">
-      <div class="form-body p-1">
-      <%= form_with model: @currentpost, url: post_path(@currentpost.id) do |f| %>
-
-        <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
-
-        <div class="input-group mb-1 mt-1">
-          <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true">
-              <i class="fa-solid fa-person-chalkboard"></i>
-            </span>
+        <div class="form-body p-1">
+        <%= form_with model: @currentpost, url: post_path(@currentpost.id) do |f| %>
+  
+          <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
+  
+          <div class="input-group mb-1 mt-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true">
+                <i class="fa-solid fa-person-chalkboard"></i>
+              </span>
+            </div>
+            <%= f.text_area :explanation, rows: 3, :placeholder =>"今日のあなたのBunShowは？", required: true, class: "form-control js-text" %>
           </div>
-          <%= f.text_area :explanation, rows: 3, :placeholder =>"今日のあなたのBunShowは？", required: true, class: "form-control js-text" %>
+  
+          <div class="js-text-count float-right">
+            <!--文字カウント-->
+          </div>
+  
+          <%= f.submit "BunShow編集！", class: "btn btn-sm btn-block btn-dark mt-1" %>
+  
+        <% end %>
         </div>
-
-        <div class="js-text-count float-right">
-          <!--文字カウント-->
-        </div>
-
-        <%= f.submit "BunShow編集！", class: "btn btn-sm btn-block btn-dark mt-1" %>
-
-      <% end %>
       </div>
-      </div>
+      
     </div>
   </div>
 </div>

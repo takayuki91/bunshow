@@ -18,11 +18,15 @@ class Public::GroupsController < ApplicationController
 
   def index
     @group = Group.new
-    @groups = Group.all.order(created_at: :desc).page(params[:page]).per(10)
+    @groups = Group.all
+                   .order(created_at: :desc)
+                   .page(params[:page]).per(10)
   end
 
   def mygroups
-    @groups = current_user.groups.order(created_at: :desc).page(params[:page]).per(10)
+    @groups = current_user.groups
+                          .order(created_at: :desc)
+                          .page(params[:page]).per(10)
   end
 
   def show
@@ -32,12 +36,15 @@ class Public::GroupsController < ApplicationController
       @posts.concat(user.posts)
     end
     @posts.sort_by! { |post| post.created_at }.reverse!
-    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(9)
+    @posts = Kaminari.paginate_array(@posts)
+                     .page(params[:page]).per(9)
   end
 
   def users
     @group = Group.find(params[:id])
-    @users = @group.users.where(users: { is_deleted: false }).page(params[:page]).per(10)
+    @users = @group.users
+                   .where(users: { is_deleted: false })
+                   .page(params[:page]).per(10)
   end
 
   def edit

@@ -8,9 +8,6 @@ class Public::UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
 
-  def index
-  end
-
   def show
     @posts = @user.posts
                   .order(created_at: :desc)
@@ -43,7 +40,8 @@ class Public::UsersController < ApplicationController
   end
 
   def bookmarks
-    bookmarks = Bookmark.where(user_id: @user.id).pluck(:post_id)
+    bookmarks = Bookmark.where(user_id: @user.id)
+                        .pluck(:post_id)
     @posts = Post.joins(:bookmarks)
                  .joins(:user)
                  .where(users: { is_deleted: false })

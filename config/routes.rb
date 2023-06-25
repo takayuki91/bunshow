@@ -29,7 +29,6 @@ Rails.application.routes.draw do
         get "paragons" => "posts#paragons"
       end
       resource :likes, only: [:create, :destroy]
-      resource :paragons, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end

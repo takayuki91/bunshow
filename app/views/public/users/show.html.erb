@@ -15,6 +15,7 @@
         <div class="col-4 d-flex justify-content-center align-items-center">
           <%= image_tag @user.get_profile_image, size: "120x120" %>
         </div>
+
         <div id="user_<%= @user.id %>" class="col-8">
           <p class="card-title text-center", style="font-size: 24px;"> <i class="fas fa-user"></i> <%= @user.name %></p>
           <p class="card-title text-center">
@@ -24,6 +25,7 @@
               <i class="fas fa-users"></i> 所属なし
             <% end %>
           </p>
+
           <hr>
           <p class="card-text">BunShow数:
             <% if @user.posts.count >= 10 %>
@@ -34,27 +36,28 @@
               <%= @user.posts.count %> <span style="font-size: 18px;"><i class="fa-solid fa-medal" style="color: #C0C0C0"></i> Silver</span>
             <% end %>
           </p>
-          <div class="d-flex flex-wrap align-items-center">
-          <p id="count-relationship" class="card-text"><%= render partial: "public/users/count-relationship", locals: { user: @user } %></p>
-          <p>
-            <%= link_to bookmarks_user_path(@user), class:"btn btn-sm btn-outline-secondary mr-2" do %>
-              <i class="fa-solid fa-bookmark"></i>ブックマーク
-            <% end %>
-          </p>
-          <% if @user == current_user && @user.name != "guestuser" %>
-          <p>
-            <%= link_to edit_user_path(@user), class: "btn btn-sm btn-outline-secondary text-right" do %>
-              <i class="fa-solid fa-pen-to-square"></i>編集
-            <% end %>
-          </p>
-          <% elsif @user.name != "guestuser" %>
-          <p class="follow-btn">
-            <%= render partial: "public/users/follow-btn", locals: { user: @user } %>
-          </p>
-          <% end %>
 
+          <div class="d-flex flex-wrap align-items-center">
+            <p id="count-relationship" class="card-text"><%= render partial: "public/users/count-relationship", locals: { user: @user } %></p>
+            <p>
+              <%= link_to bookmarks_user_path(@user), class:"btn btn-sm btn-outline-secondary mr-2" do %>
+                <i class="fa-solid fa-bookmark"></i>ブックマーク
+              <% end %>
+            </p>
+            <% if @user == current_user && @user.name != "guestuser" %>
+              <p>
+                <%= link_to edit_user_path(@user), class: "btn btn-sm btn-outline-secondary text-right" do %>
+                  <i class="fa-solid fa-pen-to-square"></i>編集
+                <% end %>
+              </p>
+            <% elsif @user.name != "guestuser" %>
+              <p class="follow-btn">
+                <%= render partial: "public/users/follow-btn", locals: { user: @user } %>
+              </p>
+            <% end %>
           </div>
         </div>
+
       </div>
     </div>
   </div>

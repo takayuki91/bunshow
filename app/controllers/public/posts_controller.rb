@@ -65,7 +65,8 @@ class Public::PostsController < ApplicationController
     
     # currentユーザーのコメントがあるか確認するため
     # 詳細ページのみコントローラーに記述
-    @user_comments = @currentpost.comments.where(user_id: current_user.id)
+    @user_comments = @currentpost.comments
+                                 .where(user_id: current_user.id)
 
     # 閲覧数をカウントする
     if current_user.name != "guestuser"
