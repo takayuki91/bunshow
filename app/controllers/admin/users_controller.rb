@@ -16,6 +16,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
+    groups = Group.where(owner_id: @user.id)
+    groups.destroy_all
     @user.destroy
     flash[:danger] = "この会員の全ての情報を削除しました。"
     redirect_to admin_users_path
