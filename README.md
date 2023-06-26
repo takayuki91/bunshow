@@ -50,9 +50,10 @@
 - dotenv-rails
 
 ## 使用素材
+- [ヒューマンピクトグラム2.0](https://pictogram2.com/)
 - [Google Fonts](https://fonts.google.com/?subset=japanese&noto.script=Jpan)
 - [FontAwesome](https://fontawesome.com/)
-- [ヒューマンピクトグラム2.0](https://pictogram2.com/)
+- [Webサイトの利用規約 kiyaku.jp](https://kiyaku.jp/index.html)
 
 ## ER図
 ![2 2_ER図](https://github.com/takayuki91/bunshow/assets/129576342/7d6b234f-e6ad-40a3-8e56-fd68ebd8ca42)
