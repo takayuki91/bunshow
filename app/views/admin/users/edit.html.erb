@@ -1,4 +1,4 @@
-<%= render 'layouts/flash_message' %>
+<%= render "layouts/flash_message" %>
 
 <h1 class="text-center mt-2">会員編集（<%= @user.name %>）</h1>
 
@@ -27,12 +27,12 @@
         </div>
         <div class="row justify-content-center">
           <div class="form-check form-check-inline">
-            <%= f.radio_button :is_deleted, false, class: 'form-check-input customer_is_deleted_true' %>
-            <%= f.label :is_deleted, "有効", value: true, class: 'form-check-label align-middle' %>
+            <%= f.radio_button :is_deleted, false, class: "form-check-input customer_is_deleted_true" %>
+            <%= f.label :is_deleted, "有効", value: true, class: "form-check-label align-middle" %>
           </div>
           <div class="form-check form-check-inline">
-            <%= f.radio_button :is_deleted, true, class: 'form-check-input customer_is_deleted_false' %>
-            <%= f.label :is_deleted, "退会", value: false, class: 'form-check-label align-middle'  %>
+            <%= f.radio_button :is_deleted, true, class: "form-check-input customer_is_deleted_false" %>
+            <%= f.label :is_deleted, "退会", value: false, class: "form-check-label align-middle"  %>
           </div>
         </div>
 

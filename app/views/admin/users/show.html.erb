@@ -1,4 +1,4 @@
-<%= render 'layouts/flash_message' %>
+<%= render "layouts/flash_message" %>
 
 <h1 class="text-center mt-2">投稿管理（<%= @user.name %>）</h1>
 
@@ -6,6 +6,6 @@
 
 <%= render "admin/posts/index_posts", posts: @posts %>
 
-<div class='row justify-content-center mt-2'>
-  <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+<div class="row justify-content-center mt-2">
+  <%= paginate @posts, theme: "twitter-bootstrap-4" %>
 </div>

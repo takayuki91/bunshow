@@ -1,13 +1,13 @@
 <h1 class="text-center mt-2">検索結果</h1>
 
-<div class='row justify-content-center my-2'>
+<div class="row justify-content-center my-2">
   <%= link_to(admin_top_path, class:"text-dark") do %>
     <span><i class="fa-solid fa-backward"></i> Back</span>
   <% end %>
 </div>
 
 <% if @range == "ユーザー" %>
-  <%= render 'admin/users/index_users', users: @users %>
+  <%= render "admin/users/index_users", users: @users %>
   <% if @users.empty? %>
   <div class="h4 text-center">
     該当するユーザーはいません。
@@ -25,7 +25,7 @@
   <% end %>
 
 <% elsif @range == "コメント" %>
-  <%= render 'admin/comments/index_comments', comments: @comments %>
+  <%= render "admin/comments/index_comments", comments: @comments %>
   <% if @comments.empty? %>
   <div class="h4 text-center">
     該当するコメントはありません。

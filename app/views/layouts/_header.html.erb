@@ -2,9 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <% if user_signed_in? %>
-        <a class="navbar-brand p-3" href="<%= posts_path %>"><img src="<%= asset_path('logo_image.jpg') %>" alt="BunShow!!" style="width: 150px; height: auto;"></a>
+        <a class="navbar-brand p-3" href="<%= posts_path %>"><img src="<%= asset_path("logo_image.jpg") %>" alt="BunShow!!" style="width: 150px; height: auto;"></a>
       <% else %>
-        <a class="navbar-brand p-3" href="<%= root_path %>"><img src="<%= asset_path('logo_image.jpg') %>" alt="BunShow!!"  style="width: 150px; height: auto;"></a>
+        <a class="navbar-brand p-3" href="<%= root_path %>"><img src="<%= asset_path("logo_image.jpg") %>" alt="BunShow!!"  style="width: 150px; height: auto;"></a>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,39 +14,39 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to likes_posts_path, class: 'nav-link' do %>
+              <%= link_to likes_posts_path, class: "nav-link" do %>
                 <i class="fa-solid fa-ranking-star"></i> ランキング
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to groups_path, class: 'nav-link' do %>
+              <%= link_to groups_path, class: "nav-link" do %>
                 <i class="fa-solid fa-flask-vial"></i> ラボ
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to edit_community_path(current_user.id), class: 'nav-link' do %>
+              <%= link_to edit_community_path(current_user.id), class: "nav-link" do %>
                 <i class="fas fa-users"></i> コミュニティ
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to user_path(current_user.id), class: 'nav-link' do %>
+              <%= link_to user_path(current_user.id), class: "nav-link" do %>
                 <i class="fa-solid fa-user"></i> BunShowログ
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
                 <i class="fas fa-sign-out-alt"></i> Log out
               <% end %>
             </li>
             
           <% else %>
             <li class="nav-item">
-              <%= link_to new_user_session_path, class: 'nav-link' do %>
+              <%= link_to new_user_session_path, class: "nav-link" do %>
                 <i class="fas fa-sign-in-alt"></i> Log in
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to new_user_registration_path, class: 'nav-link' do %>
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
                 <i class="fas fa-user-plus"></i> Sign up
               <% end %>
             </li>
@@ -60,7 +60,7 @@
     <ul class="navbar-nav">
       <div class="ml-auto mb-1">
       <li class="nav-item">
-        <%= render 'layouts/search' %>
+        <%= render "layouts/search" %>
       </li>
       </div>
     </ul>

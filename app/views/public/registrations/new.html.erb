@@ -22,6 +22,12 @@
   </div>
 <% end %>
 
+<% if @user.errors[:password_confirmation].any? %>
+  <div class="alert text-center alert-danger">
+    確認用パスワードと一致しません。再度、入力をお願いします。
+  </div>
+<% end %>
+
 <%= render 'layouts/flash_message' %>
 
 <div class="container">

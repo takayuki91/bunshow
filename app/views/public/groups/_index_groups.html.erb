@@ -8,12 +8,12 @@
           <p class="card-text"><i class="fa-solid fa-flask-vial"></i><%= group.name %></p>
         <% end %>
         : <%= group.users.where(users: { is_deleted: false }).count %>人<br>
-  
+
         オーナー :
         <%= link_to(user_path(group.owner.id), class:"btn btn-sm btn-outline-dark mt-1") do %>
           <p class="card-text"><i class="fas fa-user"></i><%= group.owner.name %></p>
         <% end %>
-  
+
         <hr>
         <div class="row px-2">
           <div class="col-2">
@@ -37,7 +37,7 @@
                 <i class="fa-solid fa-plane"></i>解散
               <% end %>
             <% elsif group.users.include?(current_user) %>
-              <%= link_to group_group_users_path(group), method: :delete, data: { confirm: '本当に解散しますか？' }, class: "btn btn-sm btn-outline-secondary" do %>
+              <%= link_to group_group_users_path(group), method: :delete, data: { confirm: '本当に退会しますか？' }, class: "btn btn-sm btn-outline-secondary" do %>
                 <i class="fa-solid fa-heart-crack"></i>退会
               <% end %>
             <% else %>
