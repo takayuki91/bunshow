@@ -10,7 +10,7 @@
           <i class="fa-regular fa-clock"></i><%= l comment.created_at, format: :short %>
         </div>
         <div class="col-2">
-          <%= link_to "削除", admin_user_comment_path(comment.user, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+          <%= link_to "削除", admin_user_comment_path(comment.user, comment), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger" %>
         </div>
       </div>
     </div>

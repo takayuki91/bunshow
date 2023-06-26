@@ -13,13 +13,14 @@ Rails.application.routes.draw do
 
   # ゲストログイン
   devise_scope :user do
-    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    post "public/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
   # ユーザー全般
   scope module: :public do
 
     root to: "homes#top"
+    get "privacy" => "homes#privacy"
 
     get "search" => "searches#search"
 
@@ -56,7 +57,7 @@ Rails.application.routes.draw do
 
   # 管理者全般
   namespace :admin do
-    get 'top' => 'homes#top', as: 'top'
+    get "top" => "homes#top", as: "top"
 
     get "search" => "searches#search"
 

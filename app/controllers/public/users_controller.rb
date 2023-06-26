@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
       flash[:dark] = "あなたの指導者情報を更新しました!!"
       redirect_to user_path(@user.id)
     else
-      flash[:danger] = "このニックネームは設定できません。2〜20文字で固有のものにしてください。"
+      flash[:danger] = "ニックネーム(2〜20文字)とアドレスは固有のものにしてください。"
       render :edit
     end
   end
