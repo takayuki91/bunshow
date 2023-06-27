@@ -1,4 +1,6 @@
-# BunShow！
+# BunShow
+
+![cover_image](https://github.com/takayuki91/bunshow/assets/129576342/e9b91661-4784-47e5-962e-c18ba756d142)
 
 ## BunShow!の由来
 - bun「優れた（ルーマニア語）」
