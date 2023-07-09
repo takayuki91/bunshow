@@ -15,7 +15,7 @@
         <div class="card mx-auto mt-2 shadow-lg">
           <% if @currentpost.post_image.attached? %>
             <%= link_to @currentpost.get_post_image, "data-lightbox": @currentpost.get_post_image do %>
-              <%= image_tag @currentpost.get_post_image, size: "200x300", class: "card-img-top" %>
+              <%= image_tag @currentpost.get_post_image, size: "200x300", class: "card-img-top", style: "object-fit: cover;" %>
             <% end %>
           <% else %>
             <%= image_tag @currentpost.get_post_image, size: "200x300", class: "card-img-top" %>

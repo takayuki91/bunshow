@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def create
     @post = Post.new(post_params)
@@ -62,7 +63,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @currentpost = Post.find(params[:id])
-    
+
     # currentユーザーのコメントがあるか確認するため
     # 詳細ページのみコントローラーに記述
     @user_comments = @currentpost.comments
@@ -108,6 +109,14 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:post_image, :explanation)
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      flash[:danger] = "このBunShowへの編集権限はありません。"
+      redirect_to posts_path
+    end
   end
 
 end

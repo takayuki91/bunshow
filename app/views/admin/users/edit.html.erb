@@ -32,12 +32,12 @@
           </div>
           <div class="form-check form-check-inline">
             <%= f.radio_button :is_deleted, true, class: "form-check-input customer_is_deleted_false" %>
-            <%= f.label :is_deleted, "退会", value: false, class: "form-check-label align-middle"  %>
+            <%= f.label :is_deleted, "退会", value: false, class: "form-check-label align-middle" %>
           </div>
         </div>
 
         <div class="row mt-2 justify-content-center">
-          <%= f.submit "変更を保存", class: "btn btn-outline-secondary" %>
+          <%= f.submit "変更を保存", class: "btn btn-outline-secondary", data: { confirm: "本当に更新してよろしいですか？" } %>
         </div>
 
       <% end %>

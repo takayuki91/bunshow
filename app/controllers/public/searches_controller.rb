@@ -4,6 +4,7 @@ class Public::SearchesController < ApplicationController
 
   def search
     @range = params[:range]
+    @word = params[:word]
 
     if @range == "指導者"
       @users = User.looks(params[:search], params[:word])
