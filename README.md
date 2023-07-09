@@ -63,12 +63,15 @@
 - [Webサイトの利用規約 kiyaku.jp](https://kiyaku.jp/index.html)
 - [イラストや](https://www.irasutoya.com/)
 
-## ER図
+## 基本設計
+#### [ワイヤーフレーム](https://docs.google.com/presentation/d/1CYtoc4LJuiONindI2NsoawQ7FLRNeUG2KoAKsUR_P1I/edit?usp=sharing)
+#### ER図
 ![2 2_ER図](https://github.com/takayuki91/bunshow/assets/129576342/7d6b234f-e6ad-40a3-8e56-fd68ebd8ca42)
+#### [テーブル定義書](https://docs.google.com/spreadsheets/d/1Z_iQSeHqdbgyTY6t534r1UZLdXbmycFwTmvlS-1fTtk/edit?usp=sharing)
 
 ## テスト仕様書
 下記リンクのテスト仕様書に沿って、機能の確認とエラーがないことの確認をいたしました。（2023/06/27時点）
-https://docs.google.com/spreadsheets/d/18qLnSFrZaviJKZ0AAL_8JSCug-5OvtfZcXfF74j4xLU/edit?usp=sharing
+[テスト仕様書](https://docs.google.com/spreadsheets/d/18qLnSFrZaviJKZ0AAL_8JSCug-5OvtfZcXfF74j4xLU/edit?usp=sharing)
 
 
 # 実装機能

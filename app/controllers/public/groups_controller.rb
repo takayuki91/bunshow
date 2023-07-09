@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def create
     @group = Group.new(group_params)
@@ -76,6 +76,7 @@ class Public::GroupsController < ApplicationController
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
+      flash[:danger] = "このラボの編集権限はありません。"
       redirect_to groups_path
     end
   end
